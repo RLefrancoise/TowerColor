@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TowerColor
 {
@@ -21,46 +24,60 @@ namespace TowerColor
             _gameData = gameData;
         }
 
-        public void GenerateTower(int level)
+        public Tower GenerateTower(int level)
         {
+            var towerObject = new GameObject("Tower");
+            var tower = towerObject.AddComponent<Tower>();
+
             var profile = _gameData.towerProfiles[0];
-
-            var brickHeight = -1f;
-            var rotationStep = 360f / profile.bricksPerStep;
-
+            
             //For each step
             for (var s = 0; s < profile.stepCount; ++s)
             {
+                var stepPosition = s == 0
+                    ? tower.transform.position
+                    : tower.Steps[s - 1].transform.position + tower.transform.up * tower.Steps[s - 1].Height;
+
+                var stepRotation = s == 0
+                    ? tower.transform.rotation
+                    : tower.Steps[s - 1].transform.rotation * Quaternion.Euler(0f, profile.rotationAmountPerStep, 0f);
+                
                 //Create step object to group bricks per step
-                var stepObject = new GameObject($"Step_{s+1}");
-                stepObject.transform.SetParent(transform, false);
+                var step = Instantiate(profile.stepPrefab, stepPosition, stepRotation, tower.transform).GetComponent<TowerStep>();
+                step.name = $"Step_{s + 1}";
+
+                //Add step to tower
+                tower.AddStep(step);
                 
-                //Move step object to correct step height
-                stepObject.transform.Translate(brickHeight * s * stepObject.transform.up);
+                //Color each brick according to its surrounding
+                foreach (var brick in step.Bricks)
+                    brick.Color = _gameData.brickColors[0].color;
                 
-                //Reset rotation and apply rotation offset
-                stepObject.transform.localRotation = Quaternion.identity;
-                stepObject.transform.RotateAround(stepObject.transform.position, stepObject.transform.up, profile.rotationAmountPerStep * s);
-                
-                //Create each brick for the current step
-                for (var i = 0f; i <= 360f ; i += rotationStep)
+                foreach (var brick in step.Bricks)
                 {
-                    var x = stepObject.transform.position.x + Mathf.Cos(i * Mathf.Deg2Rad) * profile.towerRadius;
-                    var z = stepObject.transform.position.z + Mathf.Sin(i * Mathf.Deg2Rad) * profile.towerRadius;
+                    var hits = new RaycastHit[10];
+                    var size = Physics.BoxCastNonAlloc(brick.Center, brick.Bounds.extents, brick.transform.up, hits, brick.transform.rotation);
                     
-                    var brickPosition = new Vector3(x, stepObject.transform.position.y, z);
-                    var brickRotation = Quaternion.identity;
-                    
-                    var brick = Instantiate(profile.brickPrefab, brickPosition, brickRotation, stepObject.transform).GetComponent<Brick>();
-                    
-                    //If brick height not yet defined, define it
-                    if (brickHeight == -1f) brickHeight = brick.Height;
-                    
-                    //Choose random color for now
-                    brick.Color = _gameData.brickColors.Select(c => c.color)
-                        .ElementAt(Random.Range(0, _gameData.brickColors.Count));
+                    for (var i = 0; i < size; ++i)
+                    {
+                        var hitBrick = hits[i].collider.GetComponentInParent<Brick>();
+                        if (!hitBrick) continue;
+
+                        var randomChance = Random.Range(0f, 1f);
+                        if (randomChance <= _gameData.sameColorForAdjacentBrickProbabilityByLevel.Evaluate((level - 1) / 100f))
+                        {
+                            hitBrick.Color = brick.Color;
+                        }
+                        else
+                        {
+                            hitBrick.Color = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
+                                .ElementAt(Random.Range(0, _gameData.brickColors.Count - 1));
+                        }
+                    }
                 }
             }
+
+            return tower;
         }
     }
 }

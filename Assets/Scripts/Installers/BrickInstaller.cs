@@ -9,6 +9,7 @@ namespace TowerColor
         {
             Container.Bind<Renderer>().FromComponentInChildren().AsSingle();
             Container.Bind<Collider>().FromComponentInChildren().AsSingle();
+            Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();
         }
     }
 }

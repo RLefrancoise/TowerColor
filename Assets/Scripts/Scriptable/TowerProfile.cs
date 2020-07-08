@@ -11,23 +11,13 @@ namespace TowerColor
         /// <summary>
         /// Brick to use to generate the tower
         /// </summary>
-        public GameObject brickPrefab;
+        public GameObject stepPrefab;
 
         /// <summary>
         /// The number of steps
         /// </summary>
         public int stepCount = 10;
-        
-        /// <summary>
-        /// Radius of the tower
-        /// </summary>
-        public float towerRadius = 1f;
 
-        /// <summary>
-        /// Rotation step per brick on a given step
-        /// </summary>
-        public int bricksPerStep = 10;
-        
         /// <summary>
         /// Rotation amount of a tower step according to the previous one
         /// </summary>

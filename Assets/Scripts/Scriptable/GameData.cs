@@ -28,5 +28,10 @@ namespace TowerColor
         [BoxGroup("Tower")]
         [Tooltip("Available tower profiles")]
         public List<TowerProfile> towerProfiles;
+
+        /// <summary>
+        /// Probability that adjacent brick has the same color according to the current level
+        /// </summary>
+        public AnimationCurve sameColorForAdjacentBrickProbabilityByLevel;
     }
 }

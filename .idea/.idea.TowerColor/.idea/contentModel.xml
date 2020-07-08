@@ -566,7 +566,9 @@
             <e p="GameData.cs" t="Include" />
             <e p="TowerProfile.cs" t="Include" />
           </e>
+          <e p="Tower.cs" t="Include" />
           <e p="TowerCreator.cs" t="Include" />
+          <e p="TowerStep.cs" t="Include" />
         </e>
       </e>
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />

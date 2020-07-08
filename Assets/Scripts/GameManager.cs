@@ -12,6 +12,8 @@ namespace TowerColor
         /// The tower creator to use to generate the tower
         /// </summary>
         private TowerCreator _towerCreator;
+
+        private Tower _tower;
         
         [Inject]
         public void Construct(TowerCreator towerCreator)
@@ -21,7 +23,8 @@ namespace TowerColor
 
         private void Start()
         {
-            _towerCreator.GenerateTower(0);
+            _tower = _towerCreator.GenerateTower(0);
+            _tower.EnablePhysics(true);
         }
     }
 }

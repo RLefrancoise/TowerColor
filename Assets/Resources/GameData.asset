@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ad661c1f2c2596f45b70990b83c4e913, type: 2}
   - {fileID: 2100000, guid: 0fe0d3042ebb31e4dbffba203d5a15ec, type: 2}
   - {fileID: 2100000, guid: 08e08d0d7b144d4408d0a95b9e4aa16c, type: 2}
+  towerProfiles:
+  - {fileID: 11400000, guid: 62a2c66ed80570c4395c3643f4276cb1, type: 2}

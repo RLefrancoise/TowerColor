@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b19fd25099140119dc270d0c2048a55, type: 3}
   m_Name: CylinderTower1
   m_EditorClassIdentifier: 
-  brickPrefab: {fileID: 0}
+  stepPrefab: {fileID: 5181586141108392720, guid: 99b6229f0845ba44a9a22c3d75257b33,
+    type: 3}
   stepCount: 10
-  towerRadius: 1
-  bricksPerStep: 10
   rotationAmountPerStep: 5
