@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcdd5f9bf6b42408d0588f6328f1379, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  brickColors:
+  - {fileID: 2100000, guid: 9f620d13c6527b145bd483c5649e8c98, type: 2}
+  - {fileID: 2100000, guid: b7e95cebd76221348b77ce1097efc141, type: 2}
+  - {fileID: 2100000, guid: ad661c1f2c2596f45b70990b83c4e913, type: 2}
+  - {fileID: 2100000, guid: 0fe0d3042ebb31e4dbffba203d5a15ec, type: 2}
+  - {fileID: 2100000, guid: 08e08d0d7b144d4408d0a95b9e4aa16c, type: 2}
