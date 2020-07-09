@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -10,10 +11,17 @@ namespace TowerColor
 {
     public class Tower : MonoBehaviour
     {
+        #region Fields
+        
         private GameData _gameData;
+        [ShowNonSerializedField] private int _currentStep;
         
         [SerializeField] private List<TowerStep> steps;
+        
+        #endregion
 
+        #region Properties
+        
         public ReadOnlyCollection<TowerStep> Steps => steps.AsReadOnly();
 
         public Transform CurrentSubTowerFocusPoint
@@ -25,7 +33,25 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// List of available colors in the tower
+        /// </summary>
+        public IEnumerable<Color> AvailableColors
+        {
+            get
+            {
+                var bricks = Steps.SelectMany(s => s.Bricks).Where(b => b.IsStillInPlace);
+                return bricks.Select(b => b.Color);
+            }
+        }
+        
+        #endregion
+
+        #region Events
+        
         public event Action<int> CurrentStepChanged;
+        
+        #endregion
 
         [Inject]
         public void Construct(GameData gameData)
@@ -33,6 +59,20 @@ namespace TowerColor
             _gameData = gameData;
         }
 
+        #region MonoBehaviours
+
+        private void Start()
+        {
+            foreach (var step in steps)
+            {
+                step.FullyDestroyed += OnStepFullyDestroyed;
+            }
+        }
+
+        #endregion
+        
+        #region Public Methods
+        
         public void AddStep(TowerStep step)
         {
             steps.Add(step);
@@ -62,7 +102,8 @@ namespace TowerColor
                 if (step - i < 0) break;
                 steps[step - i].ActivateStep(true);
             }
-            
+
+            _currentStep = step;
             CurrentStepChanged?.Invoke(step);
         }
 
@@ -84,27 +125,83 @@ namespace TowerColor
             {
                 foreach (var brick in step.Bricks)
                 {
-                    var hits = new RaycastHit[10];
-                    var size = Physics.BoxCastNonAlloc(brick.Center, brick.Bounds.extents, brick.transform.up, hits, brick.transform.rotation);
-                    
-                    for (var i = 0; i < size; ++i)
+                    foreach (var b in brick.SurroundingBricks)
                     {
-                        var hitBrick = hits[i].collider.GetComponentInParent<Brick>();
-                        if (!hitBrick) continue;
-
+                        //According to the level, we have a specific change that surrounding bricks have same color
                         var randomChance = Random.Range(0f, 1f);
                         if (randomChance <= _gameData.sameColorForAdjacentBrickProbabilityByLevel.Evaluate((level - 1) / 100f))
                         {
-                            hitBrick.Color = brick.Color;
+                            b.Color = brick.Color;
                         }
                         else
                         {
-                            hitBrick.Color = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
+                            //We take a random color from the color list, except the same color as the brick
+                            b.Color = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
                                 .ElementAt(Random.Range(0, _gameData.brickColors.Count - 1));
                         }
                     }
                 }
             }
         }
+
+        public bool IsBrickTargetable(Brick brick)
+        {
+            if (Vector3.Dot(transform.up, brick.transform.up) < 0.95f) return false;
+            if (brick.IsInWater) return false;
+            if (!brick.IsActivated) return false;
+
+            return true;
+        }
+
+        public List<Brick> GetBricksWithSameColor(Brick brick)
+        {
+            var bricks = new List<Brick> {brick};
+            var analyzedBricks = new List<Brick> {brick};
+            
+            RecurseOnBricksWithSameColor(analyzedBricks, bricks, brick);
+            
+            return bricks;
+        }
+        
+        #endregion
+
+        #region Private Methods
+
+        private void RecurseOnBricksWithSameColor(List<Brick> bricks, List<Brick> withSameColor, Brick current)
+        {
+            foreach (var brick in current.SurroundingBricks)
+            {
+                if (bricks.Contains(brick)) continue;
+                
+                bricks.Add(brick);
+                
+                if (!brick.IsActivated) continue;
+                if (!brick.IsStillInPlace) continue;
+                if (brick.Color != current.Color) continue;
+                
+                withSameColor.Add(brick);
+
+                foreach (var b in brick.SurroundingBricks)
+                {
+                    RecurseOnBricksWithSameColor(bricks, withSameColor, b);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// When step is fully destroyed, update new current step
+        /// </summary>
+        private void OnStepFullyDestroyed()
+        {
+            for (var i = steps.Count - 1; i >= 0; --i)
+            {
+                if (steps[i].IsFullyDestroyed) continue;
+                
+                SetCurrentStep(i);
+                break;
+            }
+        }
+        
+        #endregion
     }
 }

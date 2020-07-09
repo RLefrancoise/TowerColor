@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
 
@@ -20,6 +21,16 @@ namespace TowerColor
         private Color _color;
 
         /// <summary>
+        /// Game data
+        /// </summary>
+        private GameData _gameData;
+
+        /// <summary>
+        /// Start position of the brick. Used to check if the brick is still in place or not
+        /// </summary>
+        [ShowNonSerializedField] private Vector3 _startPosition;
+        
+        /// <summary>
         /// The brick renderer. Used to change the color material
         /// </summary>
         [SerializeField] protected new Renderer renderer;
@@ -33,11 +44,6 @@ namespace TowerColor
         /// Rigid body. Used to enable / disable physics 
         /// </summary>
         [SerializeField] protected Rigidbody rigidBody;
-        
-        /// <summary>
-        /// Game data
-        /// </summary>
-        private GameData _gameData;
         
         #endregion
 
@@ -73,6 +79,11 @@ namespace TowerColor
         public Bounds Bounds => collider.bounds;
         
         /// <summary>
+        /// Is the brick activated ?
+        /// </summary>
+        public bool IsActivated { get; private set; }
+        
+        /// <summary>
         /// Enable of disable physics
         /// </summary>
         public bool PhysicsEnabled
@@ -85,9 +96,71 @@ namespace TowerColor
                 rigidBody.angularVelocity = Vector3.zero;
             }
         }
+
+        /// <summary>
+        /// Does the brick has surrounding bricks ?
+        /// </summary>
+        public bool HasSurroundingBricks => SurroundingBricks.Any();
+
+        /// <summary>
+        /// Get surrounding bricks of the brick
+        /// </summary>
+        public IEnumerable<Brick> SurroundingBricks
+        {
+            get
+            {
+                var hits = new RaycastHit[10];
+                var size = Physics.BoxCastNonAlloc(
+                    Center, 
+                    Bounds.extents * 1.25f, 
+                    transform.up, 
+                    hits, 
+                    transform.rotation, 
+                    Bounds.size.y, 
+                    LayerMask.GetMask("Brick"));
+                hits = hits.Take(size).ToArray();
+                
+                return hits.Where(h => h.collider.GetComponentInParent<Brick>() != null)
+                    .Select(h => h.collider.GetComponentInParent<Brick>());
+            }
+        }
+
+        [ShowNativeProperty] public bool IsStillInPlace
+        {
+            get
+            {
+                return collider.bounds.Contains(_startPosition) && Vector3.Dot(transform.up, Vector3.up) >= 0.95f;
+            }
+        }
         
+        public bool IsInWater { get; private set; }
+
         #endregion
 
+        public event Action<Brick> Destroyed;
+        
+        #region MonoBehaviour
+
+        private void Start()
+        {
+            _startPosition = transform.position;
+        }
+
+        private void OnDestroy()
+        {
+            Destroyed?.Invoke(this);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Water"))
+            {
+                IsInWater = true;
+            }
+        }
+
+        #endregion
+        
         #region Public Methods
         
         [Inject]
@@ -98,6 +171,10 @@ namespace TowerColor
         
         public void SetActivated(bool activated)
         {
+            if(!IsStillInPlace) return;
+            
+            IsActivated = activated;
+            
             if (activated)
             {
                 Color = _color;
@@ -113,5 +190,12 @@ namespace TowerColor
         }
         
         #endregion
+
+        /*private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            var bounds = new Bounds(_startPosition + Vector3.up * Height / 2f, Bounds.size);
+            Gizmos.DrawWireCube(bounds.center, bounds.size);
+        }*/
     }
 }

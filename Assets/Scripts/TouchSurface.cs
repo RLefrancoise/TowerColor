@@ -13,11 +13,22 @@ namespace TowerColor
         
         [SerializeField] private EventTrigger eventTrigger;
 
+        public event Action<Vector2> Touched; 
+        
         public event Action<Vector2> DragBegun;
         public event Action<Vector2> Dragging; 
         
         private void Start()
         {
+            //Touched
+            var touchedEvent = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerClick,
+                callback = new EventTrigger.TriggerEvent()
+            };
+            
+            touchedEvent.callback.AddListener(OnTouched);
+            
             //Begin drag
             var beginDragEvent = new EventTrigger.Entry
             {
@@ -34,8 +45,24 @@ namespace TowerColor
             };
             dragEvent.callback.AddListener(OnDrag);
 
+            eventTrigger.triggers.Add(touchedEvent);
             eventTrigger.triggers.Add(beginDragEvent);
             eventTrigger.triggers.Add(dragEvent);
+        }
+
+        private void OnTouched(BaseEventData eventData)
+        {
+            var input = eventData.currentInputModule.input;
+
+            if (input.touchSupported)
+            {
+                var touch = input.GetTouch(0);
+                Touched?.Invoke(new Vector2(touch.position.x / Screen.width, touch.position.y / Screen.height));
+            }
+            else
+            {
+                Touched?.Invoke(new Vector2(input.mousePosition.x / Screen.width, input.mousePosition.y / Screen.height));
+            }
         }
         
         private void OnBeginDrag(BaseEventData eventData)

@@ -22,6 +22,8 @@ namespace TowerColor
         [Tooltip("Material to use when a brick is inactive")]
         public Material inactiveBrickColor;
 
+        #region Tower
+        
         /// <summary>
         /// Tower prefab
         /// </summary>
@@ -48,12 +50,57 @@ namespace TowerColor
         [BoxGroup("Tower")]
         [Tooltip("Rotation speed of the tower when the player is dragging")]
         public float towerRotateSpeed = 1f;
+        
+        #endregion
 
+        #region Ball
+        
+        [BoxGroup("Ball")]
+        public GameObject ballPrefab;
+
+        /// <summary>
+        /// Fire duration of the ball
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Fire duration of the ball")]
+        public float ballFireDuration = 1f;
+        
+        #endregion
+
+        #region Cameras
+        
+        /// <summary>
+        /// Duration of the camera movement when current tower step is changed
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("Duration of the camera movement when current tower step is changed")]
+        public float goToStepCameraMovementDuration = 0.5f;
+        
+        #endregion
+
+        /// <summary>
+        /// Force that is applied to the bricks that fell into water
+        /// </summary>
+        [BoxGroup("Water Ground")]
+        [Tooltip("Force that is applied to the bricks that fell into water")]
+        public float waterGroundForce = 20f;
+        
+        #region Difficulty Settings
+        
         /// <summary>
         /// Probability that adjacent brick has the same color according to the current level
         /// </summary>
         [BoxGroup("Difficulty Settings")]
         [Tooltip("Probability that adjacent brick has the same color according to the current level")]
         public AnimationCurve sameColorForAdjacentBrickProbabilityByLevel;
+
+        /// <summary>
+        /// The number of balls by level
+        /// </summary>
+        [BoxGroup("Difficulty Settings")]
+        [Tooltip("The number of balls by level")]
+        public AnimationCurve numberOfBallsByLevel;
+        
+        #endregion
     }
 }

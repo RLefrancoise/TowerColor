@@ -6,6 +6,21 @@
     <e p="G:\Documents\Travail\Unity\TowerColor" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Demigiant" t="Include">
+          <e p="DOTween" t="Include">
+            <e p="Modules" t="Include">
+              <e p="DOTween.Modules.asmdef" t="Include" />
+              <e p="DOTweenModuleAudio.cs" t="Include" />
+              <e p="DOTweenModulePhysics.cs" t="Include" />
+              <e p="DOTweenModulePhysics2D.cs" t="Include" />
+              <e p="DOTweenModuleSprite.cs" t="Include" />
+              <e p="DOTweenModuleUI.cs" t="Include" />
+              <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+              <e p="DOTweenModuleUtils.cs" t="Include" />
+            </e>
+            <e p="readme.txt" t="Include" />
+          </e>
+        </e>
         <e p="NaughtyAttributes" t="Include">
           <e p="Scripts" t="Include">
             <e p="Core" t="Include">
@@ -554,6 +569,8 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Ball.cs" t="Include" />
+          <e p="BallSpawner.cs" t="Include" />
           <e p="Brick.cs" t="Include" />
           <e p="CylinderBrick.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
@@ -562,6 +579,7 @@
             <e p="GameDataInstaller.cs" t="Include" />
             <e p="GameInstaller.cs" t="Include" />
           </e>
+          <e p="SaveData.cs" t="Include" />
           <e p="Scriptable" t="Include">
             <e p="GameData.cs" t="Include" />
             <e p="TowerProfile.cs" t="Include" />
@@ -573,8 +591,10 @@
           <e p="Tower.cs" t="Include" />
           <e p="TowerSpawner.cs" t="Include" />
           <e p="TowerStep.cs" t="Include" />
+          <e p="WaterGround.cs" t="Include" />
         </e>
       </e>
+      <e p="DOTween.Modules.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Editor.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Test.csproj" t="IncludeRecursive" />

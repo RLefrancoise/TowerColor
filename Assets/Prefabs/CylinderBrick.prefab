@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4729366764860770961}
   - component: {fileID: 341388392146326873}
   - component: {fileID: 922711307620587237}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 1610993023947204475}
   - component: {fileID: 1957504904116406714}
   - component: {fileID: 875679658269326802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CylinderBrick
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
