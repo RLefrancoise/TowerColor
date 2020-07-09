@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 using Cinemachine;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TowerColor
 {
@@ -111,6 +113,18 @@ namespace TowerColor
         }
         
         #endregion
+        
+        #if UNITY_EDITOR
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartGame();
+            }
+        }
+
+        #endif
 
         #region Private Methods
 

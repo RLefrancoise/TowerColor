@@ -29,7 +29,14 @@ namespace TowerColor
             get
             {
                 var activeSteps = steps.Where(s => s.IsActivated).ToList();
-                return activeSteps.Count > 0 ? activeSteps[activeSteps.Count / 2].transform : null;
+
+                if (activeSteps.Count > 5)
+                {
+                    return activeSteps[activeSteps.Count / 2].transform;
+                }
+                
+                return activeSteps.Count > 0 ? activeSteps[activeSteps.Count-1].transform : null;
+                
             }
         }
 
@@ -146,9 +153,10 @@ namespace TowerColor
 
         public bool IsBrickTargetable(Brick brick)
         {
-            if (Vector3.Dot(transform.up, brick.transform.up) < 0.95f) return false;
+            //if (Vector3.Dot(transform.up, brick.transform.up) < 0.95f) return false;
             if (brick.IsInWater) return false;
             if (!brick.IsActivated) return false;
+            if (brick.Velocity.sqrMagnitude >= _gameData.targetableBrickSquaredVelocityThreshold) return false;
 
             return true;
         }

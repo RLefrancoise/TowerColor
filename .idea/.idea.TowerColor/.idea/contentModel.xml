@@ -572,6 +572,7 @@
           <e p="Ball.cs" t="Include" />
           <e p="BallSpawner.cs" t="Include" />
           <e p="Brick.cs" t="Include" />
+          <e p="CollisionEvents.cs" t="Include" />
           <e p="CylinderBrick.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="Installers" t="Include">

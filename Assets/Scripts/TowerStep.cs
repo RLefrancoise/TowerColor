@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace TowerColor
 {
     public class TowerStep : MonoBehaviour
     {
+        [ShowNonSerializedField] private Vector3 _startPosition;
+        
         [SerializeField] private List<Brick> bricks;
 
         public ReadOnlyCollection<Brick> Bricks => bricks.AsReadOnly();
@@ -22,6 +25,8 @@ namespace TowerColor
 
         private void Start()
         {
+            _startPosition = transform.position;
+            
             foreach (var brick in bricks)
             {
                 brick.Destroyed += OnBrickDestroyed;
@@ -31,7 +36,7 @@ namespace TowerColor
         private void Update()
         {
             if(IsFullyDestroyed) return;
-            
+
             var allBricksMoved = bricks.Count == 0 || bricks.All(b => !b.IsStillInPlace);
             if (allBricksMoved)
             {

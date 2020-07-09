@@ -22,6 +22,13 @@ namespace TowerColor
         [Tooltip("Material to use when a brick is inactive")]
         public Material inactiveBrickColor;
 
+        /// <summary>
+        /// Squared velocity threshold to consider a brick targetable
+        /// </summary>
+        [BoxGroup("Brick")]
+        [Tooltip("Squared velocity threshold to consider a brick targetable")]
+        public float targetableBrickSquaredVelocityThreshold = 0.04f;
+        
         #region Tower
         
         /// <summary>
@@ -84,6 +91,12 @@ namespace TowerColor
         [BoxGroup("Water Ground")]
         [Tooltip("Force that is applied to the bricks that fell into water")]
         public float waterGroundForce = 20f;
+
+        [BoxGroup("Water Ground")]
+        public float waterGroundMaxBrickSpeed = 5f;
+
+        [BoxGroup("Water Ground")]
+        public float waterGroundMaxBrickDistance = 25f;
         
         #region Difficulty Settings
         

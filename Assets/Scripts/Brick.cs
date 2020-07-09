@@ -77,6 +77,11 @@ namespace TowerColor
         /// Brick bounds
         /// </summary>
         public Bounds Bounds => collider.bounds;
+
+        /// <summary>
+        /// Brick velocity
+        /// </summary>
+        public Vector3 Velocity => rigidBody.velocity;
         
         /// <summary>
         /// Is the brick activated ?
@@ -96,11 +101,6 @@ namespace TowerColor
                 rigidBody.angularVelocity = Vector3.zero;
             }
         }
-
-        /// <summary>
-        /// Does the brick has surrounding bricks ?
-        /// </summary>
-        public bool HasSurroundingBricks => SurroundingBricks.Any();
 
         /// <summary>
         /// Get surrounding bricks of the brick
@@ -129,11 +129,12 @@ namespace TowerColor
         {
             get
             {
-                return collider.bounds.Contains(_startPosition) && Vector3.Dot(transform.up, Vector3.up) >= 0.95f;
+                return collider.bounds.Contains(_startPosition) 
+                       && Vector3.Dot(transform.up, Vector3.up) >= 0.95f;
             }
         }
         
-        public bool IsInWater { get; private set; }
+        [ShowNativeProperty] public bool IsInWater { get; private set; }
 
         #endregion
 
@@ -171,7 +172,7 @@ namespace TowerColor
         
         public void SetActivated(bool activated)
         {
-            if(!IsStillInPlace) return;
+            if(!IsStillInPlace || Velocity.sqrMagnitude >= _gameData.targetableBrickSquaredVelocityThreshold) return;
             
             IsActivated = activated;
             
