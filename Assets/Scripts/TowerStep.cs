@@ -11,11 +11,8 @@ namespace TowerColor
         public ReadOnlyCollection<Brick> Bricks => bricks.AsReadOnly();
 
         public float Height => bricks[0].Height;
-
-        public void AddBrick(Brick brick)
-        {
-            bricks.Add(brick);
-        }
+        
+        public bool IsActivated { get; private set; }
 
         public void EnablePhysics(bool enable)
         {
@@ -23,6 +20,14 @@ namespace TowerColor
             {
                 brick.PhysicsEnabled = enable;
             }
+        }
+
+        public void ActivateStep(bool activate)
+        {
+            IsActivated = activate;
+            
+            foreach(var brick in bricks)
+                brick.SetActivated(activate);
         }
     }
 }

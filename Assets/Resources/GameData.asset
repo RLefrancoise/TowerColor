@@ -18,5 +18,33 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ad661c1f2c2596f45b70990b83c4e913, type: 2}
   - {fileID: 2100000, guid: 0fe0d3042ebb31e4dbffba203d5a15ec, type: 2}
   - {fileID: 2100000, guid: 08e08d0d7b144d4408d0a95b9e4aa16c, type: 2}
-  towerProfiles:
-  - {fileID: 11400000, guid: 62a2c66ed80570c4395c3643f4276cb1, type: 2}
+  inactiveBrickColor: {fileID: 2100000, guid: b971d3cd9064f184e8b049f74366845b, type: 2}
+  towerPrefab: {fileID: 8510273500793931410, guid: 828567c9596f1194a9334889418d65f5,
+    type: 3}
+  towers:
+  - {fileID: 2489286409299875900, guid: 8b5e13a91f1421545a49c00f1c559272, type: 3}
+  maxActiveSteps: 8
+  sameColorForAdjacentBrickProbabilityByLevel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.6
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

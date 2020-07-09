@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepPrefab: {fileID: 5181586141108392720, guid: 99b6229f0845ba44a9a22c3d75257b33,
     type: 3}
-  stepCount: 10
-  rotationAmountPerStep: 5
+  stepCount: 20
+  rotationAmountPerStep: 2.5

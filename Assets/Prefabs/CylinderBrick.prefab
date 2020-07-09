@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3344844571806822864}
   - component: {fileID: 4729366764860770961}
   - component: {fileID: 341388392146326873}
-  - component: {fileID: 5450618103357218637}
+  - component: {fileID: 922711307620587237}
   m_Layer: 0
   m_Name: Shape
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5450618103357218637
+--- !u!65 &922711307620587237
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7261336895081520243}
-  - component: {fileID: 8995095644390952397}
   - component: {fileID: 1610993023947204475}
-  - component: {fileID: 4500943661261413225}
   - component: {fileID: 1957504904116406714}
   - component: {fileID: 875679658269326802}
   m_Layer: 0
@@ -129,18 +127,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8995095644390952397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976190553413093412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad29bf6024e94cbaacf8ecabd1966762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1610993023947204475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,19 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c52d2f10d448ca48e202380985faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4500943661261413225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976190553413093412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _containerSource: 0
+  renderer: {fileID: 341388392146326873}
+  collider: {fileID: 922711307620587237}
+  rigidBody: {fileID: 875679658269326802}
 --- !u!114 &1957504904116406714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 8995095644390952397}
+  _monoInstallers: []
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
