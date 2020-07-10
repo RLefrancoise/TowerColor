@@ -184,7 +184,7 @@ namespace TowerColor
                 if (withSameColor.Contains(brick)) continue;
                 
                 if (!brick.IsActivated) continue;
-                if (!brick.IsStillInPlace) continue;
+                //if (!brick.IsStillInPlace) continue;
                 if (brick.Color != current.Color) continue;
                 
                 withSameColor.Add(brick);

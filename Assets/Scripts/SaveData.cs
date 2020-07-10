@@ -1,3 +1,4 @@
+using Framework.Scripts.Data;
 using UnityEngine;
 
 namespace TowerColor
@@ -5,7 +6,7 @@ namespace TowerColor
     /// <summary>
     /// The save data of the player
     /// </summary>
-    public class SaveData
+    public class SaveData : ISaveData
     {
         /// <summary>
         /// Current level of the player
