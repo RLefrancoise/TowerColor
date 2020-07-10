@@ -28,15 +28,12 @@ namespace TowerColor
         {
             get
             {
-                var activeSteps = steps.Where(s => s.IsActivated).ToList();
+                var focusedStep = _currentStep - _gameData.maxActiveSteps / 2 + 1;
 
-                if (activeSteps.Count > 5)
-                {
-                    return activeSteps[activeSteps.Count / 2].transform;
-                }
+                if (focusedStep < 5) focusedStep = 5; // To avoid being too low and having the ball in the water, etc...
                 
-                return activeSteps.Count > 0 ? activeSteps[activeSteps.Count-1].transform : null;
-                
+                return steps[focusedStep >= 0 ? focusedStep : 0].transform;
+
             }
         }
 
@@ -98,9 +95,15 @@ namespace TowerColor
             if(step < 0 || step >= steps.Count) throw new Exception($"Invalid step {step}");
 
             //Deactivate all steps
-            foreach (var s in steps)
+            /*foreach (var s in steps)
             {
                 s.ActivateStep(false);
+            }*/
+
+            for (var i = 0; i <= step - _gameData.maxActiveSteps; ++i)
+            {
+                if (i < 0) break;
+                steps[i].ActivateStep(false);
             }
 
             //Activate step and all steps below it until reached max active steps
@@ -153,8 +156,8 @@ namespace TowerColor
 
         public bool IsBrickTargetable(Brick brick)
         {
-            //if (Vector3.Dot(transform.up, brick.transform.up) < 0.95f) return false;
             if (brick.IsInWater) return false;
+            if (brick.HasFellOnPlatform) return false;
             if (!brick.IsActivated) return false;
             if (brick.Velocity.sqrMagnitude >= _gameData.targetableBrickSquaredVelocityThreshold) return false;
 

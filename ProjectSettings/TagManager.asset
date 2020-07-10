@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Water
   - Brick
+  - Platform
   layers:
   - Default
   - TransparentFX

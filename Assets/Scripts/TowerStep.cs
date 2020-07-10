@@ -17,9 +17,9 @@ namespace TowerColor
 
         public float Height => bricks[0].Height;
         
-        public bool IsActivated { get; private set; }
+        [ShowNativeProperty] public bool IsActivated { get; private set; }
 
-        public bool IsFullyDestroyed { get; private set; }
+        [ShowNativeProperty] public bool IsFullyDestroyed { get; private set; }
         
         public event Action FullyDestroyed;
 

@@ -17,7 +17,7 @@ namespace TowerColor
         {
             _gameData = gameData;
         }
-        
+
         private void Awake()
         {
             _bricksHitPoints = new List<Vector3>();

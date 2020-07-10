@@ -29,6 +29,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 950334477486445328, guid: 676037aa751f89c419723bab6518b5c9,
     type: 3}
   ballFireDuration: 0.25
+  ballDistanceFromCamera: 4
   goToStepCameraMovementDuration: 0.5
   waterGroundForce: 4
   waterGroundMaxBrickSpeed: 2
@@ -38,7 +39,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.6
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -47,7 +48,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.2
+      value: 0.3
       inSlope: 0
       outSlope: 0
       tangentMode: 0

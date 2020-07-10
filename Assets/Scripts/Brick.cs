@@ -111,7 +111,15 @@ namespace TowerColor
             }
         }
         
+        /// <summary>
+        /// Has the brick fell in water ? Used to push it away from the tower
+        /// </summary>
         [ShowNativeProperty] public bool IsInWater { get; private set; }
+        
+        /// <summary>
+        /// Has brick fell on the platform ? Used to push it away from the tower
+        /// </summary>
+        [ShowNativeProperty] public bool HasFellOnPlatform { get; private set; }
 
         #endregion
 
@@ -134,6 +142,10 @@ namespace TowerColor
             if (other.gameObject.CompareTag("Water"))
             {
                 IsInWater = true;
+            }
+            else if (other.gameObject.CompareTag("Platform") && !IsStillInPlace)
+            {
+                HasFellOnPlatform = true;
             }
         }
 
