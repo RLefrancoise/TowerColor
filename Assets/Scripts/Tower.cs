@@ -132,7 +132,7 @@ namespace TowerColor
             {
                 foreach (var brick in step.Bricks)
                 {
-                    foreach (var b in brick.SurroundingBricks)
+                    foreach (var b in brick.GetSurroundingBricks())
                     {
                         //According to the level, we have a specific change that surrounding bricks have same color
                         var randomChance = Random.Range(0f, 1f);
@@ -164,9 +164,8 @@ namespace TowerColor
         public List<Brick> GetBricksWithSameColor(Brick brick)
         {
             var bricks = new List<Brick> {brick};
-            var analyzedBricks = new List<Brick> {brick};
             
-            RecurseOnBricksWithSameColor(analyzedBricks, bricks, brick);
+            RecurseOnBricksWithSameColor(bricks, brick);
             
             return bricks;
         }
@@ -175,13 +174,11 @@ namespace TowerColor
 
         #region Private Methods
 
-        private void RecurseOnBricksWithSameColor(List<Brick> bricks, List<Brick> withSameColor, Brick current)
+        private void RecurseOnBricksWithSameColor(List<Brick> withSameColor, Brick current)
         {
-            foreach (var brick in current.SurroundingBricks)
+            foreach (var brick in current.GetSurroundingBricks(false))
             {
-                if (bricks.Contains(brick)) continue;
-                
-                bricks.Add(brick);
+                if (withSameColor.Contains(brick)) continue;
                 
                 if (!brick.IsActivated) continue;
                 if (!brick.IsStillInPlace) continue;
@@ -189,10 +186,7 @@ namespace TowerColor
                 
                 withSameColor.Add(brick);
 
-                foreach (var b in brick.SurroundingBricks)
-                {
-                    RecurseOnBricksWithSameColor(bricks, withSameColor, b);
-                }
+                RecurseOnBricksWithSameColor(withSameColor, brick);
             }
         }
         

@@ -102,29 +102,6 @@ namespace TowerColor
             }
         }
 
-        /// <summary>
-        /// Get surrounding bricks of the brick
-        /// </summary>
-        public IEnumerable<Brick> SurroundingBricks
-        {
-            get
-            {
-                var hits = new RaycastHit[10];
-                var size = Physics.BoxCastNonAlloc(
-                    Center, 
-                    Bounds.extents * 1.25f, 
-                    transform.up, 
-                    hits, 
-                    transform.rotation, 
-                    Bounds.size.y, 
-                    LayerMask.GetMask("Brick"));
-                hits = hits.Take(size).ToArray();
-                
-                return hits.Where(h => h.collider.GetComponentInParent<Brick>() != null)
-                    .Select(h => h.collider.GetComponentInParent<Brick>());
-            }
-        }
-
         [ShowNativeProperty] public bool IsStillInPlace
         {
             get
@@ -189,14 +166,63 @@ namespace TowerColor
 
             PhysicsEnabled = activated;
         }
+
+        /// <summary>
+        /// Get surrounding bricks of the brick
+        /// </summary>
+        /// <returns></returns>
+        public List<Brick> GetSurroundingBricks(bool takeNonActive = true)
+        {
+            var bricks = new List<Brick>();
+
+            var upBrick = GetAdjacentBrick(transform.up, takeNonActive);
+            var downBrick = GetAdjacentBrick(-transform.up, takeNonActive);
+            var leftBrick = GetAdjacentBrick(-transform.right, takeNonActive);
+            var rightBrick = GetAdjacentBrick(transform.right, takeNonActive);
+            var forwardBrick = GetAdjacentBrick(transform.forward, takeNonActive);
+            var backBrick = GetAdjacentBrick(-transform.forward, takeNonActive);
+            
+            if(upBrick) bricks.Add(upBrick);
+            if(downBrick) bricks.Add(downBrick);
+            if(leftBrick) bricks.Add(leftBrick);
+            if(rightBrick) bricks.Add(rightBrick);
+            if(forwardBrick) bricks.Add(forwardBrick);
+            if(backBrick) bricks.Add(backBrick);
+
+            return bricks;
+        }
         
         #endregion
 
-        /*private void OnDrawGizmos()
+        #region Private Methods
+        
+        private Brick GetAdjacentBrick(Vector3 rayDirection, bool takeNonActive = true)
+        {
+            if (Physics.Raycast(Center, rayDirection, out var hit, Bounds.size.magnitude, LayerMask.GetMask("Brick")))
+            {
+                var brick = hit.collider.GetComponentInParent<Brick>();
+                if(brick.IsActivated || (!brick.IsActivated && takeNonActive))
+                    return brick;
+            }
+
+            return null;
+        }
+        
+        #if UNITY_EDITOR
+        
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            var bounds = new Bounds(_startPosition + Vector3.up * Height / 2f, Bounds.size);
-            Gizmos.DrawWireCube(bounds.center, bounds.size);
-        }*/
+
+            var bricks = GetSurroundingBricks();
+            foreach (var brick in bricks)
+            {
+                Gizmos.DrawWireCube(brick.Center, brick.Bounds.size);
+            }
+        }
+        
+        #endif
+        
+        #endregion
     }
 }

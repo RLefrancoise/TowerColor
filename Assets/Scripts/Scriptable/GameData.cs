@@ -71,6 +71,13 @@ namespace TowerColor
         [BoxGroup("Ball")]
         [Tooltip("Fire duration of the ball")]
         public float ballFireDuration = 1f;
+
+        /// <summary>
+        /// Ball distance from camera
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Ball distance from camera")]
+        public float ballDistanceFromCamera = 10f;
         
         #endregion
 
