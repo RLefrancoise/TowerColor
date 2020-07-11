@@ -21,13 +21,13 @@ namespace TowerColor.Views.Installers
         {
             base.InstallBindings();
 
-            Container.Bind<BallSpawner>().FromComponentInNewPrefab(ballSpawnerPrefab).AsSingle().OnInstantiated<BallSpawner>(
+            Container.BindInterfacesAndSelfTo<BallSpawner>().FromComponentInNewPrefab(ballSpawnerPrefab).AsSingle().OnInstantiated<BallSpawner>(
                 (ctx, spawner) =>
                 {
                     spawner.transform.SetParent(_playerCamera.transform, true);
                     spawner.transform.localScale = Vector3.one;
                 });
-            Container.Bind<TouchSurface>().FromInstance(touchSurface).AsSingle();
+            Container.BindInterfacesAndSelfTo<TouchSurface>().FromInstance(touchSurface).AsSingle();
         }
     }
 }

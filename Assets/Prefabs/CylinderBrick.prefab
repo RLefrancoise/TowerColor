@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3344844571806822864}
   - component: {fileID: 4729366764860770961}
   - component: {fileID: 341388392146326873}
-  - component: {fileID: 922711307620587237}
+  - component: {fileID: 6885956297377952548}
   m_Layer: 8
   m_Name: Shape
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2571051572028645169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
-  m_LocalScale: {x: 1, y: 0.75, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 7261336895081520243}
   m_RootOrder: 0
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &922711307620587237
+--- !u!65 &6885956297377952548
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4976190553413093412
 GameObject:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 341388392146326873}
-  collider: {fileID: 922711307620587237}
+  collider: {fileID: 6885956297377952548}
   rigidBody: {fileID: 875679658269326802}
 --- !u!114 &1957504904116406714
 MonoBehaviour:

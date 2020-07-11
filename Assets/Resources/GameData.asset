@@ -23,12 +23,16 @@ MonoBehaviour:
   towerPrefab: {fileID: 8510273500793931410, guid: 828567c9596f1194a9334889418d65f5,
     type: 3}
   towers:
-  - {fileID: 5869634601777169207, guid: c3d25d1a9539b62448ce11af237c40aa, type: 3}
+  - {fileID: 6064395798406617860, guid: cce4f3e68041ac84f8c4aacb676f569f, type: 3}
   maxActiveSteps: 8
-  towerRotateSpeed: 5
+  towerRotateSpeed: 50
   ballPrefab: {fileID: 950334477486445328, guid: 676037aa751f89c419723bab6518b5c9,
     type: 3}
-  ballFireDuration: 0.25
+  ballFireDuration: 1
+  ballJumpForce: 1
+  ballTurnNumber: 5
+  ballRepulseDistance: 5
+  ballRepulseDuration: 0.5
   ballPositionOnScreen: {x: 0.5, y: 0.2}
   ballDistanceFromCamera: 4
   goToStepCameraMovementDuration: 0.5

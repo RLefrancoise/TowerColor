@@ -73,6 +73,34 @@ namespace TowerColor
         public float ballFireDuration = 1f;
 
         /// <summary>
+        /// Force of the ball jump
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Force of the ball jump")]
+        public float ballJumpForce = 1f;
+
+        /// <summary>
+        /// Number of turns the ball is doing on itself when being fired
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Number of turns the ball is doing on itself when being fired")]
+        public float ballTurnNumber = 5f;
+
+        /// <summary>
+        /// Repulse distance of the ball if it hits a brick with a different color
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Repulse distance of the ball if it hits a brick with a different color")]
+        public float ballRepulseDistance = 5f;
+
+        /// <summary>
+        /// Duration of the ball repulsion before it is destroyed
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Duration of the ball repulsion before it is destroyed")]
+        public float ballRepulseDuration = 0.5f;
+
+        /// <summary>
         /// Position of the ball on screen
         /// </summary>
         [BoxGroup("Ball")]

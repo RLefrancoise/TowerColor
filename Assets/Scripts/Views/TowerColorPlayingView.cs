@@ -15,15 +15,14 @@ namespace TowerColor.Views
     {
         private int _remainingBalls;
         
-        private TouchSurface _touchSurface;
-        private BallSpawner _ballSpawner;
+        private ITouchSurface _touchSurface;
+        private IBallSpawner _ballSpawner;
         
         private Camera _playerCamera;
         private CinemachineVirtualCamera _playerGameCamera;
         private CinemachineVirtualCamera _lookAroundTowerCamera;
         
         private GameManager _gameManager;
-        private LevelManager _levelManager;
         private GameData _gameData;
         
         private Ball _ball;
@@ -47,13 +46,12 @@ namespace TowerColor.Views
         
         [Inject]
         public void Construct(
-            TouchSurface touchSurface, 
-            BallSpawner ballSpawner, 
+            ITouchSurface touchSurface, 
+            IBallSpawner ballSpawner, 
             Camera playerCamera, 
             [Inject(Id = "GameCamera")] CinemachineVirtualCamera playerGameCamera,
             [Inject(Id = "LookAroundTowerCamera")] CinemachineVirtualCamera lookAroundTowerCamera,
             GameManager gameManager,
-            LevelManager levelManager,
             GameData gameData)
         {
             _touchSurface = touchSurface;
@@ -64,7 +62,6 @@ namespace TowerColor.Views
             _lookAroundTowerCamera = lookAroundTowerCamera;
             
             _gameManager = gameManager;
-            _levelManager = levelManager;
             _gameData = gameData;
         }
 
@@ -89,10 +86,10 @@ namespace TowerColor.Views
             _gameManager.Tower.SetCurrentStep(_gameManager.Tower.Steps.Count - 1);
             
             //Get number of balls for this level
-            RemainingBalls = (int) _gameData.numberOfBallsByLevel.Evaluate((_levelManager.CurrentLevel - 1) / 100f);
+            RemainingBalls = (int) _gameData.numberOfBallsByLevel.Evaluate((_gameManager.LevelManager.CurrentLevel - 1) / 100f);
             
             //Enable ball spawner
-            _ballSpawner.gameObject.SetActive(true);
+            _ballSpawner.Activate(true);
             
             //Start game
             StartGame();
@@ -103,7 +100,7 @@ namespace TowerColor.Views
             base.OnHide();
 
             //Disable ball spawner
-            _ballSpawner.gameObject.SetActive(false);
+            _ballSpawner.Activate(false);
             
             //Disable player game camera
             _playerGameCamera.gameObject.SetActive(false);
@@ -148,17 +145,20 @@ namespace TowerColor.Views
         /// <param name="brick">Brick being touched</param>
         private void OnBallTouchedBrick(Brick brick)
         {
-            //Destroy ball
-            Destroy(_ball.gameObject);
-            _ball = null;
-            
-            Debug.LogFormat("Ball has touched brick {0}", brick.name);
-            
-            //Destroy brick
-            var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
-            foreach (var b in bricksToDestroy)
+            if (_ball.Color == brick.Color)
             {
-                Destroy(b.gameObject);
+                //Destroy ball
+                Destroy(_ball.gameObject);
+                _ball = null;
+                
+                Debug.LogFormat("Ball has touched brick {0}", brick.name);
+                
+                //Destroy brick
+                var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
+                foreach (var b in bricksToDestroy)
+                {
+                    Destroy(b.gameObject);
+                }
             }
             
             //Decrease remaining balls
@@ -195,12 +195,8 @@ namespace TowerColor.Views
                     Debug.LogFormat("Brick {0} is not targetable", brick.name);
                     return;
                 }
-
-                //Check if brick has same color as the ball
-                if(brick.Color == _ball.Color)
-                    _ball.FireTo(brick);
-                else
-                    Debug.Log("Brick are ball colors are different");
+                
+                _ball.FireTo(brick, hit.point, hit.normal);
             }
         }
         
@@ -210,6 +206,9 @@ namespace TowerColor.Views
         /// <param name="dragDelta">Drag delta</param>
         private void OnPlayerDrag(Vector2 dragDelta)
         {
+            //No drag if ball is being fired
+            if(_ball && _ball.IsFiring) return;
+            
             _playerGameCamera.transform.RotateAround(
                 _gameManager.Tower.transform.position, 
                 _gameManager.Tower.transform.up, 

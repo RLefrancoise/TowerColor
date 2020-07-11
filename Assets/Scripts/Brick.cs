@@ -203,6 +203,11 @@ namespace TowerColor
 
             return bricks;
         }
+
+        public void ApplyImpactForce(Vector3 force, Vector3 hitPoint)
+        {
+            rigidBody.AddForceAtPosition(force, hitPoint, ForceMode.Force);
+        }
         
         #endregion
 

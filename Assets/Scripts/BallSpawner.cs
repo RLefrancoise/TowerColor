@@ -4,7 +4,15 @@ using Zenject;
 
 namespace TowerColor
 {
-    public class BallSpawner : MonoBehaviour
+    public interface IBallSpawner
+    {
+        Ball SpawnBall();
+        void SetRemainingBalls(int remainingBalls);
+
+        void Activate(bool activate);
+    }
+    
+    public class BallSpawner : MonoBehaviour, IBallSpawner
     {
         [SerializeField] private TMP_Text ballsLeft;
         
@@ -38,6 +46,11 @@ namespace TowerColor
         public void SetRemainingBalls(int remainingBalls)
         {
             ballsLeft.text = remainingBalls.ToString();
+        }
+
+        public void Activate(bool activate)
+        {
+            gameObject.SetActive(activate);
         }
     }
 }

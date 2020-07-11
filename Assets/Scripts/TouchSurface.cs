@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 namespace TowerColor
 {
+    public interface ITouchSurface
+    {
+        event Action<Vector2> Touched; 
+        event Action<Vector2> DragBegun;
+        event Action<Vector2> Dragging; 
+    }
+    
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(EventTrigger))]
-    public class TouchSurface : MonoBehaviour
+    public class TouchSurface : MonoBehaviour, ITouchSurface
     {
         private Vector2 _mouseBeginDragPosition;
         
@@ -23,7 +30,7 @@ namespace TowerColor
             //Touched
             var touchedEvent = new EventTrigger.Entry
             {
-                eventID = EventTriggerType.PointerClick,
+                eventID = EventTriggerType.PointerDown,
                 callback = new EventTrigger.TriggerEvent()
             };
             
