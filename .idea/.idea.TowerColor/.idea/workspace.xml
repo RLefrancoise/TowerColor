@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ac8db31-0f38-4257-97f2-87b6bab334e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TowerColorPlayView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TowerColorPlayView.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Installers/TowerColorPlayingViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Installers/TowerColorPlayingViewInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ColorChangeMessage-Appear.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ColorChangeMessage-Appear.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ColorChangeMessage.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ColorChangeMessage.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/ColorChangeMessage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ColorChangeMessage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TowerColorStartView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TowerColorStartView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/GameData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,24 +69,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
-                <marker date="1594487276386" expanded="true" signature="6:109" ph="..." />
-                <marker date="1594487276386" expanded="true" signature="133:807" ph="{...}" />
-                <marker date="1594487276386" expanded="true" signature="140:210" ph="/// Popping message with animator ... " />
-                <marker date="1594487276386" expanded="true" signature="384:805" ph="{...}" />
-                <marker date="1594487276386" expanded="true" signature="493:547" ph="{...}" />
-                <marker date="1594487276386" expanded="true" signature="584:799" ph="{...}" />
+                <marker date="1594489322328" expanded="true" signature="6:64" ph="..." />
+                <marker date="1594489322328" expanded="true" signature="88:768" ph="{...}" />
+                <marker date="1594489322328" expanded="true" signature="95:165" ph="/// Popping message with animator ... " />
+                <marker date="1594489322328" expanded="true" signature="339:766" ph="{...}" />
+                <marker date="1594489322328" expanded="true" signature="448:502" ph="{...}" />
+                <marker date="1594489322328" expanded="true" signature="543:760" ph="{...}" />
+                <marker date="1594489322328" expanded="true" signature="635:750" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageBase.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -97,6 +100,55 @@
                 <marker date="1594487865429" expanded="true" signature="317:409" ph="{...}" />
                 <marker date="1594487865429" expanded="true" signature="457:570" ph="{...}" />
                 <marker date="1594487865429" expanded="true" signature="649:700" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Tower.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="141" column="16" lean-forward="true" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+              <folding>
+                <marker date="1594488999125" expanded="true" signature="6:243" ph="..." />
+                <marker date="1594488999125" expanded="true" signature="265:7515" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="306:7513" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="321:498" ph="Fields" />
+                <marker date="1594488999125" expanded="true" signature="508:1152" ph="Properties" />
+                <marker date="1594488999125" expanded="true" signature="781:867" ph="/// List of available colors in the tower ... " />
+                <marker date="1594488999125" expanded="true" signature="917:1124" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="943:1114" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="1162:1266" ph="Events" />
+                <marker date="1594488999125" expanded="true" signature="1358:1452" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="1462:1683" ph="MonoBehaviours" />
+                <marker date="1594488999125" expanded="true" signature="1514:1663" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="1564:1653" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="1701:6464" ph="Public Methods" />
+                <marker date="1594488999125" expanded="true" signature="1777:2057" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2110:2159" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2207:2339" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2257:2329" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2385:3059" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2595:2703" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="2849:2970" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="3069:3142" ph="/// Shuffle the tower colors ... " />
+                <marker date="1594488999125" expanded="true" signature="3270:5828" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="3364:3747" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="3422:3733" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="3935:5721" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="4235:5707" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="4341:5689" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="4841:5043" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="5072:5589" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="5880:6192" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="6256:6436" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="6474:7507" ph="Private Methods" />
+                <marker date="1594488999125" expanded="true" signature="6590:7080" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="6671:7070" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="7098:7200" ph="/// When step is fully destroyed, update new current step ... " />
+                <marker date="1594488999125" expanded="true" signature="7244:7479" ph="{...}" />
+                <marker date="1594488999125" expanded="true" signature="7309:7469" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -314,7 +366,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TweenExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TowerStep.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Tower.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Brick.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultPlayingView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RainbowText.cs" />
@@ -329,9 +380,10 @@
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageFactories.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/Installers/TowerColorPlayingViewInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Tower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs" />
       </list>
     </option>
   </component>
@@ -383,18 +435,6 @@
               <item name="" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="8711f2a6:AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scriptable" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="UI" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
@@ -477,12 +517,12 @@
       <updated>1594222152887</updated>
       <workItem from="1594222161749" duration="39583000" />
       <workItem from="1594376132593" duration="32056000" />
-      <workItem from="1594461598428" duration="21979000" />
+      <workItem from="1594461598428" duration="23036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93618000" />
+    <option name="totallyTimeSpent" value="94675000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1779,53 +1819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Tower.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="168" selection-start-line="168" selection-end-line="168" />
-          <folding>
-            <marker date="1594482599923" expanded="true" signature="6:243" ph="..." />
-            <marker date="1594482599923" expanded="true" signature="265:7402" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="306:7400" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="321:498" ph="Fields" />
-            <marker date="1594482599923" expanded="true" signature="508:1152" ph="Properties" />
-            <marker date="1594482599923" expanded="true" signature="781:867" ph="/// List of available colors in the tower ... " />
-            <marker date="1594482599923" expanded="true" signature="917:1124" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="943:1114" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="1162:1266" ph="Events" />
-            <marker date="1594482599923" expanded="true" signature="1358:1452" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="1462:1683" ph="MonoBehaviours" />
-            <marker date="1594482599923" expanded="true" signature="1514:1663" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="1564:1653" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="1701:6351" ph="Public Methods" />
-            <marker date="1594482599923" expanded="true" signature="1777:2057" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2110:2159" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2207:2339" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2257:2329" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2385:3059" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2595:2703" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="2849:2970" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="3069:3142" ph="/// Shuffle the tower colors ... " />
-            <marker date="1594482599923" expanded="true" signature="3270:5715" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="3364:3747" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="3422:3733" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="3919:5608" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="4122:5594" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="4228:5576" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="4728:4930" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="4959:5476" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="5767:6079" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="6143:6323" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="6361:7394" ph="Private Methods" />
-            <marker date="1594482599923" expanded="true" signature="6477:6967" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="6558:6957" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="6985:7087" ph="/// When step is fully destroyed, update new current step ... " />
-            <marker date="1594482599923" expanded="true" signature="7131:7366" ph="{...}" />
-            <marker date="1594482599923" expanded="true" signature="7196:7356" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
@@ -2102,21 +2095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <marker date="1594487276386" expanded="true" signature="6:109" ph="..." />
-            <marker date="1594487276386" expanded="true" signature="133:807" ph="{...}" />
-            <marker date="1594487276386" expanded="true" signature="140:210" ph="/// Popping message with animator ... " />
-            <marker date="1594487276386" expanded="true" signature="384:805" ph="{...}" />
-            <marker date="1594487276386" expanded="true" signature="493:547" ph="{...}" />
-            <marker date="1594487276386" expanded="true" signature="584:799" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageFactories.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2190,6 +2168,69 @@
             <marker date="1594487865429" expanded="true" signature="317:409" ph="{...}" />
             <marker date="1594487865429" expanded="true" signature="457:570" ph="{...}" />
             <marker date="1594487865429" expanded="true" signature="649:700" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Tower.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="141" column="16" lean-forward="true" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+          <folding>
+            <marker date="1594488999125" expanded="true" signature="6:243" ph="..." />
+            <marker date="1594488999125" expanded="true" signature="265:7515" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="306:7513" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="321:498" ph="Fields" />
+            <marker date="1594488999125" expanded="true" signature="508:1152" ph="Properties" />
+            <marker date="1594488999125" expanded="true" signature="781:867" ph="/// List of available colors in the tower ... " />
+            <marker date="1594488999125" expanded="true" signature="917:1124" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="943:1114" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="1162:1266" ph="Events" />
+            <marker date="1594488999125" expanded="true" signature="1358:1452" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="1462:1683" ph="MonoBehaviours" />
+            <marker date="1594488999125" expanded="true" signature="1514:1663" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="1564:1653" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="1701:6464" ph="Public Methods" />
+            <marker date="1594488999125" expanded="true" signature="1777:2057" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2110:2159" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2207:2339" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2257:2329" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2385:3059" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2595:2703" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="2849:2970" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="3069:3142" ph="/// Shuffle the tower colors ... " />
+            <marker date="1594488999125" expanded="true" signature="3270:5828" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="3364:3747" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="3422:3733" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="3935:5721" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="4235:5707" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="4341:5689" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="4841:5043" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="5072:5589" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="5880:6192" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="6256:6436" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="6474:7507" ph="Private Methods" />
+            <marker date="1594488999125" expanded="true" signature="6590:7080" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="6671:7070" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="7098:7200" ph="/// When step is fully destroyed, update new current step ... " />
+            <marker date="1594488999125" expanded="true" signature="7244:7479" ph="{...}" />
+            <marker date="1594488999125" expanded="true" signature="7309:7469" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/UI/PoppingMessageWithAnimator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <marker date="1594489322328" expanded="true" signature="6:64" ph="..." />
+            <marker date="1594489322328" expanded="true" signature="88:768" ph="{...}" />
+            <marker date="1594489322328" expanded="true" signature="95:165" ph="/// Popping message with animator ... " />
+            <marker date="1594489322328" expanded="true" signature="339:766" ph="{...}" />
+            <marker date="1594489322328" expanded="true" signature="448:502" ph="{...}" />
+            <marker date="1594489322328" expanded="true" signature="543:760" ph="{...}" />
+            <marker date="1594489322328" expanded="true" signature="635:750" ph="{...}" />
           </folding>
         </state>
       </provider>

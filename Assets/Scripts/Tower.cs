@@ -133,10 +133,12 @@ namespace TowerColor
             var bricksAlreadyChanged = new List<Brick>();
             
             //Color each brick according to its surrounding
-            foreach (var step in steps)
+            for(var i = steps.Count - 1 ; i >= 0 ; i--)
             {
+                var step = steps[i];
+                
                 //If step is inactive, ignore it
-                if (ignoreInactiveSteps && !step.IsActivated) continue;
+                if (ignoreInactiveSteps && !step.IsActivated) break; // Steps below should not be activated anyway
                 
                 foreach (var brick in step.Bricks)
                 {

@@ -1,6 +1,4 @@
-using System.Collections;
 using Framework.UI.Installers;
-using UniRx.Async;
 using UnityEngine;
 using Zenject;
 
@@ -21,11 +19,13 @@ namespace Framework.UI
             _animator = animator;
         }
 
-        private IEnumerator Start()
+        protected virtual void Update()
         {
-            yield return UniTask.WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f);
-            TriggerPopOver();
-            if(AutoDestroy) Destroy(gameObject);
+            if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
+            {
+                TriggerPopOver();
+                if(AutoDestroy) Destroy(gameObject);
+            }
         }
     }
 }
