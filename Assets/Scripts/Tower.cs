@@ -138,7 +138,7 @@ namespace TowerColor
                 var step = steps[i];
                 
                 //If step is inactive, ignore it
-                if (ignoreInactiveSteps && !step.IsActivated) break; // Steps below should not be activated anyway
+                if (ignoreInactiveSteps && i < (CurrentStep - _gameData.maxActiveSteps)) break; // Steps below should not be activated anyway
                 
                 foreach (var brick in step.Bricks)
                 {

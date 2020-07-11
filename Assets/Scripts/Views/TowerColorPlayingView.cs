@@ -151,7 +151,13 @@ namespace TowerColor.Views
                 return;
             }
             
+            //Show ball spawner
+            _ballSpawner.Activate(true);
+            
+            //Spawn ball
             _ball = _ballSpawner.SpawnBall();
+            
+            //Set ball color
             _ball.Color = availableColors[Random.Range(0, availableColors.Count())];
             
             _ball.TouchedBrick += OnBallTouchedBrick;
@@ -271,7 +277,14 @@ namespace TowerColor.Views
                     return;
                 }
                 
+                //Detach ball from spawner
+                _ball.transform.SetParent(null);
+                
+                //Fire ball
                 _ball.FireTo(brick, hit.point, hit.normal);
+                
+                //Hide ball spawner
+                _ballSpawner.Activate(false);
             }
         }
         
