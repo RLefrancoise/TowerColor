@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754cc863a62441c6a2c7069b7f687e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 1
+  fadeDuration: 0.2
 --- !u!114 &6487118895281869537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8e803aefa74ad597a63b467f500a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 1106881489686130401}
+  ballSpawnerPrefab: {fileID: 9027567907591677243, guid: 9720ba80ad1912b42b3cd156dbf56495,
+    type: 3}
   touchSurface: {fileID: 3650046143048687013}
 --- !u!114 &9157066238372318516
 MonoBehaviour:

@@ -18,8 +18,9 @@ namespace Framework.Views
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class View : MonoBehaviour, IView
     {
-        [ShowNonSerializedField] protected CanvasGroup _canvasGroup;
-        [SerializeField] protected float fadeDuration = 1f;
+        private CanvasGroup _canvasGroup;
+        
+        [SerializeField] protected float fadeDuration = .2f;
         
         public abstract GameState State { get; }
         
@@ -31,7 +32,13 @@ namespace Framework.Views
         
         public void Show(bool skipFade = false, Action fadeCallback = null)
         {
-            if (skipFade) _canvasGroup.alpha = 1f;
+            gameObject.SetActive(true);
+
+            if (skipFade)
+            {
+                _canvasGroup.alpha = 1f;
+                OnShow();
+            }
             else
             {
                 var tween = _canvasGroup.DOFade(1f, fadeDuration);
@@ -45,13 +52,19 @@ namespace Framework.Views
 
         public void Hide(bool skipFade = false, Action fadeCallback = null)
         {
-            if (skipFade) _canvasGroup.alpha = 0f;
+            if (skipFade)
+            {
+                _canvasGroup.alpha = 0f;
+                OnHide();
+                gameObject.SetActive(false);
+            }
             else
             {
                 var tween = _canvasGroup.DOFade(0f, fadeDuration);
                 tween.onComplete += () =>
                 {
                     OnHide();
+                    gameObject.SetActive(false);
                     fadeCallback?.Invoke();
                 };
             }

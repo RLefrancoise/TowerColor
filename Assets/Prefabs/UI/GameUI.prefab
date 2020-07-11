@@ -144,6 +144,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2456140065367934687, guid: 61811cf5f1079214db8d39457f3b50d5,
         type: 3}
+    - target: {fileID: 8061737339048659047, guid: 36df3acc639fe4c46bef1ace9f831c49,
+        type: 3}
+      propertyPath: startViewPrefab
+      value: 
+      objectReference: {fileID: 5492390263726348742, guid: e6c9ec753f2c84944836a187d4bc5d86,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5821129987216828872, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}
     - {fileID: 30292374226946078, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}

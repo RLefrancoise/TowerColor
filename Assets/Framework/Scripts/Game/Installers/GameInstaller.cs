@@ -10,7 +10,7 @@ namespace Framework.Game.Installers
         
         public override void InstallBindings()
         {
-            Container.Bind<TGameManager>().FromInstance(gameManager).AsSingle();
+            Container.BindInterfacesAndSelfTo<TGameManager>().FromInstance(gameManager).AsSingle();
             Container.Bind<LevelManager>().FromInstance(levelManager).AsSingle();
         }
     }

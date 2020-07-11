@@ -24,18 +24,7 @@ namespace TowerColor
         
         public ReadOnlyCollection<TowerStep> Steps => steps.AsReadOnly();
 
-        public Transform CurrentSubTowerFocusPoint
-        {
-            get
-            {
-                var focusedStep = _currentStep - _gameData.maxActiveSteps / 2 + 1;
-
-                if (focusedStep < 5) focusedStep = 5; // To avoid being too low and having the ball in the water, etc...
-                
-                return steps[focusedStep >= 0 ? focusedStep : 0].transform;
-
-            }
-        }
+        public Transform CurrentSubTowerFocusPoint => GetStepFocusPoint(_currentStep);
 
         /// <summary>
         /// List of available colors in the tower
@@ -76,6 +65,13 @@ namespace TowerColor
         #endregion
         
         #region Public Methods
+
+        public Transform GetStepFocusPoint(int step)
+        {
+            var focusedStep = step - _gameData.maxActiveSteps / 2 + 1;
+            if (focusedStep < 5) focusedStep = 5; // To avoid being too low and having the ball in the water, etc...
+            return steps[focusedStep >= 0 ? focusedStep : 0].transform;
+        }
         
         public void AddStep(TowerStep step)
         {

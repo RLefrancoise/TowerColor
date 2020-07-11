@@ -73,6 +73,13 @@ namespace TowerColor
         public float ballFireDuration = 1f;
 
         /// <summary>
+        /// Position of the ball on screen
+        /// </summary>
+        [BoxGroup("Ball")]
+        [Tooltip("Position of the ball on screen")]
+        public Vector2 ballPositionOnScreen = new Vector2(0.5f, 0.2f);
+        
+        /// <summary>
         /// Ball distance from camera
         /// </summary>
         [BoxGroup("Ball")]
@@ -89,6 +96,13 @@ namespace TowerColor
         [BoxGroup("Game Camera")]
         [Tooltip("Duration of the camera movement when current tower step is changed")]
         public float goToStepCameraMovementDuration = 0.5f;
+
+        /// <summary>
+        /// Distance of the camera from the tower
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("Distance of the camera from the tower")]
+        public float cameraDistanceFromTower = 15f;
         
         #endregion
 

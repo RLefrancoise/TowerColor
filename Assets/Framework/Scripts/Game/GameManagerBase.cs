@@ -7,13 +7,12 @@ namespace Framework.Game
     /// <summary>
     /// Base class for the game manager
     /// </summary>
-    public abstract class GameManagerBase : MonoBehaviour
+    public abstract class GameManagerBase : MonoBehaviour, IGameManager
     {
-        private ViewManager _viewManager;
-        private LevelManager _levelManager;
         private GameState _currentState;
+        private ViewManager _viewManager;
 
-        public LevelManager LevelManager => _levelManager;
+        public LevelManager LevelManager { get; private set; }
         
         public GameState CurrentState
         {
@@ -34,10 +33,10 @@ namespace Framework.Game
         public void Construct(ViewManager viewManager, LevelManager levelManager)
         {
             _viewManager = viewManager;
-            _levelManager = levelManager;
+            LevelManager = levelManager;
         }
 
-        protected void ChangeState(GameState state)
+        public void ChangeState(GameState state)
         {
             _viewManager.ShowGameState(state, () =>
             {
