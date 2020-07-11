@@ -12,7 +12,8 @@ namespace TowerColor
     public class Tower : MonoBehaviour
     {
         #region Fields
-        
+
+        private GameManager _gameManager;
         private GameData _gameData;
         [SerializeField] private List<TowerStep> steps;
         
@@ -47,8 +48,9 @@ namespace TowerColor
         #endregion
 
         [Inject]
-        public void Construct(GameData gameData)
+        public void Construct(GameManager gameManager, GameData gameData)
         {
+            _gameManager = gameManager;
             _gameData = gameData;
         }
 
@@ -109,10 +111,9 @@ namespace TowerColor
         }
 
         /// <summary>
-        /// Init the tower for the current level
+        /// Shuffle the tower colors
         /// </summary>
-        /// <param name="level">Level number</param>
-        public void Init(int level)
+        public void ShuffleColors()
         {
             //Reset bricks color to first color
             foreach (var step in steps)
@@ -130,7 +131,7 @@ namespace TowerColor
                     {
                         //According to the level, we have a specific change that surrounding bricks have same color
                         var randomChance = Random.Range(0f, 1f);
-                        if (randomChance <= _gameData.sameColorForAdjacentBrickProbabilityByLevel.Evaluate((level - 1) / 100f))
+                        if (randomChance <= _gameManager.LevelManager.GetCurveValue(_gameData.sameColorForAdjacentBrickProbabilityByLevel))
                         {
                             b.Color = brick.Color;
                         }

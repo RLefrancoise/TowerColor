@@ -9,6 +9,8 @@ namespace Framework.Game
     {
         int CurrentLevel { get; set; }
         void ReloadLevel();
+
+        float GetCurveValue(AnimationCurve curve);
     }
     
     public class LevelManager : MonoBehaviour, ILevelManager
@@ -35,6 +37,11 @@ namespace Framework.Game
         public void ReloadLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public float GetCurveValue(AnimationCurve curve)
+        {
+            return curve.Evaluate(CurrentLevel);
         }
     }
 }

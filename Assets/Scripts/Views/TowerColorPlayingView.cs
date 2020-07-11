@@ -86,7 +86,7 @@ namespace TowerColor.Views
             _gameManager.Tower.SetCurrentStep(_gameManager.Tower.Steps.Count - 1);
             
             //Get number of balls for this level
-            RemainingBalls = (int) _gameData.numberOfBallsByLevel.Evaluate((_gameManager.LevelManager.CurrentLevel - 1) / 100f);
+            RemainingBalls = (int) _gameManager.LevelManager.GetCurveValue(_gameData.numberOfBallsByLevel);
             
             //Enable ball spawner
             _ballSpawner.Activate(true);

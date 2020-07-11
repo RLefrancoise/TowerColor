@@ -38,7 +38,7 @@ namespace TowerColor
 
             //Create tower
             Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
-            Tower.Init(LevelManager.CurrentLevel);
+            Tower.ShuffleColors();
             Tower.EnablePhysics(false);
         }
         
