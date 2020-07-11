@@ -16,6 +16,7 @@ namespace TowerColor
     [RequireComponent(typeof(EventTrigger))]
     public class TouchSurface : MonoBehaviour, ITouchSurface
     {
+        private bool _isDragging;
         private Vector2 _mouseBeginDragPosition;
         
         [SerializeField] private EventTrigger eventTrigger;
@@ -30,7 +31,7 @@ namespace TowerColor
             //Touched
             var touchedEvent = new EventTrigger.Entry
             {
-                eventID = EventTriggerType.PointerDown,
+                eventID = EventTriggerType.PointerUp, //On up to avoid conflict with drag
                 callback = new EventTrigger.TriggerEvent()
             };
             
@@ -51,14 +52,28 @@ namespace TowerColor
                 callback = new EventTrigger.TriggerEvent()
             };
             dragEvent.callback.AddListener(OnDrag);
+            
+            //End drag
+            var endDragEvent = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.EndDrag,
+                callback = new EventTrigger.TriggerEvent()
+            };
+            endDragEvent.callback.AddListener(OnEndDrag);
 
             eventTrigger.triggers.Add(touchedEvent);
             eventTrigger.triggers.Add(beginDragEvent);
             eventTrigger.triggers.Add(dragEvent);
+            eventTrigger.triggers.Add(endDragEvent);
         }
 
         private void OnTouched(BaseEventData eventData)
         {
+            //If we are dragging, no touch event, we don't want conflicts, drag has more priority than touch
+            if(_isDragging) return;
+            
+            Debug.Log("Touch");
+            
             var input = eventData.currentInputModule.input;
 
             if (input.touchSupported)
@@ -74,6 +89,10 @@ namespace TowerColor
         
         private void OnBeginDrag(BaseEventData eventData)
         {
+            Debug.Log("Begin drag");
+
+            _isDragging = true;
+            
             var input = eventData.currentInputModule.input;
 
             if (input.touchSupported)
@@ -103,6 +122,13 @@ namespace TowerColor
                     (input.mousePosition.x - _mouseBeginDragPosition.x) / Screen.width, 
                     (input.mousePosition.y - _mouseBeginDragPosition.y) / Screen.height));
             }
+        }
+
+        private void OnEndDrag(BaseEventData eventData)
+        {
+            Debug.Log("End drag");
+
+            _isDragging = false;
         }
     }
 }
