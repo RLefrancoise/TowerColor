@@ -26,6 +26,8 @@ MonoBehaviour:
   - {fileID: 2489286409299875900, guid: 8b5e13a91f1421545a49c00f1c559272, type: 3}
   maxActiveSteps: 8
   towerRotateSpeed: 50
+  towerStepDestroyedMinimumRatio: 1
+  colorChangeDuration: 1
   ballPrefab: {fileID: 950334477486445328, guid: 676037aa751f89c419723bab6518b5c9,
     type: 3}
   ballFireDuration: 0.5
@@ -44,8 +46,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.75
+      time: 1
+      value: 0.6
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -53,8 +55,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0.3
+      time: 100
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -68,19 +70,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 25
-      inSlope: -15
-      outSlope: -15
+      time: 1
+      value: 35
+      inSlope: -0.15151516
+      outSlope: -0.15151516
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 10
-      inSlope: -15
-      outSlope: -15
+      time: 100
+      value: 20
+      inSlope: -0.15151516
+      outSlope: -0.15151516
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -88,3 +90,29 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ballsToFireToTriggerColorChange:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 100
+      value: 10
+      inSlope: 0.11665767
+      outSlope: 0.11665767
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06265058
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minimumTowerStepToWin: 3
+  destroyRatioOfBottomTowerToWin: 0.5

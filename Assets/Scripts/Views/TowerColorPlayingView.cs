@@ -5,6 +5,7 @@ using Framework.Game;
 using Framework.Views;
 using NaughtyAttributes;
 using TowerColor.Views.Installers;
+using UniRx.Async;
 using UnityEngine;
 using Zenject;
 
@@ -14,8 +15,7 @@ namespace TowerColor.Views
     public class TowerColorPlayingView : PlayingView
     {
         private int _remainingBalls;
-        private int _ballsFiredSinceLastColorChange;
-        
+
         private ITouchSurface _touchSurface;
         private IBallSpawner _ballSpawner;
         
@@ -51,18 +51,7 @@ namespace TowerColor.Views
         /// <summary>
         /// Balls that have been fired since the last color change
         /// </summary>
-        public int BallsFiredSinceLastColorChange
-        {
-            get => _ballsFiredSinceLastColorChange;
-            set
-            {
-                _ballsFiredSinceLastColorChange = value;
-                if (_ballsFiredSinceLastColorChange == (int) _gameManager.LevelManager.GetCurveValue(_gameData.ballsToFireToTriggerColorChange))
-                {
-                    TriggerColorChange();
-                }
-            }
-        }
+        private int BallsFiredSinceLastColorChange { get; set; }
 
         [Inject]
         public void Construct(
@@ -162,7 +151,7 @@ namespace TowerColor.Views
         /// <summary>
         /// Trigger color change feature
         /// </summary>
-        private void TriggerColorChange()
+        private async UniTask TriggerColorChange()
         {
             Debug.Log("Color change");
 
@@ -170,14 +159,14 @@ namespace TowerColor.Views
             BallsFiredSinceLastColorChange = 0;
             
             //Shuffle tower colors
-            _gameManager.Tower.ShuffleColors(true);
+            await _gameManager.Tower.ShuffleColors(true, true, false);
         }
 
         /// <summary>
         /// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color
         /// </summary>
         /// <param name="brick">Brick being touched</param>
-        private void OnBallTouchedBrick(Brick brick)
+        private async void OnBallTouchedBrick(Brick brick)
         {
             if (_ball.Color == brick.Color)
             {
@@ -199,6 +188,11 @@ namespace TowerColor.Views
             if (!CheckWinCondition())
             {
                 BallsFiredSinceLastColorChange++;
+                
+                if (BallsFiredSinceLastColorChange == (int) _gameManager.LevelManager.GetCurveValue(_gameData.ballsToFireToTriggerColorChange))
+                {
+                    await TriggerColorChange();
+                }
                 
                 //Decrease remaining balls
                 RemainingBalls--;

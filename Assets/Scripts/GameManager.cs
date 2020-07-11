@@ -32,14 +32,14 @@ namespace TowerColor
 
         #region MonoBehaviours
         
-        protected override void Start()
+        protected override async void Start()
         {
             base.Start();
 
             //Create tower
             Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
-            Tower.ShuffleColors();
             Tower.EnablePhysics(false);
+            await Tower.ShuffleColors();
         }
         
         #endregion

@@ -57,6 +57,20 @@ namespace TowerColor
         [BoxGroup("Tower")]
         [Tooltip("Rotation speed of the tower when the player is dragging")]
         public float towerRotateSpeed = 1f;
+
+        /// <summary>
+        /// The minimum destroy ratio of a step to be considered destroyed
+        /// </summary>
+        [BoxGroup("Tower")]
+        [Tooltip("The minimum destroy ratio of a step to be considered destroyed")]
+        public float towerStepDestroyedMinimumRatio = 1f;
+
+        /// <summary>
+        /// Color change transition duration
+        /// </summary>
+        [BoxGroup("Tower")]
+        [Tooltip("Color change transition duration")]
+        public float colorChangeDuration = 1f;
         
         #endregion
 

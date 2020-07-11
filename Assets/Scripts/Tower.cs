@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using NaughtyAttributes;
+using UniRx.Async;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -113,18 +115,23 @@ namespace TowerColor
         /// <summary>
         /// Shuffle the tower colors
         /// </summary>
-        public void ShuffleColors(bool ignoreInactiveSteps = false)
+        public async UniTask ShuffleColors(bool ignoreInactiveSteps = false, bool lerp = false, bool resetBeforeShuffle = true)
         {
             //Reset bricks color to first color
-            foreach (var step in steps)
+            if (resetBeforeShuffle)
             {
-                //If step is inactive, ignore it
-                if (ignoreInactiveSteps && !step.IsActivated) continue;
-                
-                foreach (var brick in step.Bricks)
-                    brick.Color = _gameData.brickColors[0].color;
+                foreach (var step in steps)
+                {
+                    //If step is inactive, ignore it
+                    if (ignoreInactiveSteps && !step.IsActivated) continue;
+                    
+                    foreach (var brick in step.Bricks)
+                        brick.Color = _gameData.brickColors[0].color;
+                }
             }
 
+            var bricksAlreadyChanged = new List<Brick>();
+            
             //Color each brick according to its surrounding
             foreach (var step in steps)
             {
@@ -135,21 +142,32 @@ namespace TowerColor
                 {
                     foreach (var b in brick.GetSurroundingBricks(!ignoreInactiveSteps))
                     {
+                        //Dont shuffle twice the same brick
+                        if (bricksAlreadyChanged.Contains(b)) continue;
+                        
                         //According to the level, we have a specific change that surrounding bricks have same color
                         var randomChance = Random.Range(0f, 1f);
                         if (randomChance <= _gameManager.LevelManager.GetCurveValue(_gameData.sameColorForAdjacentBrickProbabilityByLevel))
                         {
-                            b.Color = brick.Color;
+                            if(lerp) b.LerpColor(brick.Color, _gameData.colorChangeDuration);
+                            else b.Color = brick.Color;
                         }
                         else
                         {
                             //We take a random color from the color list, except the same color as the brick
-                            b.Color = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
+                            var c = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
                                 .ElementAt(Random.Range(0, _gameData.brickColors.Count - 1));
+                            
+                            if(lerp) b.LerpColor(c, _gameData.colorChangeDuration);
+                            b.Color = c;
                         }
+                        
+                        bricksAlreadyChanged.Add(b);
                     }
                 }
             }
+
+            if (lerp) await UniTask.Delay(TimeSpan.FromSeconds(_gameData.colorChangeDuration));
         }
 
         public bool IsBrickTargetable(Brick brick)

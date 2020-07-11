@@ -14,6 +14,7 @@ namespace TowerColor
     {
         private int _bricksCountAtStart;
         private GameManager _gameManager;
+        private GameData _gameData;
         
         [SerializeField] private List<Brick> bricks;
 
@@ -39,9 +40,10 @@ namespace TowerColor
         public event Action FullyDestroyed;
 
         [Inject]
-        public void Construct(GameManager gameManager)
+        public void Construct(GameManager gameManager, GameData gameData)
         {
             _gameManager = gameManager;
+            _gameData = gameData;
         }
         
         private void Start()
@@ -59,7 +61,7 @@ namespace TowerColor
             if(_gameManager.CurrentState != GameState.Playing) return;
             if(IsFullyDestroyed) return;
 
-            if (DestroyedRatio >= 0.9f)
+            if (DestroyedRatio >= _gameData.towerStepDestroyedMinimumRatio)
             {
                 Debug.LogFormat("Step {0} fully destroyed", name);
                 IsFullyDestroyed = true;

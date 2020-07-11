@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using NaughtyAttributes;
+using UniRx;
+using UniRx.Async;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +25,8 @@ namespace TowerColor
         /// The color of the brick
         /// </summary>
         private Color _color;
+
+        private TweenerCore<Color, Color, ColorOptions> _lerpColorTween;
 
         /// <summary>
         /// Game data
@@ -134,6 +142,8 @@ namespace TowerColor
 
         private void OnDestroy()
         {
+            _lerpColorTween?.Kill();
+
             Destroyed?.Invoke(this);
         }
 
@@ -207,6 +217,20 @@ namespace TowerColor
         public void ApplyImpactForce(Vector3 force, Vector3 hitPoint)
         {
             rigidBody.AddForceAtPosition(force, hitPoint, ForceMode.Force);
+        }
+
+        public async UniTask LerpColor(Color to, float duration)
+        {
+            //Kill tween if needed
+            _lerpColorTween?.Kill();
+            
+            _color = to;
+            
+            //Lerp the color
+            _lerpColorTween = renderer.material.DOColor(to, duration);
+            await _lerpColorTween.ToUniTask();
+
+            _lerpColorTween = null;
         }
         
         #endregion
