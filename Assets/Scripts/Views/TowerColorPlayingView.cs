@@ -14,6 +14,7 @@ namespace TowerColor.Views
     public class TowerColorPlayingView : PlayingView
     {
         private int _remainingBalls;
+        private int _ballsFiredSinceLastColorChange;
         
         private ITouchSurface _touchSurface;
         private IBallSpawner _ballSpawner;
@@ -28,6 +29,9 @@ namespace TowerColor.Views
         private Ball _ball;
         private GameObject _playerCameraFocusPoint;
 
+        /// <summary>
+        /// Remaining balls to fire before game over
+        /// </summary>
         [ShowNativeProperty] public int RemainingBalls
         {
             get => _remainingBalls;
@@ -40,6 +44,22 @@ namespace TowerColor.Views
                 if (_remainingBalls <= 0)
                 {
                     _gameManager.ChangeState(GameState.GameOver);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Balls that have been fired since the last color change
+        /// </summary>
+        public int BallsFiredSinceLastColorChange
+        {
+            get => _ballsFiredSinceLastColorChange;
+            set
+            {
+                _ballsFiredSinceLastColorChange = value;
+                if (_ballsFiredSinceLastColorChange == (int) _gameManager.LevelManager.GetCurveValue(_gameData.ballsToFireToTriggerColorChange))
+                {
+                    TriggerColorChange();
                 }
             }
         }
@@ -140,6 +160,20 @@ namespace TowerColor.Views
         }
 
         /// <summary>
+        /// Trigger color change feature
+        /// </summary>
+        private void TriggerColorChange()
+        {
+            Debug.Log("Color change");
+
+            //Reset balls counter
+            BallsFiredSinceLastColorChange = 0;
+            
+            //Shuffle tower colors
+            _gameManager.Tower.ShuffleColors(true);
+        }
+
+        /// <summary>
         /// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color
         /// </summary>
         /// <param name="brick">Brick being touched</param>
@@ -162,31 +196,43 @@ namespace TowerColor.Views
             }
             
             //Check if we won
-            CheckWinCondition();
-            
-            //Decrease remaining balls
-            RemainingBalls--;
-
-            //If we still have balls, spawn a new one
-            if (RemainingBalls > 0)
+            if (!CheckWinCondition())
             {
-                SpawnNewBall();
+                BallsFiredSinceLastColorChange++;
+                
+                //Decrease remaining balls
+                RemainingBalls--;
+
+                //If we still have balls, spawn a new one
+                if (RemainingBalls > 0)
+                {
+                    SpawnNewBall();
+                }
             }
         }
 
         /// <summary>
         /// Check if we won the game
         /// </summary>
-        private void CheckWinCondition()
+        private bool CheckWinCondition()
         {
-            if (_gameManager.Tower.CurrentStep < _gameData.minimumTowerStepToWin)
+            //There is no more bricks
+            if (!_gameManager.Tower.Steps.SelectMany(s => s.Bricks).Any())
+            {
+                _gameManager.ChangeState(GameState.Win);
+                return true;
+            }
+            if (_gameManager.Tower.CurrentStep <= _gameData.minimumTowerStepToWin) // Current step is below required step
             {
                 var lastStepDestroyRatio = _gameManager.Tower.Steps[0].DestroyedRatio;
-                if (lastStepDestroyRatio >= _gameData.destroyRatioOfBottomTowerToWin)
+                if (lastStepDestroyRatio >= _gameData.destroyRatioOfBottomTowerToWin) //And bottom tower step destroy ratio is above required one
                 {
                     _gameManager.ChangeState(GameState.Win);
+                    return true;
                 }
             }
+
+            return false;
         }
         
         /// <summary>

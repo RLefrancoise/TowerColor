@@ -49,6 +49,9 @@ namespace TowerColor
         {
             if (other.gameObject.CompareTag("Brick"))
             {
+                var brick = other.rigidbody.GetComponent<Brick>();
+                brick.Destroyed += (b) => bricks.Remove(other.rigidbody);
+                
                 bricks.Add(other.rigidbody);
                 _bricksHitPoints.Add(other.GetContact(0).point);
             }

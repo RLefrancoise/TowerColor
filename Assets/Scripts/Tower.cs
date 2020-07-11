@@ -113,11 +113,14 @@ namespace TowerColor
         /// <summary>
         /// Shuffle the tower colors
         /// </summary>
-        public void ShuffleColors()
+        public void ShuffleColors(bool ignoreInactiveSteps = false)
         {
             //Reset bricks color to first color
             foreach (var step in steps)
             {
+                //If step is inactive, ignore it
+                if (ignoreInactiveSteps && !step.IsActivated) continue;
+                
                 foreach (var brick in step.Bricks)
                     brick.Color = _gameData.brickColors[0].color;
             }
@@ -125,9 +128,12 @@ namespace TowerColor
             //Color each brick according to its surrounding
             foreach (var step in steps)
             {
+                //If step is inactive, ignore it
+                if (ignoreInactiveSteps && !step.IsActivated) continue;
+                
                 foreach (var brick in step.Bricks)
                 {
-                    foreach (var b in brick.GetSurroundingBricks())
+                    foreach (var b in brick.GetSurroundingBricks(!ignoreInactiveSteps))
                     {
                         //According to the level, we have a specific change that surrounding bricks have same color
                         var randomChance = Random.Range(0f, 1f);
@@ -149,7 +155,7 @@ namespace TowerColor
         public bool IsBrickTargetable(Brick brick)
         {
             if (brick.IsInWater) return false;
-            if (brick.HasFellOnPlatform) return false;
+            //if (brick.HasFellOnPlatform) return false;
             if (!brick.IsActivated) return false;
             if (brick.Velocity.sqrMagnitude >= _gameData.targetableBrickSquaredVelocityThreshold) return false;
 

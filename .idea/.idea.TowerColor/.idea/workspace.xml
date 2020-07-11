@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ac8db31-0f38-4257-97f2-87b6bab334e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Scripts/Game/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Scripts/Game/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tower.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" afterDir="false" />
     </list>
@@ -18,41 +17,75 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+            <state relative-caret-position="270">
+              <caret line="196" column="12" lean-forward="true" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
               <folding>
-                <marker date="1594475991881" expanded="true" signature="6:195" ph="..." />
-                <marker date="1594475991881" expanded="true" signature="223:8961" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="341:8959" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="885:1288" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="947:1278" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="1162:1264" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="1701:2055" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="2097:3210" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="3252:3809" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="3819:3884" ph="/// Start a new game ... " />
-                <marker date="1594475991881" expanded="true" signature="3917:3965" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="3983:4048" ph="/// Spawn a new ball ... " />
-                <marker date="1594475991881" expanded="true" signature="4084:4555" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="4217:4334" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="4565:4778" ph="/// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color ... " />
-                <marker date="1594475991881" expanded="true" signature="4831:5695" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="4885:5376" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="5283:5362" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="5625:5685" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="5705:5778" ph="/// Check if we won the game ... " />
-                <marker date="1594475991881" expanded="true" signature="5819:6219" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="5911:6209" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="6098:6195" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="6237:6393" ph="/// When player touch the screen to fire a ball ... " />
-                <marker date="1594475991881" expanded="true" signature="6451:7312" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="6571:6684" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="6914:7302" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="7067:7211" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="7330:7468" ph="/// When player is dragging the screen ... " />
-                <marker date="1594475991881" expanded="true" signature="7521:7866" ph="{...}" />
-                <marker date="1594475991881" expanded="true" signature="7884:8042" ph="/// When tower current step is changed, we update camera etc... ... " />
-                <marker date="1594475991881" expanded="true" signature="8099:8953" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="6:195" ph="..." />
+                <marker date="1594477748613" expanded="true" signature="223:10544" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="341:10542" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="892:981" ph="/// Remaining balls to fire before game over ... " />
+                <marker date="1594477748613" expanded="true" signature="1036:1439" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="1098:1429" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="1313:1415" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="1449:1552" ph="/// Balls that have been fired since the last color change ... " />
+                <marker date="1594477748613" expanded="true" signature="1602:1998" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="1680:1988" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="1896:1974" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="2411:2765" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="2807:3920" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="3962:4519" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="4529:4594" ph="/// Start a new game ... " />
+                <marker date="1594477748613" expanded="true" signature="4627:4675" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="4693:4758" ph="/// Spawn a new ball ... " />
+                <marker date="1594477748613" expanded="true" signature="4794:5265" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="4927:5044" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="5275:5352" ph="/// Trigger color change feature ... " />
+                <marker date="1594477748613" expanded="true" signature="5394:5636" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="5646:5859" ph="/// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color ... " />
+                <marker date="1594477748613" expanded="true" signature="5912:6891" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="5966:6457" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="6364:6443" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="6538:6881" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="6795:6867" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="6901:6974" ph="/// Check if we won the game ... " />
+                <marker date="1594477748613" expanded="true" signature="7015:7802" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="7138:7252" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="7374:7765" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="7621:7751" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="7820:7976" ph="/// When player touch the screen to fire a ball ... " />
+                <marker date="1594477748613" expanded="true" signature="8034:8895" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="8154:8267" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="8497:8885" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="8650:8794" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="8913:9051" ph="/// When player is dragging the screen ... " />
+                <marker date="1594477748613" expanded="true" signature="9104:9449" ph="{...}" />
+                <marker date="1594477748613" expanded="true" signature="9467:9625" ph="/// When tower current step is changed, we update camera etc... ... " />
+                <marker date="1594477748613" expanded="true" signature="9682:10536" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/TowerStep.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="523">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
+              <folding>
+                <marker date="1594474902160" expanded="false" signature="6:209" ph="..." />
+                <marker date="1594474902160" expanded="true" signature="231:2388" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="276:2386" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="773:1066" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="799:1056" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1184:1244" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1282:1486" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1395:1476" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1517:1868" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1680:1858" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1924:2061" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="1976:2051" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="2110:2266" ph="{...}" />
+                <marker date="1594474902160" expanded="true" signature="2326:2380" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -61,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="208" column="75" selection-start-line="208" selection-start-column="75" selection-end-line="208" selection-end-column="75" />
+            <state relative-caret-position="611">
+              <caret line="215" column="22" selection-start-line="215" selection-start-column="22" selection-end-line="215" selection-end-column="22" />
               <folding>
                 <marker date="1594467365470" expanded="true" signature="6:125" ph="..." />
                 <marker date="1594467365470" expanded="true" signature="147:7084" ph="{...}" />
@@ -168,49 +201,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Tower.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="131">
+              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
               <folding>
-                <marker date="1594475913821" expanded="true" signature="6:198" ph="..." />
-                <marker date="1594475913821" expanded="true" signature="220:6217" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="261:6215" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="276:453" ph="Fields" />
-                <marker date="1594475913821" expanded="true" signature="463:1107" ph="Properties" />
-                <marker date="1594475913821" expanded="true" signature="736:822" ph="/// List of available colors in the tower ... " />
-                <marker date="1594475913821" expanded="true" signature="872:1079" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="898:1069" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="1117:1221" ph="Events" />
-                <marker date="1594475913821" expanded="true" signature="1313:1407" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="1417:1638" ph="MonoBehaviours" />
-                <marker date="1594475913821" expanded="true" signature="1469:1618" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="1519:1608" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="1656:5166" ph="Public Methods" />
-                <marker date="1594475913821" expanded="true" signature="1732:2012" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2065:2114" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2162:2294" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2212:2284" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2340:3014" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2550:2658" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="2804:2925" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3024:3097" ph="/// Shuffle the tower colors ... " />
-                <marker date="1594475913821" expanded="true" signature="3133:4532" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3231:3376" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3477:4522" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3542:4508" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3628:4490" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="3971:4074" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="4103:4468" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="4584:4894" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="4958:5138" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="5176:6209" ph="Private Methods" />
-                <marker date="1594475913821" expanded="true" signature="5292:5782" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="5373:5772" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="5800:5902" ph="/// When step is fully destroyed, update new current step ... " />
-                <marker date="1594475913821" expanded="true" signature="5946:6181" ph="{...}" />
-                <marker date="1594475913821" expanded="true" signature="6011:6171" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="6:198" ph="..." />
+                <marker date="1594477878593" expanded="true" signature="220:6547" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="261:6545" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="276:453" ph="Fields" />
+                <marker date="1594477878593" expanded="true" signature="463:1107" ph="Properties" />
+                <marker date="1594477878593" expanded="true" signature="736:822" ph="/// List of available colors in the tower ... " />
+                <marker date="1594477878593" expanded="true" signature="872:1079" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="898:1069" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="1117:1221" ph="Events" />
+                <marker date="1594477878593" expanded="true" signature="1313:1407" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="1417:1638" ph="MonoBehaviours" />
+                <marker date="1594477878593" expanded="true" signature="1469:1618" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="1519:1608" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="1656:5496" ph="Public Methods" />
+                <marker date="1594477878593" expanded="true" signature="1732:2012" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2065:2114" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2162:2294" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2212:2284" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2340:3014" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2550:2658" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="2804:2925" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="3024:3097" ph="/// Shuffle the tower colors ... " />
+                <marker date="1594477878593" expanded="true" signature="3165:4860" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="3263:3546" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="3647:4850" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="3850:4836" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="3956:4818" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="4299:4402" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="4431:4796" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="4912:5224" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="5288:5468" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="5506:6539" ph="Private Methods" />
+                <marker date="1594477878593" expanded="true" signature="5622:6112" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="5703:6102" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="6130:6232" ph="/// When step is fully destroyed, update new current step ... " />
+                <marker date="1594477878593" expanded="true" signature="6276:6511" ph="{...}" />
+                <marker date="1594477878593" expanded="true" signature="6341:6501" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -247,7 +280,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultMenuView.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
@@ -268,37 +301,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="179" selection-start-line="179" selection-end-line="179" />
+            <state relative-caret-position="515">
+              <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
               <folding>
-                <marker date="1594469029743" expanded="true" signature="6:91" ph="..." />
-                <marker date="1594469029743" expanded="true" signature="113:6017" ph="{...}" />
-                <marker date="1594469029743" expanded="true" signature="239:6015" ph="{...}" />
-                <marker date="1594469029743" expanded="true" signature="254:325" ph="/// Available brick colors ... " />
-                <marker date="1594469029743" expanded="true" signature="450:539" ph="/// Material to use when a brick is inactive ... " />
-                <marker date="1594469029743" expanded="true" signature="683:789" ph="/// Squared velocity threshold to consider a brick targetable ... " />
-                <marker date="1594469029743" expanded="true" signature="984:1858" ph="Tower" />
-                <marker date="1594469029743" expanded="true" signature="1015:1076" ph="/// Tower prefab ... " />
-                <marker date="1594469029743" expanded="true" signature="1161:1234" ph="/// Available tower profiles ... " />
-                <marker date="1594469029743" expanded="true" signature="1350:1438" ph="/// Max number of active steps in the tower ... " />
-                <marker date="1594469029743" expanded="true" signature="1577:1681" ph="/// Rotation speed of the tower when the player is dragging ... " />
-                <marker date="1594469029743" expanded="true" signature="1868:3661" ph="Ball" />
-                <marker date="1594469029743" expanded="true" signature="1964:2038" ph="/// Fire duration of the ball ... " />
-                <marker date="1594469029743" expanded="true" signature="2166:2237" ph="/// Force of the ball jump ... " />
-                <marker date="1594469029743" expanded="true" signature="2359:2468" ph="/// Number of turns the ball is doing on itself when being fired ... " />
-                <marker date="1594469029743" expanded="true" signature="2629:2748" ph="/// Repulse distance of the ball if it hits a brick with a different color ... " />
-                <marker date="1594469029743" expanded="true" signature="2924:3026" ph="/// Duration of the ball repulsion before it is destroyed ... " />
-                <marker date="1594469029743" expanded="true" signature="3187:3266" ph="/// Position of the ball on screen ... " />
-                <marker date="1594469029743" expanded="true" signature="3434:3508" ph="/// Ball distance from camera ... " />
-                <marker date="1594469029743" expanded="true" signature="3671:4270" ph="Cameras" />
-                <marker date="1594469029743" expanded="true" signature="3704:3819" ph="/// Duration of the camera movement when current tower step is changed ... " />
-                <marker date="1594469029743" expanded="true" signature="4011:4097" ph="/// Distance of the camera from the tower ... " />
-                <marker date="1594469029743" expanded="true" signature="4280:4385" ph="/// Force that is applied to the bricks that fell into water ... " />
-                <marker date="1594469029743" expanded="true" signature="4741:6009" ph="Difficulty Settings" />
-                <marker date="1594469029743" expanded="true" signature="4786:4916" ph="/// Probability that adjacent brick has the same color according to the current level ... " />
-                <marker date="1594469029743" expanded="true" signature="5146:5223" ph="/// The number of balls by level ... " />
-                <marker date="1594469029743" expanded="true" signature="5377:5477" ph="/// The minimum step the tower must be currently to win ... " />
-                <marker date="1594469029743" expanded="true" signature="5648:5769" ph="/// The minimum ratio of destroyed bricks in the last step to be able to win ... " />
+                <marker date="1594476858006" expanded="true" signature="6:91" ph="..." />
+                <marker date="1594476858006" expanded="true" signature="113:6305" ph="{...}" />
+                <marker date="1594476858006" expanded="true" signature="239:6303" ph="{...}" />
+                <marker date="1594476858006" expanded="true" signature="254:325" ph="/// Available brick colors ... " />
+                <marker date="1594476858006" expanded="true" signature="450:539" ph="/// Material to use when a brick is inactive ... " />
+                <marker date="1594476858006" expanded="true" signature="683:789" ph="/// Squared velocity threshold to consider a brick targetable ... " />
+                <marker date="1594476858006" expanded="true" signature="984:1858" ph="Tower" />
+                <marker date="1594476858006" expanded="true" signature="1015:1076" ph="/// Tower prefab ... " />
+                <marker date="1594476858006" expanded="true" signature="1161:1234" ph="/// Available tower profiles ... " />
+                <marker date="1594476858006" expanded="true" signature="1350:1438" ph="/// Max number of active steps in the tower ... " />
+                <marker date="1594476858006" expanded="true" signature="1577:1681" ph="/// Rotation speed of the tower when the player is dragging ... " />
+                <marker date="1594476858006" expanded="true" signature="1868:3661" ph="Ball" />
+                <marker date="1594476858006" expanded="true" signature="1964:2038" ph="/// Fire duration of the ball ... " />
+                <marker date="1594476858006" expanded="true" signature="2166:2237" ph="/// Force of the ball jump ... " />
+                <marker date="1594476858006" expanded="true" signature="2359:2468" ph="/// Number of turns the ball is doing on itself when being fired ... " />
+                <marker date="1594476858006" expanded="true" signature="2629:2748" ph="/// Repulse distance of the ball if it hits a brick with a different color ... " />
+                <marker date="1594476858006" expanded="true" signature="2924:3026" ph="/// Duration of the ball repulsion before it is destroyed ... " />
+                <marker date="1594476858006" expanded="true" signature="3187:3266" ph="/// Position of the ball on screen ... " />
+                <marker date="1594476858006" expanded="true" signature="3434:3508" ph="/// Ball distance from camera ... " />
+                <marker date="1594476858006" expanded="true" signature="3671:4270" ph="Cameras" />
+                <marker date="1594476858006" expanded="true" signature="3704:3819" ph="/// Duration of the camera movement when current tower step is changed ... " />
+                <marker date="1594476858006" expanded="true" signature="4011:4097" ph="/// Distance of the camera from the tower ... " />
+                <marker date="1594476858006" expanded="true" signature="4280:4385" ph="/// Force that is applied to the bricks that fell into water ... " />
+                <marker date="1594476858006" expanded="true" signature="4741:6297" ph="Difficulty Settings" />
+                <marker date="1594476858006" expanded="true" signature="4786:4916" ph="/// Probability that adjacent brick has the same color according to the current level ... " />
+                <marker date="1594476858006" expanded="true" signature="5146:5223" ph="/// The number of balls by level ... " />
+                <marker date="1594476858006" expanded="true" signature="5377:5477" ph="/// The number of balls to fire to trigger color change ... " />
+                <marker date="1594476858006" expanded="true" signature="5665:5765" ph="/// The minimum step the tower must be currently to win ... " />
+                <marker date="1594476858006" expanded="true" signature="5936:6057" ph="/// The minimum ratio of destroyed bricks in the last step to be able to win ... " />
               </folding>
             </state>
           </provider>
@@ -401,7 +435,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TouchSurface.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Game/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Views/WinView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultWinView.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Game/Installers/GameInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Game/IGameManager.cs" />
@@ -414,8 +447,9 @@
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultMenuView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Framework/Scripts/Game/LevelManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Tower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Tower.cs" />
       </list>
     </option>
   </component>
@@ -551,12 +585,12 @@
       <updated>1594222152887</updated>
       <workItem from="1594222161749" duration="39583000" />
       <workItem from="1594376132593" duration="32056000" />
-      <workItem from="1594461598428" duration="11269000" />
+      <workItem from="1594461598428" duration="13232000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82908000" />
+    <option name="totallyTimeSpent" value="84871000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1709,43 +1743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-          <folding>
-            <marker date="1594469029743" expanded="true" signature="6:91" ph="..." />
-            <marker date="1594469029743" expanded="true" signature="113:6017" ph="{...}" />
-            <marker date="1594469029743" expanded="true" signature="239:6015" ph="{...}" />
-            <marker date="1594469029743" expanded="true" signature="254:325" ph="/// Available brick colors ... " />
-            <marker date="1594469029743" expanded="true" signature="450:539" ph="/// Material to use when a brick is inactive ... " />
-            <marker date="1594469029743" expanded="true" signature="683:789" ph="/// Squared velocity threshold to consider a brick targetable ... " />
-            <marker date="1594469029743" expanded="true" signature="984:1858" ph="Tower" />
-            <marker date="1594469029743" expanded="true" signature="1015:1076" ph="/// Tower prefab ... " />
-            <marker date="1594469029743" expanded="true" signature="1161:1234" ph="/// Available tower profiles ... " />
-            <marker date="1594469029743" expanded="true" signature="1350:1438" ph="/// Max number of active steps in the tower ... " />
-            <marker date="1594469029743" expanded="true" signature="1577:1681" ph="/// Rotation speed of the tower when the player is dragging ... " />
-            <marker date="1594469029743" expanded="true" signature="1868:3661" ph="Ball" />
-            <marker date="1594469029743" expanded="true" signature="1964:2038" ph="/// Fire duration of the ball ... " />
-            <marker date="1594469029743" expanded="true" signature="2166:2237" ph="/// Force of the ball jump ... " />
-            <marker date="1594469029743" expanded="true" signature="2359:2468" ph="/// Number of turns the ball is doing on itself when being fired ... " />
-            <marker date="1594469029743" expanded="true" signature="2629:2748" ph="/// Repulse distance of the ball if it hits a brick with a different color ... " />
-            <marker date="1594469029743" expanded="true" signature="2924:3026" ph="/// Duration of the ball repulsion before it is destroyed ... " />
-            <marker date="1594469029743" expanded="true" signature="3187:3266" ph="/// Position of the ball on screen ... " />
-            <marker date="1594469029743" expanded="true" signature="3434:3508" ph="/// Ball distance from camera ... " />
-            <marker date="1594469029743" expanded="true" signature="3671:4270" ph="Cameras" />
-            <marker date="1594469029743" expanded="true" signature="3704:3819" ph="/// Duration of the camera movement when current tower step is changed ... " />
-            <marker date="1594469029743" expanded="true" signature="4011:4097" ph="/// Distance of the camera from the tower ... " />
-            <marker date="1594469029743" expanded="true" signature="4280:4385" ph="/// Force that is applied to the bricks that fell into water ... " />
-            <marker date="1594469029743" expanded="true" signature="4741:6009" ph="Difficulty Settings" />
-            <marker date="1594469029743" expanded="true" signature="4786:4916" ph="/// Probability that adjacent brick has the same color according to the current level ... " />
-            <marker date="1594469029743" expanded="true" signature="5146:5223" ph="/// The number of balls by level ... " />
-            <marker date="1594469029743" expanded="true" signature="5377:5477" ph="/// The minimum step the tower must be currently to win ... " />
-            <marker date="1594469029743" expanded="true" signature="5648:5769" ph="/// The minimum ratio of destroyed bricks in the last step to be able to win ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Game/Installers/GameInstaller.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1853,10 +1850,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Views/GameOverView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1594473907768" expanded="true" signature="48:173" ph="{...}" />
+            <marker date="1594473907768" expanded="true" signature="96:171" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <marker date="1594475913707" expanded="true" signature="6:36" ph="..." />
+            <marker date="1594475913707" expanded="true" signature="58:941" ph="{...}" />
+            <marker date="1594475913707" expanded="true" signature="65:152" ph="/// The game manager handles the logic of the game ... " />
+            <marker date="1594475913707" expanded="true" signature="199:939" ph="{...}" />
+            <marker date="1594475913707" expanded="true" signature="214:293" ph="Fields" />
+            <marker date="1594475913707" expanded="true" signature="303:391" ph="Properties" />
+            <marker date="1594475913707" expanded="true" signature="401:596" ph="Public Methods" />
+            <marker date="1594475913707" expanded="true" signature="506:568" ph="{...}" />
+            <marker date="1594475913707" expanded="true" signature="606:933" ph="MonoBehaviours" />
+            <marker date="1594475913707" expanded="true" signature="677:905" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultMenuView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
+          <folding>
+            <marker date="1594475360322" expanded="true" signature="6:90" ph="..." />
+            <marker date="1594475360322" expanded="true" signature="125:891" ph="{...}" />
+            <marker date="1594475360322" expanded="true" signature="132:190" ph="/// Default menu view ... " />
+            <marker date="1594475360322" expanded="true" signature="234:889" ph="{...}" />
+            <marker date="1594475360322" expanded="true" signature="474:534" ph="{...}" />
+            <marker date="1594475360322" expanded="true" signature="584:772" ph="{...}" />
+            <marker date="1594475360322" expanded="true" signature="808:883" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Game/LevelManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+          <folding>
+            <marker date="1594475913789" expanded="true" signature="6:98" ph="..." />
+            <marker date="1594475913789" expanded="true" signature="124:1047" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="161:292" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="358:1045" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="442:663" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="511:653" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="731:785" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="820:912" ph="{...}" />
+            <marker date="1594475913789" expanded="true" signature="970:1039" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
+          <folding>
+            <marker date="1594476858006" expanded="true" signature="6:91" ph="..." />
+            <marker date="1594476858006" expanded="true" signature="113:6305" ph="{...}" />
+            <marker date="1594476858006" expanded="true" signature="239:6303" ph="{...}" />
+            <marker date="1594476858006" expanded="true" signature="254:325" ph="/// Available brick colors ... " />
+            <marker date="1594476858006" expanded="true" signature="450:539" ph="/// Material to use when a brick is inactive ... " />
+            <marker date="1594476858006" expanded="true" signature="683:789" ph="/// Squared velocity threshold to consider a brick targetable ... " />
+            <marker date="1594476858006" expanded="true" signature="984:1858" ph="Tower" />
+            <marker date="1594476858006" expanded="true" signature="1015:1076" ph="/// Tower prefab ... " />
+            <marker date="1594476858006" expanded="true" signature="1161:1234" ph="/// Available tower profiles ... " />
+            <marker date="1594476858006" expanded="true" signature="1350:1438" ph="/// Max number of active steps in the tower ... " />
+            <marker date="1594476858006" expanded="true" signature="1577:1681" ph="/// Rotation speed of the tower when the player is dragging ... " />
+            <marker date="1594476858006" expanded="true" signature="1868:3661" ph="Ball" />
+            <marker date="1594476858006" expanded="true" signature="1964:2038" ph="/// Fire duration of the ball ... " />
+            <marker date="1594476858006" expanded="true" signature="2166:2237" ph="/// Force of the ball jump ... " />
+            <marker date="1594476858006" expanded="true" signature="2359:2468" ph="/// Number of turns the ball is doing on itself when being fired ... " />
+            <marker date="1594476858006" expanded="true" signature="2629:2748" ph="/// Repulse distance of the ball if it hits a brick with a different color ... " />
+            <marker date="1594476858006" expanded="true" signature="2924:3026" ph="/// Duration of the ball repulsion before it is destroyed ... " />
+            <marker date="1594476858006" expanded="true" signature="3187:3266" ph="/// Position of the ball on screen ... " />
+            <marker date="1594476858006" expanded="true" signature="3434:3508" ph="/// Ball distance from camera ... " />
+            <marker date="1594476858006" expanded="true" signature="3671:4270" ph="Cameras" />
+            <marker date="1594476858006" expanded="true" signature="3704:3819" ph="/// Duration of the camera movement when current tower step is changed ... " />
+            <marker date="1594476858006" expanded="true" signature="4011:4097" ph="/// Distance of the camera from the tower ... " />
+            <marker date="1594476858006" expanded="true" signature="4280:4385" ph="/// Force that is applied to the bricks that fell into water ... " />
+            <marker date="1594476858006" expanded="true" signature="4741:6297" ph="Difficulty Settings" />
+            <marker date="1594476858006" expanded="true" signature="4786:4916" ph="/// Probability that adjacent brick has the same color according to the current level ... " />
+            <marker date="1594476858006" expanded="true" signature="5146:5223" ph="/// The number of balls by level ... " />
+            <marker date="1594476858006" expanded="true" signature="5377:5477" ph="/// The number of balls to fire to trigger color change ... " />
+            <marker date="1594476858006" expanded="true" signature="5665:5765" ph="/// The minimum step the tower must be currently to win ... " />
+            <marker date="1594476858006" expanded="true" signature="5936:6057" ph="/// The minimum ratio of destroyed bricks in the last step to be able to win ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TowerStep.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <marker date="1594474902160" expanded="false" signature="6:209" ph="..." />
+            <marker date="1594474902160" expanded="true" signature="231:2388" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="276:2386" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="773:1066" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="799:1056" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1184:1244" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1282:1486" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1395:1476" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1517:1868" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1680:1858" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1924:2061" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="1976:2051" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="2110:2266" ph="{...}" />
+            <marker date="1594474902160" expanded="true" signature="2326:2380" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="208" column="75" selection-start-line="208" selection-start-column="75" selection-end-line="208" selection-end-column="75" />
+        <state relative-caret-position="611">
+          <caret line="215" column="22" selection-start-line="215" selection-start-column="22" selection-end-line="215" selection-end-column="22" />
           <folding>
             <marker date="1594467365470" expanded="true" signature="6:125" ph="..." />
             <marker date="1594467365470" expanded="true" signature="147:7084" ph="{...}" />
@@ -1908,175 +2029,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Views/GameOverView.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="270">
+          <caret line="196" column="12" lean-forward="true" selection-start-line="196" selection-start-column="12" selection-end-line="196" selection-end-column="12" />
           <folding>
-            <marker date="1594473907768" expanded="true" signature="48:173" ph="{...}" />
-            <marker date="1594473907768" expanded="true" signature="96:171" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/TowerStep.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <marker date="1594474902160" expanded="false" signature="6:209" ph="..." />
-            <marker date="1594474902160" expanded="true" signature="231:2388" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="276:2386" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="773:1066" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="799:1056" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1184:1244" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1282:1486" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1395:1476" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1517:1868" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1680:1858" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1924:2061" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="1976:2051" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="2110:2266" ph="{...}" />
-            <marker date="1594474902160" expanded="true" signature="2326:2380" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Game/LevelManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
-          <folding>
-            <marker date="1594475913789" expanded="true" signature="6:98" ph="..." />
-            <marker date="1594475913789" expanded="true" signature="124:1047" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="161:292" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="358:1045" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="442:663" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="511:653" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="731:785" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="820:912" ph="{...}" />
-            <marker date="1594475913789" expanded="true" signature="970:1039" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <marker date="1594475913707" expanded="true" signature="6:36" ph="..." />
-            <marker date="1594475913707" expanded="true" signature="58:941" ph="{...}" />
-            <marker date="1594475913707" expanded="true" signature="65:152" ph="/// The game manager handles the logic of the game ... " />
-            <marker date="1594475913707" expanded="true" signature="199:939" ph="{...}" />
-            <marker date="1594475913707" expanded="true" signature="214:293" ph="Fields" />
-            <marker date="1594475913707" expanded="true" signature="303:391" ph="Properties" />
-            <marker date="1594475913707" expanded="true" signature="401:596" ph="Public Methods" />
-            <marker date="1594475913707" expanded="true" signature="506:568" ph="{...}" />
-            <marker date="1594475913707" expanded="true" signature="606:933" ph="MonoBehaviours" />
-            <marker date="1594475913707" expanded="true" signature="677:905" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="6:195" ph="..." />
+            <marker date="1594477748613" expanded="true" signature="223:10544" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="341:10542" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="892:981" ph="/// Remaining balls to fire before game over ... " />
+            <marker date="1594477748613" expanded="true" signature="1036:1439" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="1098:1429" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="1313:1415" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="1449:1552" ph="/// Balls that have been fired since the last color change ... " />
+            <marker date="1594477748613" expanded="true" signature="1602:1998" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="1680:1988" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="1896:1974" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="2411:2765" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="2807:3920" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="3962:4519" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="4529:4594" ph="/// Start a new game ... " />
+            <marker date="1594477748613" expanded="true" signature="4627:4675" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="4693:4758" ph="/// Spawn a new ball ... " />
+            <marker date="1594477748613" expanded="true" signature="4794:5265" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="4927:5044" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="5275:5352" ph="/// Trigger color change feature ... " />
+            <marker date="1594477748613" expanded="true" signature="5394:5636" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="5646:5859" ph="/// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color ... " />
+            <marker date="1594477748613" expanded="true" signature="5912:6891" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="5966:6457" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="6364:6443" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="6538:6881" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="6795:6867" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="6901:6974" ph="/// Check if we won the game ... " />
+            <marker date="1594477748613" expanded="true" signature="7015:7802" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="7138:7252" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="7374:7765" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="7621:7751" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="7820:7976" ph="/// When player touch the screen to fire a ball ... " />
+            <marker date="1594477748613" expanded="true" signature="8034:8895" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="8154:8267" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="8497:8885" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="8650:8794" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="8913:9051" ph="/// When player is dragging the screen ... " />
+            <marker date="1594477748613" expanded="true" signature="9104:9449" ph="{...}" />
+            <marker date="1594477748613" expanded="true" signature="9467:9625" ph="/// When tower current step is changed, we update camera etc... ... " />
+            <marker date="1594477748613" expanded="true" signature="9682:10536" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Tower.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="131">
+          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
           <folding>
-            <marker date="1594475913821" expanded="true" signature="6:198" ph="..." />
-            <marker date="1594475913821" expanded="true" signature="220:6217" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="261:6215" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="276:453" ph="Fields" />
-            <marker date="1594475913821" expanded="true" signature="463:1107" ph="Properties" />
-            <marker date="1594475913821" expanded="true" signature="736:822" ph="/// List of available colors in the tower ... " />
-            <marker date="1594475913821" expanded="true" signature="872:1079" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="898:1069" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="1117:1221" ph="Events" />
-            <marker date="1594475913821" expanded="true" signature="1313:1407" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="1417:1638" ph="MonoBehaviours" />
-            <marker date="1594475913821" expanded="true" signature="1469:1618" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="1519:1608" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="1656:5166" ph="Public Methods" />
-            <marker date="1594475913821" expanded="true" signature="1732:2012" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2065:2114" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2162:2294" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2212:2284" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2340:3014" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2550:2658" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="2804:2925" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3024:3097" ph="/// Shuffle the tower colors ... " />
-            <marker date="1594475913821" expanded="true" signature="3133:4532" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3231:3376" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3477:4522" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3542:4508" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3628:4490" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="3971:4074" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="4103:4468" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="4584:4894" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="4958:5138" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="5176:6209" ph="Private Methods" />
-            <marker date="1594475913821" expanded="true" signature="5292:5782" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="5373:5772" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="5800:5902" ph="/// When step is fully destroyed, update new current step ... " />
-            <marker date="1594475913821" expanded="true" signature="5946:6181" ph="{...}" />
-            <marker date="1594475913821" expanded="true" signature="6011:6171" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding>
-            <marker date="1594475991881" expanded="true" signature="6:195" ph="..." />
-            <marker date="1594475991881" expanded="true" signature="223:8961" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="341:8959" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="885:1288" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="947:1278" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="1162:1264" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="1701:2055" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="2097:3210" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="3252:3809" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="3819:3884" ph="/// Start a new game ... " />
-            <marker date="1594475991881" expanded="true" signature="3917:3965" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="3983:4048" ph="/// Spawn a new ball ... " />
-            <marker date="1594475991881" expanded="true" signature="4084:4555" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="4217:4334" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="4565:4778" ph="/// When a ball has touched a brick, we destroy it, as well as the brick and adjacent bricks with same color ... " />
-            <marker date="1594475991881" expanded="true" signature="4831:5695" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="4885:5376" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="5283:5362" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="5625:5685" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="5705:5778" ph="/// Check if we won the game ... " />
-            <marker date="1594475991881" expanded="true" signature="5819:6219" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="5911:6209" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="6098:6195" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="6237:6393" ph="/// When player touch the screen to fire a ball ... " />
-            <marker date="1594475991881" expanded="true" signature="6451:7312" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="6571:6684" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="6914:7302" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="7067:7211" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="7330:7468" ph="/// When player is dragging the screen ... " />
-            <marker date="1594475991881" expanded="true" signature="7521:7866" ph="{...}" />
-            <marker date="1594475991881" expanded="true" signature="7884:8042" ph="/// When tower current step is changed, we update camera etc... ... " />
-            <marker date="1594475991881" expanded="true" signature="8099:8953" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Framework/Scripts/Views/Default/DefaultMenuView.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="82" selection-start-line="28" selection-start-column="82" selection-end-line="28" selection-end-column="82" />
-          <folding>
-            <marker date="1594475360322" expanded="true" signature="6:90" ph="..." />
-            <marker date="1594475360322" expanded="true" signature="125:891" ph="{...}" />
-            <marker date="1594475360322" expanded="true" signature="132:190" ph="/// Default menu view ... " />
-            <marker date="1594475360322" expanded="true" signature="234:889" ph="{...}" />
-            <marker date="1594475360322" expanded="true" signature="474:534" ph="{...}" />
-            <marker date="1594475360322" expanded="true" signature="584:772" ph="{...}" />
-            <marker date="1594475360322" expanded="true" signature="808:883" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="6:198" ph="..." />
+            <marker date="1594477878593" expanded="true" signature="220:6547" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="261:6545" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="276:453" ph="Fields" />
+            <marker date="1594477878593" expanded="true" signature="463:1107" ph="Properties" />
+            <marker date="1594477878593" expanded="true" signature="736:822" ph="/// List of available colors in the tower ... " />
+            <marker date="1594477878593" expanded="true" signature="872:1079" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="898:1069" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="1117:1221" ph="Events" />
+            <marker date="1594477878593" expanded="true" signature="1313:1407" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="1417:1638" ph="MonoBehaviours" />
+            <marker date="1594477878593" expanded="true" signature="1469:1618" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="1519:1608" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="1656:5496" ph="Public Methods" />
+            <marker date="1594477878593" expanded="true" signature="1732:2012" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2065:2114" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2162:2294" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2212:2284" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2340:3014" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2550:2658" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="2804:2925" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="3024:3097" ph="/// Shuffle the tower colors ... " />
+            <marker date="1594477878593" expanded="true" signature="3165:4860" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="3263:3546" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="3647:4850" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="3850:4836" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="3956:4818" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="4299:4402" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="4431:4796" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="4912:5224" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="5288:5468" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="5506:6539" ph="Private Methods" />
+            <marker date="1594477878593" expanded="true" signature="5622:6112" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="5703:6102" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="6130:6232" ph="/// When step is fully destroyed, update new current step ... " />
+            <marker date="1594477878593" expanded="true" signature="6276:6511" ph="{...}" />
+            <marker date="1594477878593" expanded="true" signature="6341:6501" ph="{...}" />
           </folding>
         </state>
       </provider>

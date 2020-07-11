@@ -164,6 +164,13 @@ namespace TowerColor
         public AnimationCurve numberOfBallsByLevel;
 
         /// <summary>
+        /// The number of balls to fire to trigger color change
+        /// </summary>
+        [BoxGroup("Difficulty Settings")]
+        [Tooltip("The number of balls to fire to trigger color change")]
+        public AnimationCurve ballsToFireToTriggerColorChange;
+
+        /// <summary>
         /// The minimum step the tower must be currently to win
         /// </summary>
         [BoxGroup("Difficulty Settings")]
