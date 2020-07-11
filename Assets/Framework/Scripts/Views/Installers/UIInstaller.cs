@@ -9,7 +9,7 @@ namespace Framework.Views.Installers
 
         public override void InstallBindings()
         {
-            Container.Bind<ViewManager>().FromComponentInNewPrefab(viewManagerPrefab).AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ViewManager>().FromComponentInNewPrefab(viewManagerPrefab).AsSingle().NonLazy();
         }
     }
 }

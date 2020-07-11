@@ -5,6 +5,7 @@ namespace Framework.Game
         Menu,
         Start,
         Playing,
+        Win,
         GameOver
     }
 }

@@ -1,5 +1,4 @@
 using Framework.Game;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -7,14 +6,13 @@ using Zenject;
 namespace Framework.Views.Default
 {
     /// <summary>
-    /// Default menu view
+    /// Default game over view
     /// </summary>
-    public class DefaultMenuView : MenuView
+    public class DefaultGameOverView : GameOverView
     {
         private IGameManager _gameManager;
-
-        [SerializeField] private TMP_Text currentLevel;
-        [SerializeField] private Button playButton;
+        
+        [SerializeField] private Button continueButton;
         
         [Inject]
         public void Construct(IGameManager gameManager)
@@ -25,14 +23,13 @@ namespace Framework.Views.Default
         protected override void OnShow()
         {
             base.OnShow();
-
-            currentLevel.text = $"Level {_gameManager.LevelManager.CurrentLevel}";
-            playButton.onClick.AddListener(ClickOnPlay);
+            
+            continueButton.onClick.AddListener(ClickOnContinue);
         }
 
-        private void ClickOnPlay()
+        private void ClickOnContinue()
         {
-            _gameManager.ChangeState(GameState.Start);
+            _gameManager.LevelManager.ReloadLevel();
         }
     }
 }

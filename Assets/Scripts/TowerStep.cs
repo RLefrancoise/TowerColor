@@ -2,14 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Framework.Game;
 using NaughtyAttributes;
+using TowerColor.Views;
 using UnityEngine;
+using Zenject;
 
 namespace TowerColor
 {
     public class TowerStep : MonoBehaviour
     {
-        [ShowNonSerializedField] private Vector3 _startPosition;
+        private int _bricksCountAtStart;
+        private GameManager _gameManager;
         
         [SerializeField] private List<Brick> bricks;
 
@@ -20,12 +24,29 @@ namespace TowerColor
         [ShowNativeProperty] public bool IsActivated { get; private set; }
 
         [ShowNativeProperty] public bool IsFullyDestroyed { get; private set; }
-        
+
+        [ShowNativeProperty] public float DestroyedRatio
+        {
+            get
+            {
+                var missingBricks = _bricksCountAtStart - bricks.Count;
+                var bricksMoved = bricks.Count(b => !b.IsStillInPlace);
+
+                return (missingBricks + bricksMoved) / (float) _bricksCountAtStart;
+            }
+        }
+
         public event Action FullyDestroyed;
 
+        [Inject]
+        public void Construct(GameManager gameManager)
+        {
+            _gameManager = gameManager;
+        }
+        
         private void Start()
         {
-            _startPosition = transform.position;
+            _bricksCountAtStart = bricks.Count;
             
             foreach (var brick in bricks)
             {
@@ -35,10 +56,10 @@ namespace TowerColor
 
         private void Update()
         {
+            if(_gameManager.CurrentState != GameState.Playing) return;
             if(IsFullyDestroyed) return;
 
-            var allBricksMoved = bricks.Count == 0 || bricks.All(b => !b.IsStillInPlace);
-            if (allBricksMoved)
+            if (DestroyedRatio >= 0.9f)
             {
                 Debug.LogFormat("Step {0} fully destroyed", name);
                 IsFullyDestroyed = true;

@@ -5,7 +5,13 @@ using Zenject;
 
 namespace Framework.Game
 {
-    public class LevelManager : MonoBehaviour
+    public interface ILevelManager
+    {
+        int CurrentLevel { get; set; }
+        void ReloadLevel();
+    }
+    
+    public class LevelManager : MonoBehaviour, ILevelManager
     {
         private ISaveData _saveData;
         
@@ -16,7 +22,7 @@ namespace Framework.Game
             {
                 _saveData.CurrentLevel = value;
                 //Reload the scene
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                ReloadLevel();
             }
         }
 
@@ -24,6 +30,11 @@ namespace Framework.Game
         public void Construct(ISaveData saveData)
         {
             _saveData = saveData;
+        }
+
+        public void ReloadLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

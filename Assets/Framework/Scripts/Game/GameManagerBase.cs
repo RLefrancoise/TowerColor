@@ -10,9 +10,9 @@ namespace Framework.Game
     public abstract class GameManagerBase : MonoBehaviour, IGameManager
     {
         private GameState _currentState;
-        private ViewManager _viewManager;
+        private IViewManager _viewManager;
 
-        public LevelManager LevelManager { get; private set; }
+        public ILevelManager LevelManager { get; private set; }
         
         public GameState CurrentState
         {
@@ -30,7 +30,7 @@ namespace Framework.Game
         }
         
         [Inject]
-        public void Construct(ViewManager viewManager, LevelManager levelManager)
+        public void Construct(IViewManager viewManager, ILevelManager levelManager)
         {
             _viewManager = viewManager;
             LevelManager = levelManager;

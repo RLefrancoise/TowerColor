@@ -7,11 +7,17 @@ using Framework.Game;
 
 namespace Framework.Views
 {
-    public class ViewManager : MonoBehaviour
+    public interface IViewManager
+    {
+        void ShowGameState(GameState state, Action showOverCallback = null);
+    }
+    
+    public class ViewManager : MonoBehaviour, IViewManager
     {
         [SerializeField] private GameObject menuViewPrefab;
         [SerializeField] private GameObject startViewPrefab;
         [SerializeField] private GameObject playingViewPrefab;
+        [SerializeField] private GameObject winViewPrefab;
         [SerializeField] private GameObject gameOverViewPrefab;
         
         private IEnumerable<IView> _views;
@@ -23,9 +29,10 @@ namespace Framework.Views
             var menu = container.InstantiatePrefab(menuViewPrefab, transform).GetComponent<MenuView>();
             var start = container.InstantiatePrefab(startViewPrefab, transform).GetComponent<StartView>();
             var playing = container.InstantiatePrefab(playingViewPrefab, transform).GetComponent<PlayingView>();
+            var win = container.InstantiatePrefab(winViewPrefab, transform).GetComponent<WinView>();
             var gameOver = container.InstantiatePrefab(gameOverViewPrefab, transform).GetComponent<GameOverView>();
             
-            _views = new List<IView>{menu, start, playing, gameOver};
+            _views = new List<IView>{menu, start, playing, win, gameOver};
             
             foreach (var view in _views)
             {

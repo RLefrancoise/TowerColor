@@ -43,7 +43,7 @@ namespace TowerColor.Views
                 }
             }
         }
-        
+
         [Inject]
         public void Construct(
             ITouchSurface touchSurface, 
@@ -161,6 +161,9 @@ namespace TowerColor.Views
                 }
             }
             
+            //Check if we won
+            CheckWinCondition();
+            
             //Decrease remaining balls
             RemainingBalls--;
 
@@ -168,6 +171,21 @@ namespace TowerColor.Views
             if (RemainingBalls > 0)
             {
                 SpawnNewBall();
+            }
+        }
+
+        /// <summary>
+        /// Check if we won the game
+        /// </summary>
+        private void CheckWinCondition()
+        {
+            if (_gameManager.Tower.CurrentStep < _gameData.minimumTowerStepToWin)
+            {
+                var lastStepDestroyRatio = _gameManager.Tower.Steps[0].DestroyedRatio;
+                if (lastStepDestroyRatio >= _gameData.destroyRatioOfBottomTowerToWin)
+                {
+                    _gameManager.ChangeState(GameState.Win);
+                }
             }
         }
         

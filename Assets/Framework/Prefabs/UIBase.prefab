@@ -117,5 +117,7 @@ MonoBehaviour:
     type: 3}
   playingViewPrefab: {fileID: 1025647305178818133, guid: 04442a24ef87c7543b7353002cb93c23,
     type: 3}
+  winViewPrefab: {fileID: 8469866927976765421, guid: 813cffbd1ec3dc245bed1a90aee0406b,
+    type: 3}
   gameOverViewPrefab: {fileID: 8469866927976765421, guid: 6b89f0eb9b43bf64d9192cf3df9855b8,
     type: 3}

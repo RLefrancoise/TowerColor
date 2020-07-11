@@ -37,7 +37,9 @@
             </e>
             <e p="Views" t="Include">
               <e p="Default" t="Include">
+                <e p="DefaultGameOverView.cs" t="Include" />
                 <e p="DefaultMenuView.cs" t="Include" />
+                <e p="DefaultWinView.cs" t="Include" />
               </e>
               <e p="GameOverView.cs" t="Include" />
               <e p="Installers" t="Include">
@@ -49,6 +51,7 @@
               <e p="StartView.cs" t="Include" />
               <e p="View.cs" t="Include" />
               <e p="ViewManager.cs" t="Include" />
+              <e p="WinView.cs" t="Include" />
             </e>
           </e>
         </e>

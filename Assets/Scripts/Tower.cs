@@ -14,17 +14,17 @@ namespace TowerColor
         #region Fields
         
         private GameData _gameData;
-        [ShowNonSerializedField] private int _currentStep;
-        
         [SerializeField] private List<TowerStep> steps;
         
         #endregion
 
         #region Properties
         
+        [ShowNativeProperty] public int CurrentStep { get; private set; }
+
         public ReadOnlyCollection<TowerStep> Steps => steps.AsReadOnly();
 
-        public Transform CurrentSubTowerFocusPoint => GetStepFocusPoint(_currentStep);
+        public Transform CurrentSubTowerFocusPoint => GetStepFocusPoint(CurrentStep);
 
         /// <summary>
         /// List of available colors in the tower
@@ -91,11 +91,6 @@ namespace TowerColor
             if(step < 0 || step >= steps.Count) throw new Exception($"Invalid step {step}");
 
             //Deactivate all steps
-            /*foreach (var s in steps)
-            {
-                s.ActivateStep(false);
-            }*/
-
             for (var i = 0; i <= step - _gameData.maxActiveSteps; ++i)
             {
                 if (i < 0) break;
@@ -109,7 +104,7 @@ namespace TowerColor
                 steps[step - i].ActivateStep(true);
             }
 
-            _currentStep = step;
+            CurrentStep = step;
             CurrentStepChanged?.Invoke(step);
         }
 

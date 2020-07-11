@@ -162,7 +162,22 @@ namespace TowerColor
         [BoxGroup("Difficulty Settings")]
         [Tooltip("The number of balls by level")]
         public AnimationCurve numberOfBallsByLevel;
-        
+
+        /// <summary>
+        /// The minimum step the tower must be currently to win
+        /// </summary>
+        [BoxGroup("Difficulty Settings")]
+        [Tooltip("The minimum step the tower must be currently to win")]
+        public int minimumTowerStepToWin = 3;
+
+        /// <summary>
+        /// The minimum ratio of destroyed bricks in the last step to be able to win
+        /// </summary>
+        [BoxGroup("Difficulty Settings")]
+        [Tooltip("The minimum ratio of destroyed bricks in the last step to be able to win")]
+        [Range(0f, 1f)]
+        public float destroyRatioOfBottomTowerToWin = 0.5f;
+
         #endregion
     }
 }
