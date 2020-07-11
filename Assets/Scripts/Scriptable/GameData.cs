@@ -199,6 +199,13 @@ namespace TowerColor
         [Range(0f, 1f)]
         public float destroyRatioOfBottomTowerToWin = 0.5f;
 
+        /// <summary>
+        /// Color change message prefab
+        /// </summary>
+        [BoxGroup("Popping Messages")]
+        [Tooltip("Color change message prefab")]
+        public GameObject colorChangeMessage;
+
         #endregion
     }
 }

@@ -35,10 +35,20 @@
               </e>
               <e p="LevelManager.cs" t="Include" />
             </e>
+            <e p="UI" t="Include">
+              <e p="Installers" t="Include">
+                <e p="PoppingMessageWithAnimatorInstaller.cs" t="Include" />
+              </e>
+              <e p="IPoppingMessage.cs" t="Include" />
+              <e p="PoppingMessageBase.cs" t="Include" />
+              <e p="PoppingMessageFactories.cs" t="Include" />
+              <e p="PoppingMessageWithAnimator.cs" t="Include" />
+            </e>
             <e p="Views" t="Include">
               <e p="Default" t="Include">
                 <e p="DefaultGameOverView.cs" t="Include" />
                 <e p="DefaultMenuView.cs" t="Include" />
+                <e p="DefaultPlayingView.cs" t="Include" />
                 <e p="DefaultWinView.cs" t="Include" />
               </e>
               <e p="GameOverView.cs" t="Include" />
@@ -1011,6 +1021,9 @@
           <e p="TowerSpawner.cs" t="Include" />
           <e p="TowerStep.cs" t="Include" />
           <e p="TweenExtensions.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="RainbowText.cs" t="Include" />
+          </e>
           <e p="Views" t="Include">
             <e p="Installers" t="Include">
               <e p="TowerColorPlayingViewInstaller.cs" t="Include" />

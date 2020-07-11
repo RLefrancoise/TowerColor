@@ -2,7 +2,8 @@ using System.Linq;
 using Cinemachine;
 using DG.Tweening;
 using Framework.Game;
-using Framework.Views;
+using Framework.UI;
+using Framework.Views.Default;
 using NaughtyAttributes;
 using TowerColor.Views.Installers;
 using UniRx.Async;
@@ -12,7 +13,7 @@ using Zenject;
 namespace TowerColor.Views
 {
     [RequireComponent(typeof(TowerColorPlayingViewInstaller))]
-    public class TowerColorPlayingView : PlayingView
+    public class TowerColorPlayingView : DefaultPlayingView
     {
         private int _remainingBalls;
 
@@ -28,6 +29,9 @@ namespace TowerColor.Views
         
         private Ball _ball;
         private GameObject _playerCameraFocusPoint;
+
+        private PoppingMessageFactory _poppingMessageFactory;
+        [ShowNonSerializedField] private Transform _colorChangeMessageAnchor;
 
         /// <summary>
         /// Remaining balls to fire before game over
@@ -61,7 +65,9 @@ namespace TowerColor.Views
             [Inject(Id = "GameCamera")] CinemachineVirtualCamera playerGameCamera,
             [Inject(Id = "LookAroundTowerCamera")] CinemachineVirtualCamera lookAroundTowerCamera,
             GameManager gameManager,
-            GameData gameData)
+            GameData gameData,
+            PoppingMessageFactory poppingMessageFactory,
+            [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor)
         {
             _touchSurface = touchSurface;
             _ballSpawner = ballSpawner;
@@ -72,6 +78,9 @@ namespace TowerColor.Views
             
             _gameManager = gameManager;
             _gameData = gameData;
+
+            _poppingMessageFactory = poppingMessageFactory;
+            _colorChangeMessageAnchor = colorChangeMessageAnchor;
         }
 
         protected override void OnShow()
@@ -157,6 +166,14 @@ namespace TowerColor.Views
 
             //Reset balls counter
             BallsFiredSinceLastColorChange = 0;
+            
+            //Show color change message and wait until it disappears
+            var colorChangeMessage = _poppingMessageFactory.Create(_gameData.colorChangeMessage);
+            colorChangeMessage.AttachTo(_colorChangeMessageAnchor);
+            
+            var popOver = false;
+            colorChangeMessage.PopOver += () => popOver = true;
+            await UniTask.WaitUntil(() => popOver);
             
             //Shuffle tower colors
             await _gameManager.Tower.ShuffleColors(true, true, false);
