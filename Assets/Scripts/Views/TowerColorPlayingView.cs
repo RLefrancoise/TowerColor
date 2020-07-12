@@ -1,6 +1,8 @@
 using System.Linq;
 using Cinemachine;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Framework.Game;
 using Framework.UI;
 using Framework.Views.Default;
@@ -24,6 +26,7 @@ namespace TowerColor.Views
         private Camera _playerCamera;
         private CinemachineVirtualCamera _playerGameCamera;
         private CinemachineVirtualCamera _lookAroundTowerCamera;
+        private TweenerCore<Vector3, Vector3, VectorOptions> _movePlayerGameCameraTween;
         
         private GameManager _gameManager;
         private GameData _gameData;
@@ -96,7 +99,7 @@ namespace TowerColor.Views
             _ballGainedMessageAnchor = ballGainedMessageAnchor;
         }
 
-        protected override void OnShow()
+        protected override async void OnShow()
         {
             base.OnShow();
             
@@ -120,7 +123,7 @@ namespace TowerColor.Views
             _gameManager.Tower.CurrentStepChanged += OnTowerCurrentStepChanged;
             
             //Set tower current step to the top one
-            _gameManager.Tower.SetCurrentStep(_gameManager.Tower.Steps.Count - 1);
+            await _gameManager.Tower.SetCurrentStep(_gameManager.Tower.Steps.Count - 1, false, true);
             
             //Get number of balls for this level
             RemainingBalls = (int) _gameManager.LevelManager.GetCurveValue(_gameData.numberOfBallsByLevel);
@@ -378,11 +381,15 @@ namespace TowerColor.Views
             _playerCameraFocusPoint.transform.position = _gameManager.Tower.CurrentSubTowerFocusPoint.position;
             
             //Update game camera focus point
+            _movePlayerGameCameraTween?.Kill();
+            
             var newPosition = new Vector3(
                 _playerGameCamera.transform.position.x, 
                 _playerCameraFocusPoint.transform.position.y + _gameData.cameraHeightOffsetFromTower, 
                 _playerGameCamera.transform.position.z);
-            _playerGameCamera.transform.DOMove(newPosition, _gameData.goToStepCameraMovementDuration);
+            
+            _movePlayerGameCameraTween = _playerGameCamera.transform.DOMove(newPosition, _gameData.goToStepCameraMovementDuration);
+            _movePlayerGameCameraTween.onComplete += () => _movePlayerGameCameraTween = null;
             _playerGameCamera.LookAt = _playerCameraFocusPoint.transform;
         }
         

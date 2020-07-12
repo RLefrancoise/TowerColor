@@ -21,8 +21,8 @@ namespace TowerColor
         public ReadOnlyCollection<Brick> Bricks => bricks.AsReadOnly();
 
         public float Height => bricks[0].Height;
-        
-        [ShowNativeProperty] public bool IsActivated { get; private set; }
+
+        [ShowNativeProperty] public bool IsActivated { get; private set; } = true;
 
         [ShowNativeProperty] public bool IsFullyDestroyed { get; private set; }
 

@@ -90,11 +90,12 @@ namespace TowerColor
         /// Brick velocity
         /// </summary>
         public Vector3 Velocity => rigidBody.velocity;
-        
+
         /// <summary>
         /// Is the brick activated ?
         /// </summary>
-        public bool IsActivated { get; private set; }
+        [ShowNativeProperty]
+        public bool IsActivated { get; private set; } = true;
         
         /// <summary>
         /// Enable of disable physics
@@ -186,8 +187,6 @@ namespace TowerColor
         
         public void SetActivated(bool activated)
         {
-            if(!IsStillInPlace) return;
-            
             IsActivated = activated;
             
             if (activated)
@@ -197,6 +196,12 @@ namespace TowerColor
             }
             else
             {
+                if (HasFellOnPlatform || IsInWater)
+                {
+                    Debug.LogFormat("Brick {0} has fell on platform or is in water, cannot change activate state", name);
+                    return;
+                } 
+                
                 renderer.sharedMaterial = _gameData.inactiveBrickColor;
                 rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }

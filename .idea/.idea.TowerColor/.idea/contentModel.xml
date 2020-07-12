@@ -4,8 +4,49 @@
     <e p="C:\Users\super\.Rider2019.1\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\super\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_TowerColor.2057256343.00" t="ExcludeRecursive" />
     <e p="G:\Documents\Travail\Unity\TowerColor" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="_MK" t="Include">
+          <e p="MKToonFree" t="Include">
+            <e p="Editor" t="Include">
+              <e p="MKToonFreeEditor.cs" t="Include" />
+            </e>
+            <e p="Shader" t="Include">
+              <e p="Inc" t="Include">
+                <e p="Common" t="Include">
+                  <e p="MKToonDef.cginc" t="Include" />
+                  <e p="MKToonInc.cginc" t="Include" />
+                  <e p="MKToonLight.cginc" t="Include" />
+                  <e p="MKToonV.cginc" t="Include" />
+                </e>
+                <e p="Forward" t="Include">
+                  <e p="MKToonForward.cginc" t="Include" />
+                  <e p="MKToonForwardAddSetup.cginc" t="Include" />
+                  <e p="MKToonForwardBaseSetup.cginc" t="Include" />
+                  <e p="MKToonForwardIO.cginc" t="Include" />
+                </e>
+                <e p="Outline" t="Include">
+                  <e p="MKToonOutlineOnlyBase.cginc" t="Include" />
+                  <e p="MKToonOutlineOnlyIO.cginc" t="Include" />
+                  <e p="MKToonOutlineOnlySetup.cginc" t="Include" />
+                </e>
+                <e p="ShadowCaster" t="Include">
+                  <e p="MKToonShadowCaster.cginc" t="Include" />
+                  <e p="MKToonShadowCasterIO.cginc" t="Include" />
+                  <e p="MKToonShadowCasterSetup.cginc" t="Include" />
+                </e>
+                <e p="Surface" t="Include">
+                  <e p="MKToonSurface.cginc" t="Include" />
+                  <e p="MKToonSurfaceIO.cginc" t="Include" />
+                </e>
+              </e>
+              <e p="MKToonFree.shader" t="Include" />
+              <e p="MKToonFreeMobile.shader" t="Include" />
+              <e p="MKToonFreeOutlineOnly.shader" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Demigiant" t="Include">
           <e p="DOTween" t="Include">
             <e p="Modules" t="Include">
@@ -62,6 +103,61 @@
               <e p="View.cs" t="Include" />
               <e p="ViewManager.cs" t="Include" />
               <e p="WinView.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="JMO Assets" t="Include">
+          <e p="Toony Colors" t="Include">
+            <e p="!ToonyColors Readme.txt" t="Include" />
+            <e p="Demo 2.0" t="Include">
+              <e p="TCF_Demo.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="TCF_MaterialInspector.cs" t="Include" />
+            </e>
+            <e p="Shaders 2.0" t="Include">
+              <e p="Regular.shader" t="Include" />
+              <e p="Rim Alpha.shader" t="Include" />
+              <e p="Rim Lighting.shader" t="Include" />
+              <e p="Rim Outline.shader" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="MobileDepthWater" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="AnimationStarter.cs" t="Include" />
+            <e p="CameraDepthSlider.cs" t="Include" />
+            <e p="CameraRotator.cs" t="Include" />
+            <e p="FPSCounter.cs" t="Include" />
+            <e p="FPSUI.cs" t="Include" />
+            <e p="TouchRotator.cs" t="Include" />
+            <e p="Water" t="Include">
+              <e p="WaterArea.cs" t="Include" />
+              <e p="WaterMaterialSwitcher.cs" t="Include" />
+              <e p="WaterPropertyBlockSetter.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="WaterOpaque" t="Include">
+              <e p="Depth" t="Include">
+                <e p="DiffuseColorDepthWater.shader" t="Include" />
+                <e p="DiffuseDepthWater.shader" t="Include" />
+              </e>
+              <e p="DiffuseWaterOpaque.shader" t="Include" />
+              <e p="Height" t="Include">
+                <e p="DiffuseColorHeightWater.shader" t="Include" />
+                <e p="DiffuseHeightWater.shader" t="Include" />
+              </e>
+            </e>
+            <e p="WaterTwoSide" t="Include">
+              <e p="Depth" t="Include">
+                <e p="DiffuseColorDepthWaterTwoSide.shader" t="Include" />
+                <e p="DiffuseDepthWaterTwoSide.shader" t="Include" />
+              </e>
+              <e p="Height" t="Include">
+                <e p="DiffuseColorHeightWaterTwoSide.shader" t="Include" />
+                <e p="DiffuseHeightWaterTwoSide.shader" t="Include" />
+              </e>
             </e>
           </e>
         </e>
@@ -1045,6 +1141,9 @@
             <e p="TowerColorStartView.cs" t="Include" />
           </e>
           <e p="WaterGround.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="ToonShader.shader" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

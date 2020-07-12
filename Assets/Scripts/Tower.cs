@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -95,11 +94,12 @@ namespace TowerColor
         {
             foreach (var step in steps)
             {
-                step.EnablePhysics(enable);
+                if(step.IsActivated)
+                    step.EnablePhysics(enable);
             }
         }
 
-        public void SetCurrentStep(int step)
+        public async UniTask SetCurrentStep(int step, bool waitBetweenSteps = true, bool force = false)
         {
             if(step < 0 || step >= steps.Count) throw new Exception($"Invalid step {step}");
 
@@ -107,14 +107,22 @@ namespace TowerColor
             for (var i = 0; i <= step - _gameData.maxActiveSteps; ++i)
             {
                 if (i < 0) break;
-                steps[i].ActivateStep(false);
+                if (force || steps[i].IsActivated)
+                {
+                    steps[i].ActivateStep(false);
+                    if(waitBetweenSteps) await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+                }
             }
             
             //Activate step and all steps below it until reached max active steps
             for (var i = 0; i < _gameData.maxActiveSteps; ++i)
             {
                 if (step - i < 0) break;
-                steps[step - i].ActivateStep(true);
+                if (force || !steps[step - i].IsActivated)
+                {
+                    steps[step - i].ActivateStep(true);
+                    if(waitBetweenSteps) await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+                }
             }
 
             CurrentStep = step;
@@ -223,13 +231,13 @@ namespace TowerColor
         /// <summary>
         /// When step is fully destroyed, update new current step
         /// </summary>
-        private void OnStepFullyDestroyed()
+        private async void OnStepFullyDestroyed()
         {
             for (var i = steps.Count - 1; i >= 0; --i)
             {
                 if (steps[i].IsFullyDestroyed) continue;
                 
-                SetCurrentStep(i);
+                await SetCurrentStep(i);
                 break;
             }
         }
