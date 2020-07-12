@@ -72,8 +72,6 @@ namespace TowerColor
             //If we are dragging, no touch event, we don't want conflicts, drag has more priority than touch
             if(_isDragging) return;
             
-            Debug.Log("Touch");
-            
             var input = eventData.currentInputModule.input;
 
             if (input.touchSupported)
@@ -89,8 +87,6 @@ namespace TowerColor
         
         private void OnBeginDrag(BaseEventData eventData)
         {
-            Debug.Log("Begin drag");
-
             _isDragging = true;
             
             var input = eventData.currentInputModule.input;
@@ -126,8 +122,6 @@ namespace TowerColor
 
         private void OnEndDrag(BaseEventData eventData)
         {
-            Debug.Log("End drag");
-
             _isDragging = false;
         }
     }

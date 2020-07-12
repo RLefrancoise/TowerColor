@@ -1,24 +1,23 @@
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using TMPro;
 using UnityEngine;
 
-namespace TowerColor.UI
+namespace TowerColor
 {
-    [RequireComponent(typeof(TMP_Text))]
-    public class RainbowText : RainbowEffect
+    [RequireComponent(typeof(Renderer))]
+    public class RendererRainbowEffect : RainbowEffect
     {
-        [SerializeField] private TMP_Text text;
-
+        [SerializeField] private new Renderer renderer; 
+        
         protected override void ApplyColor(Color c)
         {
-            text.color = c;
+            renderer.material.color = c;
         }
 
         protected override TweenerCore<Color, Color, ColorOptions> LerpColor(Color endColor, float duration)
         {
-            return text.DOColor(endColor, duration);
+            return renderer.material.DOColor(endColor, duration);
         }
     }
 }

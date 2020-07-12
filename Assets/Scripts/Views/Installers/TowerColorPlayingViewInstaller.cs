@@ -38,6 +38,10 @@ namespace TowerColor.Views.Installers
             Container.BindFactory<Object, IPoppingMessage, PoppingMessageFactory>()
                 .FromFactory<PrefabFactory<IPoppingMessage>>();
             
+            //Brick destroy effect
+            Container.BindFactory<GameObject, BrickDestroyEffect, BrickDestroyEffect.Factory>()
+                .FromFactory<PrefabFactory<BrickDestroyEffect>>();
+
             //Color change message anchor
             Container.Bind<Transform>().WithId("ColorChangeMessageAnchor").FromInstance(colorChangeMessageAnchor);
         }

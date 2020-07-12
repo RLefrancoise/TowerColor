@@ -206,12 +206,44 @@ namespace TowerColor
         [Range(0f, 1f)]
         public float destroyRatioOfBottomTowerToWin = 0.5f;
 
+        #endregion
+        
         /// <summary>
         /// Color change message prefab
         /// </summary>
         [BoxGroup("Popping Messages")]
         [Tooltip("Color change message prefab")]
         public GameObject colorChangeMessage;
+
+        #region Bonuses
+        
+        /// <summary>
+        /// Ball bonus
+        /// </summary>
+        [BoxGroup("Bonuses")]
+        [Tooltip("Ball bonus")]
+        public GameObject ballBonus;
+
+        /// <summary>
+        /// Number of ball bonuses by level
+        /// </summary>
+        [BoxGroup("Bonuses")]
+        [Tooltip("Number of ball bonuses by level")]
+        public AnimationCurve ballBonusesCount;
+
+        [Serializable]
+        public class BallBonusSpawnData
+        {
+            public int value;
+            public float distance;
+        }
+
+        /// <summary>
+        /// Ball bonuses spawn data
+        /// </summary>
+        [BoxGroup("Bonuses")]
+        [Tooltip("Ball bonuses spawn data")]
+        public List<BallBonusSpawnData> ballBonusesSpawnData;
 
         #endregion
     }

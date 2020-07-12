@@ -120,3 +120,36 @@ MonoBehaviour:
   destroyRatioOfBottomTowerToWin: 0.5
   colorChangeMessage: {fileID: 4578649834058761015, guid: 69b778747e0e5ab408ba458c1417c198,
     type: 3}
+  ballBonus: {fileID: 2324995682245757401, guid: 87a93a30da8bb0f4680011ae76640acf,
+    type: 3}
+  ballBonusesCount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ballBonusesSpawnData:
+  - value: 1
+    distance: 6
+  - value: 2
+    distance: 8
+  - value: 3
+    distance: 10
