@@ -5,6 +5,7 @@ using Framework.Game;
 using Framework.UI;
 using Framework.Views.Default;
 using NaughtyAttributes;
+using TowerColor.UI;
 using TowerColor.Views.Installers;
 using UniRx.Async;
 using UnityEngine;
@@ -32,9 +33,11 @@ namespace TowerColor.Views
         private GameObject _playerCameraFocusPoint;
 
         private PoppingMessageFactory _poppingMessageFactory;
+        private BallGainedMessage.Factory _ballGainedMessageFactory;
         
-        [ShowNonSerializedField] private Transform _colorChangeMessageAnchor;
+        private Transform _colorChangeMessageAnchor;
         private Transform _feedbackMessageAnchor;
+        private Transform _ballGainedMessageAnchor;
 
         /// <summary>
         /// Remaining balls to fire before game over
@@ -70,8 +73,10 @@ namespace TowerColor.Views
             GameManager gameManager,
             GameData gameData,
             PoppingMessageFactory poppingMessageFactory,
+            BallGainedMessage.Factory ballGainedMessageFactory,
             [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor,
-            [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor)
+            [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor,
+            [Inject(Id = "BallGainedMessageAnchor")] Transform ballGainedMessageAnchor)
         {
             _touchSurface = touchSurface;
             _ballSpawner = ballSpawner;
@@ -84,9 +89,11 @@ namespace TowerColor.Views
             _gameData = gameData;
             
             _poppingMessageFactory = poppingMessageFactory;
+            _ballGainedMessageFactory = ballGainedMessageFactory;
             
             _colorChangeMessageAnchor = colorChangeMessageAnchor;
             _feedbackMessageAnchor = feedbackMessageAnchor;
+            _ballGainedMessageAnchor = ballGainedMessageAnchor;
         }
 
         protected override void OnShow()
@@ -225,23 +232,38 @@ namespace TowerColor.Views
                 }
 
                 GameObject feedbackMessage = null;
+                int ballGained = 0;
                 
                 //Show message feedback according to number of bricks destroyed
                 if (bricksToDestroy.Count >= _gameData.insaneMessageBricksCount)
                 {
                     feedbackMessage = _gameData.insaneMessage;
+                    ballGained = _gameData.ballsGainedAfterInsaneMessage;
                 }
                 else if (bricksToDestroy.Count >= _gameData.greatMessageBricksCount)
                 {
                     feedbackMessage = _gameData.greatMessage;
+                    ballGained = _gameData.ballsGainedAfterGreatMessage;
                 }
                 else if (bricksToDestroy.Count >= _gameData.goodMessageBricksCount)
                 {
                     feedbackMessage = _gameData.goodMessage;
+                    ballGained = _gameData.ballsGainedAfterGoodMessage;
                 }
 
                 if (feedbackMessage)
                 {
+                    //If we gained one or more balls, display it
+                    if (ballGained > 0)
+                    {
+                        var ballGainedMessage = _ballGainedMessageFactory.Create(_gameData.ballGainedMessage);
+                        ballGainedMessage.BallsGained = ballGained;
+                        ballGainedMessage.AttachTo(_ballGainedMessageAnchor);
+
+                        //And add balls to remaining balls
+                        RemainingBalls += ballGained;
+                    }
+                    
                     var feedback = _poppingMessageFactory.Create(feedbackMessage);
                     feedback.AttachTo(_feedbackMessageAnchor);
                     

@@ -9,4 +9,11 @@ namespace Framework.UI
     public class PoppingMessageFactory : PlaceholderFactory<Object, IPoppingMessage>
     {
     }
+    
+    /// <summary>
+    /// Popping messsage factory by using a prefab
+    /// </summary>
+    /// <typeparam name="TMessage">Message type</typeparam>
+    public class PoppingMessageFactory<TMessage> : PlaceholderFactory<Object, TMessage> where TMessage : IPoppingMessage
+    {}
 }

@@ -1,3 +1,4 @@
+using Framework.UI;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,10 @@ namespace Framework.Game.Installers
         {
             Container.BindInterfacesAndSelfTo<TGameManager>().FromInstance(gameManager).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelManager>().FromInstance(levelManager).AsSingle();
+            
+            //Popping message factory
+            Container.BindFactory<Object, IPoppingMessage, PoppingMessageFactory>()
+                .FromFactory<PrefabFactory<IPoppingMessage>>();
         }
     }
 }

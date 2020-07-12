@@ -128,6 +128,8 @@ MonoBehaviour:
     type: 3}
   insaneMessage: {fileID: 4578649834058761015, guid: d73ed07205ddbd54daa2a29f4ee49baa,
     type: 3}
+  ballGainedMessage: {fileID: 4578649834058761015, guid: 27b522ccc8a480c4486d918c9be7b3e8,
+    type: 3}
   goodMessageBricksCount: 4
   greatMessageBricksCount: 8
   insaneMessageBricksCount: 15
@@ -168,3 +170,6 @@ MonoBehaviour:
   - value: 3
     distance: 12
     speedRange: {x: -30, y: 30}
+  ballsGainedAfterGoodMessage: 0
+  ballsGainedAfterGreatMessage: 1
+  ballsGainedAfterInsaneMessage: 2

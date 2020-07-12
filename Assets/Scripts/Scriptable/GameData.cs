@@ -250,13 +250,32 @@ namespace TowerColor
         [Tooltip("Insane message prefab")]
         public GameObject insaneMessage;
 
+        /// <summary>
+        /// Ball gained message prefab
+        /// </summary>
         [BoxGroup("Popping Messages")]
+        [Tooltip("Ball gained message prefab")]
+        public GameObject ballGainedMessage;
+
+        /// <summary>
+        /// Bricks to break to display good message
+        /// </summary>
+        [BoxGroup("Popping Messages")]
+        [Tooltip("Bricks to break to display good message")]
         public int goodMessageBricksCount = 4;
         
+        /// <summary>
+        /// Bricks to break to display great message
+        /// </summary>
         [BoxGroup("Popping Messages")]
+        [Tooltip("Bricks to break to display great message")]
         public int greatMessageBricksCount = 8;
         
+        /// <summary>
+        /// Bricks to break to display insane message
+        /// </summary>
         [BoxGroup("Popping Messages")]
+        [Tooltip("Bricks to break to display insane message")]
         public int insaneMessageBricksCount = 15;
 
         #region Bonuses
@@ -296,6 +315,15 @@ namespace TowerColor
         [BoxGroup("Bonuses")]
         [Tooltip("Ball bonuses spawn data")]
         public List<BallBonusSpawnData> ballBonusesSpawnData;
+
+        [BoxGroup("Bonuses")]
+        public int ballsGainedAfterGoodMessage = 0;
+        
+        [BoxGroup("Bonuses")]
+        public int ballsGainedAfterGreatMessage = 1;
+        
+        [BoxGroup("Bonuses")]
+        public int ballsGainedAfterInsaneMessage = 2;
 
         #endregion
     }

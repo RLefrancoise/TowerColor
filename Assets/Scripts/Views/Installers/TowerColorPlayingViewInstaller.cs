@@ -1,5 +1,6 @@
 using Framework.UI;
 using Framework.Views.Installers;
+using TowerColor.UI;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ namespace TowerColor.Views.Installers
     {
         [SerializeField] private Transform colorChangeMessageAnchor;
         [SerializeField] private Transform feedbackMessageAnchor;
+        [SerializeField] private Transform ballGainedMessageAnchor;
         [SerializeField] private GameObject ballSpawnerPrefab;
         [SerializeField] private TouchSurface touchSurface;
 
@@ -35,15 +37,18 @@ namespace TowerColor.Views.Installers
             //Touch surface
             Container.BindInterfacesAndSelfTo<TouchSurface>().FromInstance(touchSurface).AsSingle();
 
-            //Popping message factory
-            Container.BindFactory<Object, IPoppingMessage, PoppingMessageFactory>()
-                .FromFactory<PrefabFactory<IPoppingMessage>>();
-
             //Color change message anchor
             Container.Bind<Transform>().WithId("ColorChangeMessageAnchor").FromInstance(colorChangeMessageAnchor);
             
             //Feedback message anchor
             Container.Bind<Transform>().WithId("FeedbackMessageAnchor").FromInstance(feedbackMessageAnchor);
+            
+            //Ball gained message anchor
+            Container.Bind<Transform>().WithId("BallGainedMessageAnchor").FromInstance(ballGainedMessageAnchor);
+            
+            //Balls gained message
+            Container.BindFactory<Object, BallGainedMessage, BallGainedMessage.Factory>()
+                .FromFactory<PrefabFactory<BallGainedMessage>>();
         }
     }
 }
