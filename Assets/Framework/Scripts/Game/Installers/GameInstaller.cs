@@ -16,7 +16,7 @@ namespace Framework.Game.Installers
             
             //Popping message factory
             Container.BindFactory<Object, IPoppingMessage, PoppingMessageFactory>()
-                .FromFactory<PrefabFactory<IPoppingMessage>>();
+                .FromFactory<PrefabFactory<IPoppingMessage>>().NonLazy();
         }
     }
 }

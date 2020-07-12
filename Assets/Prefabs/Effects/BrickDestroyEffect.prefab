@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8113022683193954642}
   - component: {fileID: 3396485796677042352}
   - component: {fileID: 3176239100461527216}
-  - component: {fileID: 1434868186085516021}
-  - component: {fileID: 8236883442774207009}
   - component: {fileID: 7926565508441930375}
   - component: {fileID: 156511926097815314}
   m_Layer: 0
@@ -61,36 +59,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
---- !u!114 &1434868186085516021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5993850295756445722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802371e2b7404893a9c110e77b37dffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8236883442774207009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5993850295756445722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 1434868186085516021}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
 --- !u!198 &7926565508441930375
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4804,7 +4772,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
-  m_EnableGPUInstancing: 1
+  m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304

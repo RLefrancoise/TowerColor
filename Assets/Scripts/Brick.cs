@@ -115,7 +115,7 @@ namespace TowerColor
             get
             {
                 return collider.bounds.Contains(_startPosition) 
-                       && Vector3.Dot(transform.up, Vector3.up) >= 0.95f;
+                       /*&& Vector3.Dot(transform.up, Vector3.up) >= 0.95f*/;
             }
         }
         
@@ -172,7 +172,7 @@ namespace TowerColor
         public void Break()
         {
             //Spawn effect
-            var effect = _destroyEffectFactory.Create(_gameData.brickDestroyEffect);
+            var effect = Instantiate(_gameData.brickDestroyEffect).GetComponent<BrickDestroyEffect>();
             
             //Set color
             effect.Color = Color;

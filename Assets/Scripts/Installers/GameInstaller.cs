@@ -28,7 +28,7 @@ namespace TowerColor
             
             //Brick destroy effect
             Container.BindFactory<GameObject, BrickDestroyEffect, BrickDestroyEffect.Factory>()
-                .FromFactory<PrefabFactory<BrickDestroyEffect>>();
+                .FromFactory<PrefabFactory<BrickDestroyEffect>>().NonLazy();
         }
     }
 }

@@ -193,8 +193,6 @@ namespace TowerColor.Views
         /// </summary>
         private async UniTask TriggerColorChange()
         {
-            Debug.Log("Color change");
-
             //Reset balls counter
             BallsFiredSinceLastColorChange = 0;
             
@@ -221,8 +219,6 @@ namespace TowerColor.Views
                 //Destroy ball
                 Destroy(_ball.gameObject);
                 _ball = null;
-                
-                Debug.LogFormat("Ball has touched brick {0}", brick.name);
                 
                 //Destroy brick
                 var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
@@ -325,8 +321,6 @@ namespace TowerColor.Views
         /// <param name="touchPosition">Screen position</param>
         private void OnPlayerTouch(Vector2 touchPosition)
         {
-            Debug.LogFormat("Player touched screen at position {0}", touchPosition);
-
             if (!_ball)
             {
                 Debug.Log("Player has no ball, don't fire");

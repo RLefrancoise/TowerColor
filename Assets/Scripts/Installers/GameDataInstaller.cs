@@ -19,8 +19,8 @@ namespace TowerColor
         
         public override void InstallBindings()
         {
-            Container.Bind<GameData>().FromInstance(gameData).AsSingle();
-            Container.Bind<ISaveData>().FromInstance(new SaveData()).AsSingle();
+            Container.Bind<GameData>().FromInstance(gameData).AsSingle().NonLazy();
+            Container.Bind<ISaveData>().FromInstance(new SaveData()).AsSingle().NonLazy();
         }
     }
 }

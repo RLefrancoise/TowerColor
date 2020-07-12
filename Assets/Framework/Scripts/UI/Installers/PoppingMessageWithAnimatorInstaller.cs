@@ -7,7 +7,7 @@ namespace Framework.UI.Installers
     {
         public override void InstallBindings()
         {
-            Container.Bind<Animator>().FromComponentOnRoot();
+            Container.Bind<Animator>().FromComponentOnRoot().NonLazy();
         }
     }
 }

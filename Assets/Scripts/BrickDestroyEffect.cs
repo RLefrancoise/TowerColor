@@ -1,14 +1,11 @@
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
 namespace TowerColor
 {
     [RequireComponent(typeof(ParticleSystem))]
-    [RequireComponent(typeof(BrickDestroyEffectInstaller))]
     public class BrickDestroyEffect : MonoBehaviour
     {
-        private GameData _gameData;
         private Color _color;
         private ParticleSystemRenderer _renderer;
         
@@ -18,17 +15,15 @@ namespace TowerColor
             set
             {
                 _color = value;
-                _renderer.material = _gameData.brickColors.First(b => b.color == value);
+                _renderer.material.color = value; 
             }
         }
 
-        [Inject]
-        public void Construct(GameData gameData, ParticleSystemRenderer r)
+        private void Awake()
         {
-            _gameData = gameData;
-            _renderer = r;
+            _renderer = GetComponent<ParticleSystemRenderer>();
         }
-        
+
         public class Factory : PlaceholderFactory<GameObject, BrickDestroyEffect>
         {}
     }
