@@ -7,7 +7,7 @@ namespace TowerColor
     {
         public override void InstallBindings()
         {
-            Container.Bind<TriggerEvents>().FromComponentInChildren();
+            Container.Bind<CollisionEvents>().FromComponentInChildren();
             Container.Bind<TMP_Text>().FromComponentInChildren();
         }
     }

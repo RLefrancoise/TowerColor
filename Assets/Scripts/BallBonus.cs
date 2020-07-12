@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityQuery;
 using Zenject;
 
 namespace TowerColor
@@ -8,7 +9,8 @@ namespace TowerColor
     [RequireComponent(typeof(BallBonusInstaller))]
     public class BallBonus : MonoBehaviour
     {
-        private TriggerEvents _triggerEvents;
+        private GameManager _gameManager;
+        private CollisionEvents _triggerEvents;
         private TMP_Text _valueText;
         private int _value;
 
@@ -22,21 +24,35 @@ namespace TowerColor
             }
         }
         
+        public float RotateSpeed { get; set; }
+        
         public event Action<int> BonusAcquired;
 
-        [Inject]
-        public void Construct(TriggerEvents triggerEvents, TMP_Text valueText)
+        private void Update()
         {
+            transform.RotateAround(_gameManager.Tower.transform.position, _gameManager.Tower.transform.up, RotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation((transform.position - _gameManager.Tower.transform.position.WithY(transform.position.y)).normalized);
+        }
+        
+        [Inject]
+        public void Construct(GameManager gameManager, CollisionEvents triggerEvents, TMP_Text valueText)
+        {
+            _gameManager = gameManager;
             _triggerEvents = triggerEvents;
-            _triggerEvents.TriggerEntered += TriggerEntered;
+            _triggerEvents.CollisionEnter += CollisionEntered;
 
             _valueText = valueText;
         }
 
-        private void TriggerEntered(Collider other)
+        private void CollisionEntered(Collision other)
         {
+            Debug.LogFormat("{0} touched ball bonus {1}", other.collider.name, name);
+            
             if (other.gameObject.CompareTag("Brick"))
             {
+                var brick = other.collider.GetComponentInParent<Brick>();
+                brick.Break();
+
                 BonusAcquired?.Invoke(Value);
             }
         }
@@ -48,8 +64,8 @@ namespace TowerColor
     
     public class BallBonusFactory : IFactory<BallBonus>
     {
-        private DiContainer _container;
-        private GameData _gameData;
+        private readonly DiContainer _container;
+        private readonly GameData _gameData;
             
         public BallBonusFactory(DiContainer container, GameData gameData)
         {

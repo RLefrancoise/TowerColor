@@ -40,7 +40,9 @@ MonoBehaviour:
   ballPositionOnScreen: {x: 0.5, y: 0.2}
   ballDistanceFromCamera: 4
   goToStepCameraMovementDuration: 0.5
-  cameraDistanceFromTower: 15
+  cameraDistanceFromTower: 25
+  cameraHeightOffsetFromTower: 0
+  cameraFocusCenteredOnSteps: 1
   waterGroundForce: 8
   waterGroundMaxBrickSpeed: 2
   waterGroundMaxBrickDistance: 25
@@ -120,6 +122,16 @@ MonoBehaviour:
   destroyRatioOfBottomTowerToWin: 0.5
   colorChangeMessage: {fileID: 4578649834058761015, guid: 69b778747e0e5ab408ba458c1417c198,
     type: 3}
+  goodMessage: {fileID: 4578649834058761015, guid: f3f621ac9d40f2f48bd5de32fce47f8f,
+    type: 3}
+  greatMessage: {fileID: 4578649834058761015, guid: 011cb3299411d754db909d66a489ef3e,
+    type: 3}
+  insaneMessage: {fileID: 4578649834058761015, guid: d73ed07205ddbd54daa2a29f4ee49baa,
+    type: 3}
+  goodMessageBricksCount: 4
+  greatMessageBricksCount: 8
+  insaneMessageBricksCount: 15
+  useBallBonus: 0
   ballBonus: {fileID: 2324995682245757401, guid: 87a93a30da8bb0f4680011ae76640acf,
     type: 3}
   ballBonusesCount:
@@ -148,8 +160,11 @@ MonoBehaviour:
     m_RotationOrder: 4
   ballBonusesSpawnData:
   - value: 1
-    distance: 6
+    distance: 4
+    speedRange: {x: -30, y: 30}
   - value: 2
     distance: 8
+    speedRange: {x: -30, y: 30}
   - value: 3
-    distance: 10
+    distance: 12
+    speedRange: {x: -30, y: 30}

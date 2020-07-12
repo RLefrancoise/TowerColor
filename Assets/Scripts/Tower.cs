@@ -72,9 +72,18 @@ namespace TowerColor
 
         public Transform GetStepFocusPoint(int step)
         {
-            var focusedStep = step - _gameData.maxActiveSteps / 2 + 1;
-            if (focusedStep < 5) focusedStep = 5; // To avoid being too low and having the ball in the water, etc...
-            return steps[focusedStep >= 0 ? focusedStep : 0].transform;
+            if (_gameData.cameraFocusCenteredOnSteps)
+            {
+                var focusedStep = step - _gameData.maxActiveSteps / 2 + 1;
+                if (focusedStep < 5) focusedStep = 5; // To avoid being too low and having the ball in the water, etc...
+                return steps[focusedStep >= 0 ? focusedStep : 0].transform;
+            }
+            else
+            {
+                var focusedStep = step - _gameData.maxActiveSteps;
+                if (focusedStep < 0) focusedStep = 0;
+                return steps[focusedStep].transform;
+            }
         }
         
         public void AddStep(TowerStep step)

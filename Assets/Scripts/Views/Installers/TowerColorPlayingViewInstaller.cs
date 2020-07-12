@@ -8,6 +8,7 @@ namespace TowerColor.Views.Installers
     public class TowerColorPlayingViewInstaller : ViewInstaller
     {
         [SerializeField] private Transform colorChangeMessageAnchor;
+        [SerializeField] private Transform feedbackMessageAnchor;
         [SerializeField] private GameObject ballSpawnerPrefab;
         [SerializeField] private TouchSurface touchSurface;
 
@@ -37,13 +38,12 @@ namespace TowerColor.Views.Installers
             //Popping message factory
             Container.BindFactory<Object, IPoppingMessage, PoppingMessageFactory>()
                 .FromFactory<PrefabFactory<IPoppingMessage>>();
-            
-            //Brick destroy effect
-            Container.BindFactory<GameObject, BrickDestroyEffect, BrickDestroyEffect.Factory>()
-                .FromFactory<PrefabFactory<BrickDestroyEffect>>();
 
             //Color change message anchor
             Container.Bind<Transform>().WithId("ColorChangeMessageAnchor").FromInstance(colorChangeMessageAnchor);
+            
+            //Feedback message anchor
+            Container.Bind<Transform>().WithId("FeedbackMessageAnchor").FromInstance(feedbackMessageAnchor);
         }
     }
 }

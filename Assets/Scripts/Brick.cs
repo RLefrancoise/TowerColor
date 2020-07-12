@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using NaughtyAttributes;
-using UniRx;
 using UniRx.Async;
 using UnityEngine;
 using Zenject;
@@ -27,6 +25,8 @@ namespace TowerColor
         private Color _color;
 
         private TweenerCore<Color, Color, ColorOptions> _lerpColorTween;
+        
+        private BrickDestroyEffect.Factory _destroyEffectFactory;
         
         /// <summary>
         /// Game data
@@ -163,9 +163,25 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData)
+        public void Construct(GameData gameData, BrickDestroyEffect.Factory destroyEffectFactory)
         {
             _gameData = gameData;
+            _destroyEffectFactory = destroyEffectFactory;
+        }
+
+        public void Break()
+        {
+            //Spawn effect
+            var effect = _destroyEffectFactory.Create(_gameData.brickDestroyEffect);
+            
+            //Set color
+            effect.Color = Color;
+
+            //Place
+            effect.transform.position = Center;
+            effect.transform.rotation = transform.rotation;
+                    
+            Destroy(gameObject);
         }
         
         public void SetActivated(bool activated)

@@ -152,6 +152,20 @@ namespace TowerColor
         [BoxGroup("Game Camera")]
         [Tooltip("Distance of the camera from the tower")]
         public float cameraDistanceFromTower = 15f;
+
+        /// <summary>
+        /// Height offset of camera
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("Height offset of camera")]
+        public float cameraHeightOffsetFromTower = 2f;
+
+        /// <summary>
+        /// Should the focus of the camera being centered on the current tower steps ?
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("Should the focus of the camera being centered on the current tower steps ?")]
+        public bool cameraFocusCenteredOnSteps = true;
         
         #endregion
 
@@ -215,7 +229,44 @@ namespace TowerColor
         [Tooltip("Color change message prefab")]
         public GameObject colorChangeMessage;
 
+        /// <summary>
+        /// Good message prefab
+        /// </summary>
+        [BoxGroup("Popping Messages")]
+        [Tooltip("Good message prefab")]
+        public GameObject goodMessage;
+        
+        /// <summary>
+        /// Great message prefab
+        /// </summary>
+        [BoxGroup("Popping Messages")]
+        [Tooltip("Great message prefab")]
+        public GameObject greatMessage;
+        
+        /// <summary>
+        /// Insane message prefab
+        /// </summary>
+        [BoxGroup("Popping Messages")]
+        [Tooltip("Insane message prefab")]
+        public GameObject insaneMessage;
+
+        [BoxGroup("Popping Messages")]
+        public int goodMessageBricksCount = 4;
+        
+        [BoxGroup("Popping Messages")]
+        public int greatMessageBricksCount = 8;
+        
+        [BoxGroup("Popping Messages")]
+        public int insaneMessageBricksCount = 15;
+
         #region Bonuses
+
+        /// <summary>
+        /// Use ball bonus ?
+        /// </summary>
+        [BoxGroup("Bonuses")]
+        [Tooltip("Use ball bonus ?")]
+        public bool useBallBonus = false;
         
         /// <summary>
         /// Ball bonus
@@ -236,6 +287,7 @@ namespace TowerColor
         {
             public int value;
             public float distance;
+            public Vector2 speedRange;
         }
 
         /// <summary>

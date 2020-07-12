@@ -1,6 +1,7 @@
 using Cinemachine;
 using Framework.Game.Installers;
 using UnityEngine;
+using Zenject;
 
 namespace TowerColor
 {
@@ -24,6 +25,10 @@ namespace TowerColor
             
             //Ball bonus
             Container.BindFactory<BallBonus, BallBonus.Factory>().FromFactory<BallBonusFactory>();
+            
+            //Brick destroy effect
+            Container.BindFactory<GameObject, BrickDestroyEffect, BrickDestroyEffect.Factory>()
+                .FromFactory<PrefabFactory<BrickDestroyEffect>>();
         }
     }
 }

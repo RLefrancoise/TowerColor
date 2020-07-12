@@ -1070,6 +1070,20 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="UnityQuery" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Collections.cs" t="Include" />
+            <e p="Colors.cs" t="Include" />
+            <e p="Components.cs" t="Include" />
+            <e p="GameObjects.cs" t="Include" />
+            <e p="Hierarchy.cs" t="Include" />
+            <e p="Log.cs" t="Include" />
+            <e p="Picking.cs" t="Include" />
+            <e p="Query.cs" t="Include" />
+            <e p="QueryExtensions.cs" t="Include" />
+            <e p="Swizzling.cs" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="DOTween.Modules.csproj" t="IncludeRecursive" />
       <e p="NaughtyAttributes.Core.csproj" t="IncludeRecursive" />

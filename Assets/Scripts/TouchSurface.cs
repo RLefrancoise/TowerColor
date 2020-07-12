@@ -98,8 +98,8 @@ namespace TowerColor
             }
             else
             {
-                _mouseBeginDragPosition = input.mousePosition;
-                DragBegun?.Invoke(new Vector2(input.mousePosition.x / Screen.width, input.mousePosition.y / Screen.height));
+                _mouseBeginDragPosition = new Vector2(input.mousePosition.x / Screen.width, input.mousePosition.y / Screen.height);
+                DragBegun?.Invoke(_mouseBeginDragPosition);
             }
         }
 
@@ -114,9 +114,7 @@ namespace TowerColor
             }
             else
             {
-                Dragging?.Invoke(new Vector2(
-                    (input.mousePosition.x - _mouseBeginDragPosition.x) / Screen.width, 
-                    (input.mousePosition.y - _mouseBeginDragPosition.y) / Screen.height));
+                Dragging?.Invoke(new Vector2(input.mousePosition.x / Screen.width, input.mousePosition.y / Screen.height) - _mouseBeginDragPosition);
             }
         }
 

@@ -44,7 +44,10 @@ namespace TowerColor.Views
             _followPoint.transform.SetParent(transform);
 
             _followPoint.transform.position = _focusPoint.transform.position;
-            _followPoint.transform.Translate(-_gameManager.Tower.transform.forward * _gameData.cameraDistanceFromTower, Space.World);
+            _followPoint.transform.Translate(
+                -_gameManager.Tower.transform.forward * _gameData.cameraDistanceFromTower 
+                + _gameManager.Tower.transform.up * _gameData.cameraHeightOffsetFromTower, 
+                Space.World);
             
             //Camera is following follow point
             _lookAroundTowerCamera.Follow = _followPoint.transform;
@@ -74,7 +77,7 @@ namespace TowerColor.Views
         {
             _followPoint.transform.position = new Vector3(
                 _followPoint.transform.position.x, 
-                _focusPoint.transform.position.y, 
+                _focusPoint.transform.position.y + _gameData.cameraHeightOffsetFromTower, 
                 _followPoint.transform.position.z);
             
             _followPoint.transform.RotateAround(

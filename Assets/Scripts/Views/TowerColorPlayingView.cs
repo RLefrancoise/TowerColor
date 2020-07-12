@@ -28,12 +28,13 @@ namespace TowerColor.Views
         private GameData _gameData;
         
         private Ball _ball;
-        private BrickDestroyEffect.Factory _destroyEffectFactory;
         
         private GameObject _playerCameraFocusPoint;
 
         private PoppingMessageFactory _poppingMessageFactory;
+        
         [ShowNonSerializedField] private Transform _colorChangeMessageAnchor;
+        private Transform _feedbackMessageAnchor;
 
         /// <summary>
         /// Remaining balls to fire before game over
@@ -68,9 +69,9 @@ namespace TowerColor.Views
             [Inject(Id = "LookAroundTowerCamera")] CinemachineVirtualCamera lookAroundTowerCamera,
             GameManager gameManager,
             GameData gameData,
-            BrickDestroyEffect.Factory destroyEffectFactory,
             PoppingMessageFactory poppingMessageFactory,
-            [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor)
+            [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor,
+            [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor)
         {
             _touchSurface = touchSurface;
             _ballSpawner = ballSpawner;
@@ -81,11 +82,11 @@ namespace TowerColor.Views
             
             _gameManager = gameManager;
             _gameData = gameData;
-
-            _destroyEffectFactory = destroyEffectFactory;
             
             _poppingMessageFactory = poppingMessageFactory;
+            
             _colorChangeMessageAnchor = colorChangeMessageAnchor;
+            _feedbackMessageAnchor = feedbackMessageAnchor;
         }
 
         protected override void OnShow()
@@ -101,6 +102,12 @@ namespace TowerColor.Views
             //Listen touch surface
             _touchSurface.Touched += OnPlayerTouch;
             _touchSurface.Dragging += OnPlayerDrag;
+            
+            //Listen ball bonuses
+            foreach (var bonus in _gameManager.BallBonuses)
+            {
+                bonus.BonusAcquired += OnBallBonusAcquired;
+            }
             
             //Listen tower step changed
             _gameManager.Tower.CurrentStepChanged += OnTowerCurrentStepChanged;
@@ -131,6 +138,12 @@ namespace TowerColor.Views
             //Stop listen touch surface
             _touchSurface.Touched -= OnPlayerTouch;
             _touchSurface.Dragging -= OnPlayerDrag;
+            
+            //Stop listen ball bonuses
+            foreach (var bonus in _gameManager.BallBonuses)
+            {
+                bonus.BonusAcquired -= OnBallBonusAcquired;
+            }
             
             //Stop listen tower state changed
             if(_gameManager.Tower) _gameManager.Tower.CurrentStepChanged -= OnTowerCurrentStepChanged;
@@ -208,17 +221,34 @@ namespace TowerColor.Views
                 var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
                 foreach (var b in bricksToDestroy)
                 {
-                    //Spawn effect
-                    var effect = _destroyEffectFactory.Create(_gameData.brickDestroyEffect);
-            
-                    //Set color
-                    effect.Color = b.Color;
+                    b.Break();
+                }
 
-                    //Place
-                    effect.transform.position = b.Center;
-                    effect.transform.rotation = transform.rotation;
+                GameObject feedbackMessage = null;
+                
+                //Show message feedback according to number of bricks destroyed
+                if (bricksToDestroy.Count >= _gameData.insaneMessageBricksCount)
+                {
+                    feedbackMessage = _gameData.insaneMessage;
+                }
+                else if (bricksToDestroy.Count >= _gameData.greatMessageBricksCount)
+                {
+                    feedbackMessage = _gameData.greatMessage;
+                }
+                else if (bricksToDestroy.Count >= _gameData.goodMessageBricksCount)
+                {
+                    feedbackMessage = _gameData.goodMessage;
+                }
+
+                if (feedbackMessage)
+                {
+                    var feedback = _poppingMessageFactory.Create(feedbackMessage);
+                    feedback.AttachTo(_feedbackMessageAnchor);
                     
-                    Destroy(b.gameObject);
+                    //Wait until end of message
+                    var popOver = false;
+                    feedback.PopOver += () => popOver = true;
+                    await UniTask.WaitUntil(() => popOver);
                 }
             }
             
@@ -334,10 +364,19 @@ namespace TowerColor.Views
             //Update game camera focus point
             var newPosition = new Vector3(
                 _playerGameCamera.transform.position.x, 
-                _playerCameraFocusPoint.transform.position.y, 
+                _playerCameraFocusPoint.transform.position.y + _gameData.cameraHeightOffsetFromTower, 
                 _playerGameCamera.transform.position.z);
             _playerGameCamera.transform.DOMove(newPosition, _gameData.goToStepCameraMovementDuration);
             _playerGameCamera.LookAt = _playerCameraFocusPoint.transform;
+        }
+        
+        /// <summary>
+        /// When a ball bonus is acquired
+        /// </summary>
+        /// <param name="value"></param>
+        private void OnBallBonusAcquired(int value)
+        {
+            Debug.LogFormat("Ball bonus : +{0}", value);
         }
     }
 }
