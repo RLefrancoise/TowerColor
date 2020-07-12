@@ -27,7 +27,7 @@ namespace TowerColor
         private Color _color;
 
         private TweenerCore<Color, Color, ColorOptions> _lerpColorTween;
-
+        
         /// <summary>
         /// Game data
         /// </summary>
@@ -143,7 +143,6 @@ namespace TowerColor
         private void OnDestroy()
         {
             _lerpColorTween?.Kill();
-
             Destroyed?.Invoke(this);
         }
 
@@ -171,7 +170,7 @@ namespace TowerColor
         
         public void SetActivated(bool activated)
         {
-            if(!IsStillInPlace || Velocity.sqrMagnitude >= _gameData.targetableBrickSquaredVelocityThreshold) return;
+            if(!IsStillInPlace) return;
             
             IsActivated = activated;
             

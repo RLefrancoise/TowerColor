@@ -100,7 +100,7 @@ namespace TowerColor
                 if (i < 0) break;
                 steps[i].ActivateStep(false);
             }
-
+            
             //Activate step and all steps below it until reached max active steps
             for (var i = 0; i < _gameData.maxActiveSteps; ++i)
             {

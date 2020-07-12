@@ -20,6 +20,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 08e08d0d7b144d4408d0a95b9e4aa16c, type: 2}
   inactiveBrickColor: {fileID: 2100000, guid: b971d3cd9064f184e8b049f74366845b, type: 2}
   targetableBrickSquaredVelocityThreshold: 0.1
+  brickDestroyEffect: {fileID: 5993850295756445722, guid: 144ce2477f295d24695fb94d9a464c8f,
+    type: 3}
   towerPrefab: {fileID: 8510273500793931410, guid: 828567c9596f1194a9334889418d65f5,
     type: 3}
   towers:

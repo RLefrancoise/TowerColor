@@ -28,6 +28,13 @@ namespace TowerColor
         [BoxGroup("Brick")]
         [Tooltip("Squared velocity threshold to consider a brick targetable")]
         public float targetableBrickSquaredVelocityThreshold = 0.04f;
+
+        /// <summary>
+        /// Brick effect when destroyed by a ball
+        /// </summary>
+        [BoxGroup("Brick")]
+        [Tooltip("Brick effect when destroyed by a ball")]
+        public GameObject brickDestroyEffect;
         
         #region Tower
         

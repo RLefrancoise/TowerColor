@@ -28,6 +28,8 @@ namespace TowerColor.Views
         private GameData _gameData;
         
         private Ball _ball;
+        private BrickDestroyEffect.Factory _destroyEffectFactory;
+        
         private GameObject _playerCameraFocusPoint;
 
         private PoppingMessageFactory _poppingMessageFactory;
@@ -66,6 +68,7 @@ namespace TowerColor.Views
             [Inject(Id = "LookAroundTowerCamera")] CinemachineVirtualCamera lookAroundTowerCamera,
             GameManager gameManager,
             GameData gameData,
+            BrickDestroyEffect.Factory destroyEffectFactory,
             PoppingMessageFactory poppingMessageFactory,
             [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor)
         {
@@ -79,6 +82,8 @@ namespace TowerColor.Views
             _gameManager = gameManager;
             _gameData = gameData;
 
+            _destroyEffectFactory = destroyEffectFactory;
+            
             _poppingMessageFactory = poppingMessageFactory;
             _colorChangeMessageAnchor = colorChangeMessageAnchor;
         }
@@ -203,6 +208,16 @@ namespace TowerColor.Views
                 var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
                 foreach (var b in bricksToDestroy)
                 {
+                    //Spawn effect
+                    var effect = _destroyEffectFactory.Create(_gameData.brickDestroyEffect);
+            
+                    //Set color
+                    effect.Color = b.Color;
+
+                    //Place
+                    effect.transform.position = b.Center;
+                    effect.transform.rotation = transform.rotation;
+                    
                     Destroy(b.gameObject);
                 }
             }

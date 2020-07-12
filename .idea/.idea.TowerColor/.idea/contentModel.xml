@@ -999,10 +999,13 @@
           <e p="Ball.cs" t="Include" />
           <e p="BallSpawner.cs" t="Include" />
           <e p="Brick.cs" t="Include" />
+          <e p="BrickDestroyEffect.cs" t="Include" />
           <e p="CollisionEvents.cs" t="Include" />
           <e p="CylinderBrick.cs" t="Include" />
+          <e p="DestroyAfterDelay.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="Installers" t="Include">
+            <e p="BrickDestroyEffectInstaller.cs" t="Include" />
             <e p="BrickInstaller.cs" t="Include" />
             <e p="GameDataInstaller.cs" t="Include" />
             <e p="GameInstaller.cs" t="Include" />

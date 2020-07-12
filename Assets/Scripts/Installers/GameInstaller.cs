@@ -1,6 +1,7 @@
 using Cinemachine;
 using Framework.Game.Installers;
 using UnityEngine;
+using Zenject;
 
 namespace TowerColor
 {
@@ -21,6 +22,9 @@ namespace TowerColor
                 .FromInstance(playerGameCamera).AsCached();
             Container.Bind<CinemachineVirtualCamera>().WithId("LookAroundTowerCamera")
                 .FromInstance(lookAroundTowerCamera).AsCached();
+            
+            Container.BindFactory<GameObject, BrickDestroyEffect, BrickDestroyEffect.Factory>()
+                .FromFactory<PrefabFactory<BrickDestroyEffect>>();
         }
     }
 }
