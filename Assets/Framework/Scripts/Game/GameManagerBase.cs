@@ -26,7 +26,7 @@ namespace Framework.Game
 
         protected virtual void Start()
         {
-            ChangeState(GameState.Menu);
+            ChangeState(GameState.Menu, true);
         }
         
         [Inject]
@@ -36,12 +36,12 @@ namespace Framework.Game
             LevelManager = levelManager;
         }
 
-        public void ChangeState(GameState state)
+        public void ChangeState(GameState state, bool skipFade = false)
         {
             _viewManager.ShowGameState(state, () =>
             {
                 CurrentState = state;
-            });
+            }, skipFade);
         }
         
         protected virtual void OnStateChanged(GameState state) {}

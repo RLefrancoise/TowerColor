@@ -32,6 +32,7 @@ namespace TowerColor.Views
         
         private GameManager _gameManager;
         private GameData _gameData;
+        private IHapticManager _hapticManager;
         
         private Ball _ball;
         
@@ -77,6 +78,7 @@ namespace TowerColor.Views
             [Inject(Id = "LookAroundTowerCamera")] CinemachineVirtualCamera lookAroundTowerCamera,
             GameManager gameManager,
             GameData gameData,
+            IHapticManager hapticManager,
             PoppingMessageFactory poppingMessageFactory,
             BallGainedMessage.Factory ballGainedMessageFactory,
             [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor,
@@ -92,6 +94,7 @@ namespace TowerColor.Views
             
             _gameManager = gameManager;
             _gameData = gameData;
+            _hapticManager = hapticManager;
             
             _poppingMessageFactory = poppingMessageFactory;
             _ballGainedMessageFactory = ballGainedMessageFactory;
@@ -394,6 +397,9 @@ namespace TowerColor.Views
             _movePlayerGameCameraTween = _playerGameCamera.transform.DOMove(newPosition, _gameData.goToStepCameraMovementDuration);
             _movePlayerGameCameraTween.onComplete += () => _movePlayerGameCameraTween = null;
             _playerGameCamera.LookAt = _playerCameraFocusPoint.transform;
+            
+            //Vibrate
+            _hapticManager.Vibrate();
         }
         
         /// <summary>

@@ -62,6 +62,9 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="Fonts" t="Include">
+          <e p="More Info.txt" t="Include" />
+        </e>
         <e p="Framework" t="Include">
           <e p="Scripts" t="Include">
             <e p="Data" t="Include">
@@ -90,6 +93,7 @@
                 <e p="DefaultGameOverView.cs" t="Include" />
                 <e p="DefaultMenuView.cs" t="Include" />
                 <e p="DefaultPlayingView.cs" t="Include" />
+                <e p="DefaultStartView.cs" t="Include" />
                 <e p="DefaultWinView.cs" t="Include" />
               </e>
               <e p="GameOverView.cs" t="Include" />
@@ -1084,6 +1088,8 @@
           <e p="CylinderBrick.cs" t="Include" />
           <e p="DestroyAfterDelay.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="HapticManager.cs" t="Include" />
+          <e p="IHapticManager.cs" t="Include" />
           <e p="Installers" t="Include">
             <e p="BallBonusInstaller.cs" t="Include" />
             <e p="BrickDestroyEffectInstaller.cs" t="Include" />
@@ -1091,6 +1097,10 @@
             <e p="GameDataInstaller.cs" t="Include" />
             <e p="GameInstaller.cs" t="Include" />
           </e>
+          <e p="IOptionsManager.cs" t="Include" />
+          <e p="ISoundPlayer.cs" t="Include" />
+          <e p="OptionsData.cs" t="Include" />
+          <e p="OptionsManager.cs" t="Include" />
           <e p="RainbowEffect.cs" t="Include" />
           <e p="RendererRainbowEffect.cs" t="Include" />
           <e p="RotateAroundPoint.cs" t="Include" />
@@ -1100,6 +1110,7 @@
             <e p="GameData.cs" t="Include" />
             <e p="TowerProfile.cs" t="Include" />
           </e>
+          <e p="SoundPlayer.cs" t="Include" />
           <e p="Tools" t="Include">
             <e p="TowerCreator.cs" t="Include" />
           </e>
@@ -1114,12 +1125,17 @@
             <e p="Installers" t="Include">
               <e p="BallGainedMessageInstaller.cs" t="Include" />
             </e>
+            <e p="OptionToggle.cs" t="Include" />
             <e p="RainbowText.cs" t="Include" />
+            <e p="ToggleHaptics.cs" t="Include" />
+            <e p="ToggleSound.cs" t="Include" />
           </e>
           <e p="Views" t="Include">
             <e p="Installers" t="Include">
+              <e p="TowerColorMenuViewInstaller.cs" t="Include" />
               <e p="TowerColorPlayingViewInstaller.cs" t="Include" />
             </e>
+            <e p="TowerColorMenuView.cs" t="Include" />
             <e p="TowerColorPlayingView.cs" t="Include" />
             <e p="TowerColorStartView.cs" t="Include" />
           </e>

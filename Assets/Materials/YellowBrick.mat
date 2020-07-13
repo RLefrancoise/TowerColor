@@ -77,7 +77,7 @@ Material:
     - _MKEditorShowReflectionBehavior: 0
     - _MKEditorShowRenderBehavior: 0
     - _MKEditorShowRimBehavior: 1
-    - _MKEditorShowShadowBehavior: 0
+    - _MKEditorShowShadowBehavior: 1
     - _MKEditorShowSketchBehavior: 0
     - _MKEditorShowSpecularBehavior: 1
     - _MKEditorShowTranslucentBehavior: 0
@@ -101,7 +101,7 @@ Material:
     - _Color: {r: 0.9245283, g: 0.9245283, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
-    - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighlightColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.9254902, g: 0.9254902, b: 0, a: 1}
     - _SColor: {r: 0, g: 0, b: 0, a: 1}

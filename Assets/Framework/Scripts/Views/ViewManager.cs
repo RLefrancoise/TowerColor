@@ -9,7 +9,7 @@ namespace Framework.Views
 {
     public interface IViewManager
     {
-        void ShowGameState(GameState state, Action showOverCallback = null);
+        void ShowGameState(GameState state, Action showOverCallback = null, bool skipFade = false);
     }
     
     public class ViewManager : MonoBehaviour, IViewManager
@@ -40,20 +40,20 @@ namespace Framework.Views
             }
         }
 
-        public void ShowGameState(GameState state, Action showOverCallback = null)
+        public void ShowGameState(GameState state, Action showOverCallback = null, bool skipFade = false)
         {
             if (_currentView != null)
             {
-                _currentView.Hide(false, () =>
+                _currentView.Hide(skipFade, () =>
                 {
                     _currentView = _views.First(v => v.State == state);
-                    _currentView.Show(false, showOverCallback);
+                    _currentView.Show(skipFade, showOverCallback);
                 });
             }
             else
             {
                 _currentView = _views.First(v => v.State == state);
-                _currentView.Show(false, showOverCallback);
+                _currentView.Show(skipFade, showOverCallback);
             }
         }
     }

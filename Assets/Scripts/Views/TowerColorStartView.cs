@@ -2,12 +2,13 @@ using Cinemachine;
 using DG.Tweening;
 using Framework.Game;
 using Framework.Views;
+using Framework.Views.Default;
 using UnityEngine;
 using Zenject;
 
 namespace TowerColor.Views
 {
-    public class TowerColorStartView : StartView
+    public class TowerColorStartView : DefaultStartView
     {
         private GameManager _gameManager;
         private GameData _gameData;

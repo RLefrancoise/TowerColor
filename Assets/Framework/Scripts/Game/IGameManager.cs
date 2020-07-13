@@ -4,6 +4,6 @@ namespace Framework.Game
     {
         ILevelManager LevelManager { get; }
         GameState CurrentState { get; }
-        void ChangeState(GameState state);
+        void ChangeState(GameState state, bool skipFade = false);
     }
 }

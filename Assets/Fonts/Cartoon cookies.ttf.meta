@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: e6c59045319d7cb4e89ed135620a24ad
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cartoon cookies
+  fontNames:
+  - Cartoon cookies
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 13d64a17d56d85340835779fb8b4888b, type: 3}
+  - {fileID: 12800000, guid: 118e1b788d0390345ad090b2de09c34c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

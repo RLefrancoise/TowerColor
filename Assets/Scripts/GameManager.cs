@@ -44,8 +44,6 @@ namespace TowerColor
         
         protected override async void Start()
         {
-            base.Start();
-
             //Create tower
             Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
             Tower.EnablePhysics(false);
@@ -76,6 +74,8 @@ namespace TowerColor
                     BallBonuses.Add(bonus);
                 }
             }
+            
+            base.Start();
         }
         
         #endregion

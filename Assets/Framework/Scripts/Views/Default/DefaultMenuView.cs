@@ -30,7 +30,7 @@ namespace Framework.Views.Default
             playButton.onClick.AddListener(ClickOnPlay);
         }
 
-        private void ClickOnPlay()
+        protected virtual void ClickOnPlay()
         {
             _gameManager.ChangeState(GameState.Start);
         }

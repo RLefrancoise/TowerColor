@@ -25,8 +25,11 @@ namespace TowerColor
         private Color _color;
 
         private TweenerCore<Color, Color, ColorOptions> _lerpColorTween;
-        
-        private BrickDestroyEffect.Factory _destroyEffectFactory;
+
+        /// <summary>
+        /// Haptic manager
+        /// </summary>
+        private IHapticManager _hapticManager;
         
         /// <summary>
         /// Game data
@@ -164,14 +167,17 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData, BrickDestroyEffect.Factory destroyEffectFactory)
+        public void Construct(GameData gameData, IHapticManager hapticManager)
         {
             _gameData = gameData;
-            _destroyEffectFactory = destroyEffectFactory;
+            _hapticManager = hapticManager;
         }
 
         public void Break()
         {
+            //Vibrate
+            _hapticManager.Vibrate();
+            
             //Spawn effect
             var effect = Instantiate(_gameData.brickDestroyEffect).GetComponent<BrickDestroyEffect>();
             
