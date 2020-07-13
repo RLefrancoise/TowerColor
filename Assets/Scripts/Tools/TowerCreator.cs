@@ -17,7 +17,7 @@ namespace TowerColor
         /// <summary>
         /// Tower profile to use to generate the tower
         /// </summary>
-        [SerializeField] private TowerProfile profile;
+        public TowerProfile profile;
 
         [Button("Generate tower")]
         public Tower GenerateTower()

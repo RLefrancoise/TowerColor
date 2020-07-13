@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Framework.Game;
+using UniRx.Async;
 using UnityEngine;
 using Zenject;
 
@@ -50,7 +51,10 @@ namespace TowerColor
             DOTween.SetTweensCapacity(500,50);
             
             //Create tower
-            Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
+            Tower = _towerCreator.GenerateTower();
+            //Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
+            await UniTask.Yield();
+            Tower.InitializeState();
             Tower.EnablePhysics(false);
             await Tower.ShuffleColors();
 

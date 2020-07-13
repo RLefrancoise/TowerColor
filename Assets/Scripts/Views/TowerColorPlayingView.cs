@@ -106,6 +106,7 @@ namespace TowerColor.Views
             IHapticManager hapticManager,
             PoppingMessageFactory poppingMessageFactory,
             BallGainedMessage.Factory ballGainedMessageFactory,
+            FeverMessage.Factory feverMessageFactory,
             [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor,
             [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor,
             [Inject(Id = "BallGainedMessageAnchor")] Transform ballGainedMessageAnchor,
@@ -125,6 +126,7 @@ namespace TowerColor.Views
             
             _poppingMessageFactory = poppingMessageFactory;
             _ballGainedMessageFactory = ballGainedMessageFactory;
+            _feverMessageFactory = feverMessageFactory;
             
             _colorChangeMessageAnchor = colorChangeMessageAnchor;
             _feedbackMessageAnchor = feedbackMessageAnchor;
@@ -169,6 +171,7 @@ namespace TowerColor.Views
             //Listen fever gauge
             _feverGauge.MaxCapacity = _gameData.feverGaugeMaxCapacity;
             _feverGauge.CurrentCounter = 0;
+            _feverGauge.SetRainbow(false);
             _feverGauge.GaugeFilled += OnFeverGaugeFilled;
             
             //Start game
@@ -440,7 +443,7 @@ namespace TowerColor.Views
                 {
                     _rainbowBallsFired++;
                     //Reset Fever if rainbow ball count is reached
-                    if (_rainbowBallsFired > _gameData.feverRainbowBallsCount)
+                    if (_gameData.feverRainbowBallsCount - _rainbowBallsFired <= 0)
                     {
                         ResetFever();
                     }

@@ -90,6 +90,14 @@ namespace TowerColor
             steps.Add(step);
         }
 
+        public void InitializeState()
+        {
+            foreach (var step in steps)
+            {
+                step.InitializeState();
+            }
+        }
+        
         public void EnablePhysics(bool enable)
         {
             foreach (var step in steps)
@@ -109,7 +117,7 @@ namespace TowerColor
                 if (i < 0) break;
                 if (force || steps[i].IsActivated)
                 {
-                    steps[i].ActivateStep(false);
+                    steps[i].ActivateStep(false, force);
                     if(waitBetweenSteps) await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
             }
@@ -120,7 +128,7 @@ namespace TowerColor
                 if (step - i < 0) break;
                 if (force || !steps[step - i].IsActivated)
                 {
-                    steps[step - i].ActivateStep(true);
+                    steps[step - i].ActivateStep(true, force);
                     if(waitBetweenSteps) await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
             }

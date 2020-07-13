@@ -68,6 +68,14 @@ namespace TowerColor
                 FullyDestroyed?.Invoke();
             }
         }
+
+        public void InitializeState()
+        {
+            foreach (var brick in bricks)
+            {
+                brick.InitializeState();
+            }
+        }
         
         public void EnablePhysics(bool enable)
         {
@@ -77,7 +85,7 @@ namespace TowerColor
             }
         }
 
-        public void ActivateStep(bool activate)
+        public void ActivateStep(bool activate, bool force = false)
         {
             IsActivated = activate;
             

@@ -63,6 +63,7 @@ namespace TowerColor
         {
             rainbowEffect.enabled = enable;
             gauge.sprite = enable ? whiteGaugeForRainbow : _defaultGauge;
+            gauge.color = Color.white;
         }
 
         private void Refresh()

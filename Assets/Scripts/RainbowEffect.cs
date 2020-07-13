@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -13,17 +12,23 @@ namespace TowerColor
         private TweenerCore<Color, Color, ColorOptions> _colorTween;
 
         [SerializeField] private float speed = 1f;
-        
-        protected virtual void Start()
+
+        protected virtual void OnDestroy()
+        {
+            _colorTween?.Kill();
+        }
+
+        protected virtual void OnEnable()
         {
             _currentColor = 0;
             ApplyColor(rainbow[_currentColor]);
             NextColor();
         }
 
-        protected void OnDestroy()
+        protected virtual void OnDisable()
         {
             _colorTween?.Kill();
+            _colorTween = null;
         }
 
         protected virtual void NextColor()

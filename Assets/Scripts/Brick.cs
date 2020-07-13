@@ -4,6 +4,7 @@ using System.Linq;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using Framework.Game;
 using NaughtyAttributes;
 using UniRx.Async;
 using UnityEngine;
@@ -46,6 +47,11 @@ namespace TowerColor
 
         private TweenerCore<Color, Color, ColorOptions> _lerpColorTween;
 
+        /// <summary>
+        /// Game manager
+        /// </summary>
+        private GameManager _gameManager;
+        
         /// <summary>
         /// Haptic manager
         /// </summary>
@@ -169,11 +175,6 @@ namespace TowerColor
         
         #region MonoBehaviour
 
-        private void Start()
-        {
-            _startPosition = transform.position;
-        }
-
         private void OnDestroy()
         {
             _lerpColorTween?.Kill();
@@ -182,6 +183,8 @@ namespace TowerColor
 
         private void OnCollisionEnter(Collision other)
         {
+            if(_gameManager.CurrentState != GameState.Playing) return;
+            
             if (other.gameObject.CompareTag("Water"))
             {
                 IsInWater = true;
@@ -197,14 +200,20 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData, IHapticManager hapticManager, ISoundPlayer soundPlayer, AudioSource brickDestroyedSource)
+        public void Construct(GameData gameData, GameManager gameManager, IHapticManager hapticManager, ISoundPlayer soundPlayer, AudioSource brickDestroyedSource)
         {
             _gameData = gameData;
+            _gameManager = gameManager;
             _hapticManager = hapticManager;
             _soundPlayer = soundPlayer;
             _brickDestroyedSource = brickDestroyedSource;
         }
 
+        public void InitializeState()
+        {
+            _startPosition = transform.position;
+        }
+        
         public void Break()
         {
             //Vibrate
@@ -227,7 +236,7 @@ namespace TowerColor
             Destroy(gameObject);
         }
         
-        public void SetActivated(bool activated)
+        public void SetActivated(bool activated, bool force = false)
         {
             IsActivated = activated;
             
@@ -238,7 +247,7 @@ namespace TowerColor
             }
             else
             {
-                if (HasFellOnPlatform || IsInWater)
+                if (!force && (HasFellOnPlatform || IsInWater))
                 {
                     Debug.LogFormat("Brick {0} has fell on platform or is in water, cannot change activate state", name);
                     return;

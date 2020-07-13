@@ -1234,6 +1234,7 @@ MonoBehaviour:
   gameManager: {fileID: 86209166}
   levelManager: {fileID: 912590962}
   soundPlayer: {fileID: 1849906351}
+  towerCreator: {fileID: 1564269795}
   towerSpawner: {fileID: 196410761}
   playerCamera: {fileID: 1212285255}
   playerGameCamera: {fileID: 1192833990}
