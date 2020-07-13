@@ -77,6 +77,10 @@ namespace TowerColor.Views
             {
                 _gameManager.ChangeState(GameState.Win);
             }
+            else if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                _gameManager.ChangeState(GameState.GameOver);
+            }
         }
         
 #endif

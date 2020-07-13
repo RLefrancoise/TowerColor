@@ -162,6 +162,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2713076434990453943, guid: cf4821c1b5230f141bb0b621df53e486,
         type: 3}
+    - target: {fileID: 8061737339048659047, guid: 36df3acc639fe4c46bef1ace9f831c49,
+        type: 3}
+      propertyPath: gameOverViewPrefab
+      value: 
+      objectReference: {fileID: 2713076434990453943, guid: ef31d38857301e245b324f31faeaa4ed,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5821129987216828872, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}
     - {fileID: 30292374226946078, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}
