@@ -1138,6 +1138,7 @@
             <e p="TowerColorMenuView.cs" t="Include" />
             <e p="TowerColorPlayingView.cs" t="Include" />
             <e p="TowerColorStartView.cs" t="Include" />
+            <e p="TowerColorWinView.cs" t="Include" />
           </e>
           <e p="WaterGround.cs" t="Include" />
         </e>

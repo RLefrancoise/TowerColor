@@ -69,6 +69,18 @@ namespace TowerColor.Views
         /// </summary>
         private int BallsFiredSinceLastColorChange { get; set; }
 
+#if UNITY_EDITOR
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _gameManager.ChangeState(GameState.Win);
+            }
+        }
+        
+#endif
+        
         [Inject]
         public void Construct(
             ITouchSurface touchSurface, 

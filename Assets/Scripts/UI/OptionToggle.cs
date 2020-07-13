@@ -22,7 +22,7 @@ namespace TowerColor.UI
 
         protected virtual void Start()
         {
-            toggle.onValueChanged.AddListener(SetValue);
+            toggle.onValueChanged.AddListener(ListenToggle);
         }
 
         protected void OnDestroy()
@@ -33,5 +33,14 @@ namespace TowerColor.UI
         protected abstract void OnOptionsLoaded();
 
         protected abstract void SetValue(bool isOn);
+
+        private void ListenToggle(bool isOn)
+        {
+            SetValue(isOn);
+            if (!OptionsManager.SaveOptions())
+            {
+                Debug.LogError("Failed to save options");
+            }
+        }
     }
 }

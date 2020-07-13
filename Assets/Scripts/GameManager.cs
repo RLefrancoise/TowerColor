@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Framework.Game;
 using UnityEngine;
 using Zenject;
@@ -7,7 +8,7 @@ using Zenject;
 namespace TowerColor
 {
     /// <summary>
-    /// The game manager handles the logic of the game
+    /// The game manager
     /// </summary>
     public class GameManager : GameManagerBase
     {
@@ -44,6 +45,8 @@ namespace TowerColor
         
         protected override async void Start()
         {
+            DOTween.SetTweensCapacity(500,50);
+            
             //Create tower
             Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
             Tower.EnablePhysics(false);

@@ -17,6 +17,26 @@ namespace TowerColor
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Brick : MonoBehaviour
     {
+        private class BrickSortByDistance : IComparer<Brick>
+        {
+            private Brick _reference;
+
+            public BrickSortByDistance(Brick reference)
+            {
+                _reference = reference;
+            }
+            
+            public int Compare(Brick x, Brick y)
+            {
+                if (Vector3.Distance(_reference.transform.position, x.transform.position) <
+                    Vector3.Distance(_reference.transform.position, y.transform.position)) return -1;
+                if(Vector3.Distance(_reference.transform.position, x.transform.position) >
+                        Vector3.Distance(_reference.transform.position, y.transform.position)) return 1;
+
+                return 0;
+            }
+        }
+        
         #region Fields
         
         /// <summary>
@@ -237,6 +257,7 @@ namespace TowerColor
             if(forwardBrick) bricks.Add(forwardBrick);
             if(backBrick) bricks.Add(backBrick);
 
+            bricks.Sort(new BrickSortByDistance(this));
             return bricks;
         }
 

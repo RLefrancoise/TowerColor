@@ -166,6 +166,20 @@ namespace TowerColor
         [BoxGroup("Game Camera")]
         [Tooltip("Should the focus of the camera being centered on the current tower steps ?")]
         public bool cameraFocusCenteredOnSteps = true;
+
+        /// <summary>
+        /// The distance the camera is going when winning
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("The distance the camera is going when winning")]
+        public float cameraDistanceOnWin = 50f;
+
+        /// <summary>
+        /// Duration of the camera movement when winning
+        /// </summary>
+        [BoxGroup("Game Camera")]
+        [Tooltip("Duration of the camera movement when winning")]
+        public float cameraMoveDurationOnWin = 2f;
         
         #endregion
 
@@ -326,5 +340,18 @@ namespace TowerColor
         public int ballsGainedAfterInsaneMessage = 2;
 
         #endregion
+
+        /// <summary>
+        /// Win particle effect
+        /// </summary>
+        [BoxGroup("Win")]
+        [Tooltip("Win particle effect")]
+        public GameObject winEffect;
+
+        [BoxGroup("Win")]
+        public List<float> winEffectScalingSequence;
+
+        [BoxGroup("Win")]
+        public float winEffectTimeBetweenEach = 0.5f;
     }
 }

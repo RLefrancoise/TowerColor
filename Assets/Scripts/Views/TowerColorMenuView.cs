@@ -44,25 +44,8 @@ namespace TowerColor.Views
                     Debug.LogError("Failed to load options");
                 }
             }
-            
-            
         }
-
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-        private void OnApplicationPause(bool pauseStatus)
-        {
-            if (pauseStatus)
-            {
-                _optionsManager.SaveOptions();
-            }
-        }
-#else
-        private void OnApplicationQuit()
-        {
-            _optionsManager.SaveOptions();
-        }
-#endif
-
+        
         protected override void OnShow()
         {
             base.OnShow();

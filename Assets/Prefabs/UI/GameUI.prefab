@@ -156,6 +156,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5492390263726348742, guid: 439860f15de69104c9cb7eb806ad69c4,
         type: 3}
+    - target: {fileID: 8061737339048659047, guid: 36df3acc639fe4c46bef1ace9f831c49,
+        type: 3}
+      propertyPath: winViewPrefab
+      value: 
+      objectReference: {fileID: 2713076434990453943, guid: cf4821c1b5230f141bb0b621df53e486,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5821129987216828872, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}
     - {fileID: 30292374226946078, guid: 36df3acc639fe4c46bef1ace9f831c49, type: 3}

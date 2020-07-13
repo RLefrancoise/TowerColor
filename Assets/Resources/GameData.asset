@@ -43,6 +43,8 @@ MonoBehaviour:
   cameraDistanceFromTower: 25
   cameraHeightOffsetFromTower: 0
   cameraFocusCenteredOnSteps: 1
+  cameraDistanceOnWin: 50
+  cameraMoveDurationOnWin: 2
   waterGroundForce: 8
   waterGroundMaxBrickSpeed: 2
   waterGroundMaxBrickDistance: 25
@@ -173,3 +175,10 @@ MonoBehaviour:
   ballsGainedAfterGoodMessage: 0
   ballsGainedAfterGreatMessage: 1
   ballsGainedAfterInsaneMessage: 2
+  winEffect: {fileID: 2781605314127125366, guid: d8b09d92e394bea49a7c54727e8271be,
+    type: 3}
+  winEffectScalingSequence:
+  - 1
+  - 1.5
+  - 2
+  winEffectTimeBetweenEach: 0.5
