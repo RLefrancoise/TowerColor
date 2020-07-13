@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Cinemachine;
 using DG.Tweening;
@@ -12,6 +13,7 @@ using TowerColor.Views.Installers;
 using UniRx.Async;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TowerColor.Views
 {
@@ -228,6 +230,7 @@ namespace TowerColor.Views
                 foreach (var b in bricksToDestroy)
                 {
                     b.Break();
+                    await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
 
                 GameObject feedbackMessage = null;
