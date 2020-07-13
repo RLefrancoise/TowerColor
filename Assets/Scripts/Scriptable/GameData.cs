@@ -35,6 +35,13 @@ namespace TowerColor
         [BoxGroup("Brick")]
         [Tooltip("Brick effect when destroyed by a ball")]
         public GameObject brickDestroyEffect;
+
+        /// <summary>
+        /// Brick destroy sound
+        /// </summary>
+        [BoxGroup("Brick")]
+        [Tooltip("Brick destroy sound")]
+        public AudioClip brickDestroySound;
         
         #region Tower
         
@@ -353,5 +360,31 @@ namespace TowerColor
 
         [BoxGroup("Win")]
         public float winEffectTimeBetweenEach = 0.5f;
+
+        
+        [BoxGroup("Fever")]
+        public int feverGaugeMaxCapacity = 50;
+
+        [BoxGroup("Fever")]
+        public int feverGainByBrick = 1;
+        
+        [BoxGroup("Fever")]
+        public int feverGaugeGainWithGood = 2;
+        
+        [BoxGroup("Fever")]
+        public int feverGaugeGainWithGreat = 5;
+        
+        [BoxGroup("Fever")]
+        public int feverGaugeGainWithInsane = 10;
+
+        [BoxGroup("Fever")]
+        public GameObject feverMessage;
+
+        /// <summary>
+        /// Number of rainbow balls per fever
+        /// </summary>
+        [BoxGroup("Fever")]
+        [Tooltip("Number of rainbow balls per fever")]
+        public int feverRainbowBallsCount = 3;
     }
 }

@@ -1087,6 +1087,7 @@
           <e p="CollisionEvents.cs" t="Include" />
           <e p="CylinderBrick.cs" t="Include" />
           <e p="DestroyAfterDelay.cs" t="Include" />
+          <e p="FeverGauge.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HapticManager.cs" t="Include" />
           <e p="IHapticManager.cs" t="Include" />
@@ -1122,10 +1123,12 @@
           <e p="TweenExtensions.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="BallGainedMessage.cs" t="Include" />
+            <e p="FeverMessage.cs" t="Include" />
             <e p="Installers" t="Include">
               <e p="BallGainedMessageInstaller.cs" t="Include" />
             </e>
             <e p="OptionToggle.cs" t="Include" />
+            <e p="RainbowGraphic.cs" t="Include" />
             <e p="RainbowText.cs" t="Include" />
             <e p="ToggleHaptics.cs" t="Include" />
             <e p="ToggleSound.cs" t="Include" />

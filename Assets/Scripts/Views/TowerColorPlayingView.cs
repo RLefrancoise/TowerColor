@@ -40,11 +40,17 @@ namespace TowerColor.Views
 
         private PoppingMessageFactory _poppingMessageFactory;
         private BallGainedMessage.Factory _ballGainedMessageFactory;
+        private FeverMessage.Factory _feverMessageFactory;
         
         private Transform _colorChangeMessageAnchor;
         private Transform _feedbackMessageAnchor;
         private Transform _ballGainedMessageAnchor;
+        private Transform _feverMessageAnchor;
 
+        private FeverGauge _feverGauge;
+        private bool _isInFever;
+        private int _rainbowBallsFired;
+        
         /// <summary>
         /// Remaining balls to fire before game over
         /// </summary>
@@ -81,8 +87,11 @@ namespace TowerColor.Views
             {
                 _gameManager.ChangeState(GameState.GameOver);
             }
+            else if (Input.GetKeyDown(KeyCode.F))
+            {
+                _feverGauge.Fill();
+            }
         }
-        
 #endif
         
         [Inject]
@@ -99,7 +108,9 @@ namespace TowerColor.Views
             BallGainedMessage.Factory ballGainedMessageFactory,
             [Inject(Id = "ColorChangeMessageAnchor")] Transform colorChangeMessageAnchor,
             [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor,
-            [Inject(Id = "BallGainedMessageAnchor")] Transform ballGainedMessageAnchor)
+            [Inject(Id = "BallGainedMessageAnchor")] Transform ballGainedMessageAnchor,
+            [Inject(Id = "FeverMessageAnchor")] Transform feverMessageAnchor,
+            FeverGauge feverGauge)
         {
             _touchSurface = touchSurface;
             _ballSpawner = ballSpawner;
@@ -118,6 +129,9 @@ namespace TowerColor.Views
             _colorChangeMessageAnchor = colorChangeMessageAnchor;
             _feedbackMessageAnchor = feedbackMessageAnchor;
             _ballGainedMessageAnchor = ballGainedMessageAnchor;
+            _feverMessageAnchor = feverMessageAnchor;
+
+            _feverGauge = feverGauge;
         }
 
         protected override async void OnShow()
@@ -152,6 +166,11 @@ namespace TowerColor.Views
             //Enable ball spawner
             _ballSpawner.Activate(true);
             
+            //Listen fever gauge
+            _feverGauge.MaxCapacity = _gameData.feverGaugeMaxCapacity;
+            _feverGauge.CurrentCounter = 0;
+            _feverGauge.GaugeFilled += OnFeverGaugeFilled;
+            
             //Start game
             StartGame();
         }
@@ -178,6 +197,9 @@ namespace TowerColor.Views
             
             //Stop listen tower state changed
             if(_gameManager.Tower) _gameManager.Tower.CurrentStepChanged -= OnTowerCurrentStepChanged;
+            
+            //Stop Listen fever gauge
+            _feverGauge.GaugeFilled -= OnFeverGaugeFilled;
         }
 
         /// <summary>
@@ -191,7 +213,7 @@ namespace TowerColor.Views
         /// <summary>
         /// Spawn a new ball
         /// </summary>
-        private void SpawnNewBall()
+        private void SpawnNewBall(bool isRainbow = false)
         {
             var availableColors = _gameManager.Tower.AvailableColors.ToList();
             if (availableColors.Count == 0)
@@ -205,9 +227,15 @@ namespace TowerColor.Views
             
             //Spawn ball
             _ball = _ballSpawner.SpawnBall();
-            
-            //Set ball color
-            _ball.Color = availableColors[Random.Range(0, availableColors.Count())];
+
+            if (!isRainbow)
+            {
+                //Set ball color
+                _ball.Color = availableColors[Random.Range(0, availableColors.Count())];
+            }
+
+            //Set rainbow ball
+            _ball.IsRainbow = isRainbow;
             
             _ball.TouchedBrick += OnBallTouchedBrick;
         }
@@ -238,7 +266,7 @@ namespace TowerColor.Views
         /// <param name="brick">Brick being touched</param>
         private async void OnBallTouchedBrick(Brick brick)
         {
-            if (_ball.Color == brick.Color)
+            if (_ball.IsRainbow || _ball.Color == brick.Color)
             {
                 //Destroy ball
                 Destroy(_ball.gameObject);
@@ -249,29 +277,41 @@ namespace TowerColor.Views
                 foreach (var b in bricksToDestroy)
                 {
                     b.Break();
+                    //Update fever gauge
+                    _feverGauge.Increment(_gameData.feverGainByBrick);
                     await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
 
                 GameObject feedbackMessage = null;
                 int ballGained = 0;
+                int feverGain = 0;
                 
                 //Show message feedback according to number of bricks destroyed
                 if (bricksToDestroy.Count >= _gameData.insaneMessageBricksCount)
                 {
                     feedbackMessage = _gameData.insaneMessage;
                     ballGained = _gameData.ballsGainedAfterInsaneMessage;
+                    feverGain = _gameData.feverGaugeGainWithInsane;
                 }
                 else if (bricksToDestroy.Count >= _gameData.greatMessageBricksCount)
                 {
                     feedbackMessage = _gameData.greatMessage;
                     ballGained = _gameData.ballsGainedAfterGreatMessage;
+                    feverGain = _gameData.feverGaugeGainWithGreat;
                 }
                 else if (bricksToDestroy.Count >= _gameData.goodMessageBricksCount)
                 {
                     feedbackMessage = _gameData.goodMessage;
                     ballGained = _gameData.ballsGainedAfterGoodMessage;
+                    feverGain = _gameData.feverGaugeGainWithGood;
                 }
 
+                //Update fever gauge
+                if (feverGain > 0)
+                {
+                    _feverGauge.Increment(feverGain);
+                }
+                
                 if (feedbackMessage)
                 {
                     //If we gained one or more balls, display it
@@ -294,7 +334,7 @@ namespace TowerColor.Views
                     await UniTask.WaitUntil(() => popOver);
                 }
             }
-            
+
             //Check if we won
             if (!CheckWinCondition())
             {
@@ -311,9 +351,33 @@ namespace TowerColor.Views
                 //If we still have balls, spawn a new one
                 if (RemainingBalls > 0)
                 {
-                    SpawnNewBall();
+                    //Check if we are in fever
+                    if (_isInFever)
+                    {
+                        //Show fever message
+                        var fever = _feverMessageFactory.Create(_gameData.feverMessage);
+                        fever.AttachTo(_feverMessageAnchor);
+
+                        //Set rainbow balls count
+                        fever.RainbowBallsCount = _gameData.feverRainbowBallsCount - _rainbowBallsFired;
+                        
+                        //Wait until end of message
+                        var popOver = false;
+                        fever.PopOver += () => popOver = true;
+                        await UniTask.WaitUntil(() => popOver);
+                    }
+                    
+                    SpawnNewBall(_isInFever);
                 }
             }
+        }
+
+        private void ResetFever()
+        {
+            _isInFever = false;
+            _rainbowBallsFired = 0;
+            _feverGauge.SetRainbow(false);
+            _feverGauge.Empty();
         }
 
         /// <summary>
@@ -371,6 +435,16 @@ namespace TowerColor.Views
                 
                 //Hide ball spawner
                 _ballSpawner.Activate(false);
+
+                if (_isInFever)
+                {
+                    _rainbowBallsFired++;
+                    //Reset Fever if rainbow ball count is reached
+                    if (_rainbowBallsFired > _gameData.feverRainbowBallsCount)
+                    {
+                        ResetFever();
+                    }
+                }
             }
         }
         
@@ -425,6 +499,15 @@ namespace TowerColor.Views
         private void OnBallBonusAcquired(int value)
         {
             Debug.LogFormat("Ball bonus : +{0}", value);
+        }
+
+        private void OnFeverGaugeFilled()
+        {
+            if(_isInFever) return;
+            
+            Debug.Log("Fever gauge filled");
+            _isInFever = true;
+            _feverGauge.SetRainbow(true);
         }
     }
 }

@@ -59,7 +59,7 @@ namespace TowerColor.Views
             _playerCamera.transform.position = pos;
             
             _playerGameCamera.transform.position = pos;
-            _playerGameCamera.LookAt = _gameManager.Tower.GetStepFocusPoint(0);
+            _playerGameCamera.LookAt = _gameManager.Tower.GetStepFocusPoint(_gameManager.Tower.Steps.Count / 2);
         }
 
         protected override void OnHide()

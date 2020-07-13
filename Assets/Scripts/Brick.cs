@@ -19,7 +19,7 @@ namespace TowerColor
     {
         private class BrickSortByDistance : IComparer<Brick>
         {
-            private Brick _reference;
+            private readonly Brick _reference;
 
             public BrickSortByDistance(Brick reference)
             {
@@ -50,6 +50,16 @@ namespace TowerColor
         /// Haptic manager
         /// </summary>
         private IHapticManager _hapticManager;
+
+        /// <summary>
+        /// Sound player
+        /// </summary>
+        private ISoundPlayer _soundPlayer;
+
+        /// <summary>
+        /// Audio source for brick destroyed sound 
+        /// </summary>
+        private AudioSource _brickDestroyedSource;
         
         /// <summary>
         /// Game data
@@ -75,7 +85,7 @@ namespace TowerColor
         /// Rigid body. Used to enable / disable physics 
         /// </summary>
         [SerializeField] protected Rigidbody rigidBody;
-        
+
         #endregion
 
         #region Properties
@@ -187,16 +197,22 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData, IHapticManager hapticManager)
+        public void Construct(GameData gameData, IHapticManager hapticManager, ISoundPlayer soundPlayer, AudioSource brickDestroyedSource)
         {
             _gameData = gameData;
             _hapticManager = hapticManager;
+            _soundPlayer = soundPlayer;
+            _brickDestroyedSource = brickDestroyedSource;
         }
 
         public void Break()
         {
             //Vibrate
             _hapticManager.Vibrate();
+            
+            //Sound effect
+            _brickDestroyedSource.clip = _gameData.brickDestroySound;
+            _soundPlayer.PlaySound(_brickDestroyedSource);
             
             //Spawn effect
             var effect = Instantiate(_gameData.brickDestroyEffect).GetComponent<BrickDestroyEffect>();

@@ -14,20 +14,25 @@ namespace TowerColor.Views
     {
         private CinemachineVirtualCamera _playerGameCamera;
         private IHapticManager _hapticManager;
+        private ISoundPlayer _soundPlayer;
         private GameManager _gameManager;
         private GameData _gameData;
 
         private TweenerCore<Vector3, Vector3, VectorOptions> _cameraTween;
         
+        [SerializeField] private AudioSource winSound;
+        
         [Inject]
         public void Construct(
             [Inject(Id = "GameCamera")] CinemachineVirtualCamera playerGameCamera, 
             IHapticManager hapticManager,
+            ISoundPlayer soundPlayer,
             GameManager gameManager, 
             GameData gameData)
         {
             _playerGameCamera = playerGameCamera;
             _hapticManager = hapticManager;
+            _soundPlayer = soundPlayer;
             _gameManager = gameManager;
             _gameData = gameData;
         }
@@ -35,6 +40,9 @@ namespace TowerColor.Views
         protected override async void OnShow()
         {
             base.OnShow();
+            
+            _soundPlayer.PlaySound(winSound);
+            
             _playerGameCamera.gameObject.SetActive(true);
 
             var dir = (_playerGameCamera.transform.position - _gameManager.Tower.transform.position).normalized;

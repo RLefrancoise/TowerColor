@@ -11,6 +11,7 @@ namespace TowerColor.Views.Installers
         [SerializeField] private Transform colorChangeMessageAnchor;
         [SerializeField] private Transform feedbackMessageAnchor;
         [SerializeField] private Transform ballGainedMessageAnchor;
+        [SerializeField] private Transform feverMessageAnchor;
         [SerializeField] private GameObject ballSpawnerPrefab;
         [SerializeField] private TouchSurface touchSurface;
 
@@ -46,9 +47,19 @@ namespace TowerColor.Views.Installers
             //Ball gained message anchor
             Container.Bind<Transform>().WithId("BallGainedMessageAnchor").FromInstance(ballGainedMessageAnchor);
             
+            //Fever message anchor
+            Container.Bind<Transform>().WithId("FeverMessageAnchor").FromInstance(feverMessageAnchor);
+            
             //Balls gained message
             Container.BindFactory<Object, BallGainedMessage, BallGainedMessage.Factory>()
                 .FromFactory<PrefabFactory<BallGainedMessage>>();
+            
+            //Fever message
+            Container.BindFactory<Object, FeverMessage, FeverMessage.Factory>()
+                .FromFactory<PrefabFactory<FeverMessage>>();
+            
+            //Fever gauge
+            Container.Bind<FeverGauge>().FromComponentInChildren().AsSingle();
         }
     }
 }

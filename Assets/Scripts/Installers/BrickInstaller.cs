@@ -7,9 +7,7 @@ namespace TowerColor
     {
         public override void InstallBindings()
         {
-            Container.Bind<Renderer>().FromComponentInChildren().AsSingle();
-            Container.Bind<Collider>().FromComponentInChildren().AsSingle();
-            Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();
+            Container.Bind<AudioSource>().FromInstance(GetComponentInParent<TowerStep>().GetComponent<AudioSource>());
         }
     }
 }

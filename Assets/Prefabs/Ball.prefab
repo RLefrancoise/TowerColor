@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2460243553593075581}
   - component: {fileID: 370694489078011471}
   - component: {fileID: 8917607584406934291}
+  - component: {fileID: 3671430596302032735}
   - component: {fileID: 7325190184375767230}
   - component: {fileID: 8056268490477634831}
-  - component: {fileID: 626416748018906242}
+  - component: {fileID: 1131440425702233787}
   m_Layer: 9
   m_Name: Ball
   m_TagString: Ball
@@ -97,7 +98,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 370694489078011471}
   rigidBody: {fileID: 8056268490477634831}
-  collider: {fileID: 626416748018906242}
+  collider: {fileID: 1131440425702233787}
+  rainbowEffect: {fileID: 3671430596302032735}
+--- !u!114 &3671430596302032735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950334477486445328}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97edd09f3ff490b8b95c7bf3090e4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  renderer: {fileID: 370694489078011471}
 --- !u!114 &7325190184375767230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +143,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &626416748018906242
+--- !u!135 &1131440425702233787
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

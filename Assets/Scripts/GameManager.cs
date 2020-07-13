@@ -15,6 +15,7 @@ namespace TowerColor
         #region Fields
 
         private GameData _gameData;
+        private TowerCreator _towerCreator;
         private TowerSpawner _towerSpawner;
         private BallBonus.Factory _ballBonusFactory;
 
@@ -30,9 +31,10 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData, TowerSpawner towerSpawner, BallBonus.Factory ballBonusFactory)
+        public void Construct(GameData gameData, TowerCreator towerCreator, TowerSpawner towerSpawner, BallBonus.Factory ballBonusFactory)
         {
             _gameData = gameData;
+            _towerCreator = towerCreator;
             _towerSpawner = towerSpawner;
             _ballBonusFactory = ballBonusFactory;
             
@@ -56,7 +58,7 @@ namespace TowerColor
             if (_gameData.useBallBonus)
             {
                 var ballBonusesNumber = (int) LevelManager.GetCurveValue(_gameData.ballBonusesCount);
-                var ballBonusStep = (float) (ballBonusesNumber - 2) / Tower.Steps.Count;
+                var ballBonusStep = (float) (ballBonusesNumber + 2) / Tower.Steps.Count;
 
                 for (var i = 1; i <= ballBonusesNumber; i++)
                 {

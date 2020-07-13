@@ -8,6 +8,7 @@ namespace TowerColor
     public class GameInstaller : GameInstaller<GameManager>
     {
         [SerializeField] private SoundPlayer soundPlayer;
+        [SerializeField] private TowerCreator towerCreator;
         [SerializeField] private TowerSpawner towerSpawner;
         [SerializeField] private Camera playerCamera;
         [SerializeField] private CinemachineVirtualCamera playerGameCamera;
@@ -19,7 +20,8 @@ namespace TowerColor
 
             Container.BindInterfacesAndSelfTo<SoundPlayer>().FromInstance(soundPlayer).AsSingle();
             Container.BindInterfacesAndSelfTo<HapticManager>().FromInstance(new HapticManager()).AsSingle();
-            
+
+            Container.Bind<TowerCreator>().FromInstance(towerCreator).AsSingle();
             Container.Bind<TowerSpawner>().FromInstance(towerSpawner).AsSingle();
             Container.Bind<Camera>().FromInstance(playerCamera).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().WithId("GameCamera")

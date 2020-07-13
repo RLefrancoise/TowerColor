@@ -14,6 +14,8 @@ namespace TowerColor
         /// </summary>
         private Color _color;
 
+        private bool _isRainbow;
+
         private Sequence _fireSequence;
 
         /// <summary>
@@ -24,6 +26,7 @@ namespace TowerColor
         [SerializeField] private new Renderer renderer;
         [SerializeField] private Rigidbody rigidBody;
         [SerializeField] private new Collider collider;
+        [SerializeField] private RendererRainbowEffect rainbowEffect;
         
         /// <summary>
         /// Get or set the color of the brick
@@ -37,7 +40,17 @@ namespace TowerColor
                 renderer.sharedMaterial = _gameData.brickColors.First(x => x.color == value);
             }
         }
-        
+
+        public bool IsRainbow
+        {
+            get => _isRainbow;
+            set
+            {
+                _isRainbow = value;
+                rainbowEffect.enabled = value;
+            }
+        }
+
         /// <summary>
         /// Is the ball being fired ?
         /// </summary>
@@ -57,6 +70,7 @@ namespace TowerColor
         public void Construct(GameData gameData)
         {
             _gameData = gameData;
+            IsRainbow = false;
         }
 
         private void OnDestroy()

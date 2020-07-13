@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FeverMessage
+  m_Controller: {fileID: 9100000, guid: 41a3db9b768869d4c8c4a9125311a74d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ef2bf923e7b96354e98c2c816ed48fa3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f8b58dce1bd296b4db1c500dfd300394, type: 2}
