@@ -3,12 +3,25 @@ using Zenject;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// Brick destroy effect
+    /// </summary>
     [RequireComponent(typeof(ParticleSystem))]
     public class BrickDestroyEffect : MonoBehaviour
     {
+        /// <summary>
+        /// Color
+        /// </summary>
         private Color _color;
+        
+        /// <summary>
+        /// Renderer
+        /// </summary>
         private ParticleSystemRenderer _renderer;
         
+        /// <summary>
+        /// Color
+        /// </summary>
         public Color Color
         {
             get => _color;

@@ -4,12 +4,29 @@ using Zenject;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// Water ground. It drifts away bricks from the tower
+    /// </summary>
     public class WaterGround : MonoBehaviour
     {
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Bricks hit points
+        /// </summary>
         private List<Vector3> _bricksHitPoints;
 
+        /// <summary>
+        /// Collision events
+        /// </summary>
         [SerializeField] private CollisionEvents collisionEvents;
+        
+        /// <summary>
+        /// Bricks
+        /// </summary>
         [SerializeField] private List<Rigidbody> bricks;
 
         [Inject]

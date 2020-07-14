@@ -19,6 +19,9 @@ namespace TowerColor
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Brick : MonoBehaviour
     {
+        /// <summary>
+        /// Brick sort by distance
+        /// </summary>
         public class BrickSortByDistance : IComparer<Brick>
         {
             private readonly Brick _reference;
@@ -160,6 +163,9 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// Is the brick still in place ?
+        /// </summary>
         [ShowNativeProperty] public bool IsStillInPlace
         {
             get
@@ -181,6 +187,9 @@ namespace TowerColor
 
         #endregion
 
+        /// <summary>
+        /// When brick destroyed
+        /// </summary>
         public event Action<Brick> Destroyed;
         
         #region MonoBehaviour
@@ -255,11 +264,17 @@ namespace TowerColor
             _brickDestroyedSource = brickDestroyedSource;
         }
 
+        /// <summary>
+        /// Init state
+        /// </summary>
         public void InitializeState()
         {
             _startPosition = transform.position;
         }
         
+        /// <summary>
+        /// Destroy brick
+        /// </summary>
         public void Break()
         {
             //Vibrate
@@ -282,6 +297,11 @@ namespace TowerColor
             Destroy(gameObject);
         }
         
+        /// <summary>
+        /// Activate brick or not
+        /// </summary>
+        /// <param name="activated">Activate</param>
+        /// <param name="force">Force activate</param>
         public void SetActivated(bool activated, bool force = false)
         {
             IsActivated = activated;
@@ -359,11 +379,21 @@ namespace TowerColor
             return bricks;
         }
 
+        /// <summary>
+        /// Apply impact force to brick
+        /// </summary>
+        /// <param name="force">Force vector</param>
+        /// <param name="hitPoint">Force position</param>
         public void ApplyImpactForce(Vector3 force, Vector3 hitPoint)
         {
             rigidBody.AddForceAtPosition(force, hitPoint, ForceMode.Force);
         }
 
+        /// <summary>
+        /// Lerp brick color
+        /// </summary>
+        /// <param name="to">Final color</param>
+        /// <param name="duration">Duration</param>
         public async UniTask LerpColor(Color to, float duration)
         {
             //Kill tween if needed
@@ -382,6 +412,13 @@ namespace TowerColor
 
         #region Private Methods
         
+        /// <summary>
+        /// Get adjacent brick with ray casting
+        /// </summary>
+        /// <param name="rayDirection">Ray direction</param>
+        /// <param name="distance">Distance</param>
+        /// <param name="takeNonActive">Also take non active</param>
+        /// <returns>Found brick</returns>
         private Brick GetAdjacentBrick(Vector3 rayDirection, float distance, bool takeNonActive = true)
         {
             if (Physics.Raycast(Center, rayDirection, out var hit, distance, LayerMask.GetMask("Brick")))
@@ -394,6 +431,10 @@ namespace TowerColor
             return null;
         }
         
+        /// <summary>
+        /// When adjacent brick is destroyed, remove it from list
+        /// </summary>
+        /// <param name="brick">Destroyed brick</param>
         private void ListenAdjacentBrickDestroyed(Brick brick)
         {
             if (adjacentBricks.Contains(brick))

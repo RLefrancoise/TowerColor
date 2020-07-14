@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// The game data
+    /// </summary>
     [CreateAssetMenu(fileName = "GameData", menuName = "TowerColor/GameData")]
     public class GameData : ScriptableObject
     {
@@ -54,11 +57,13 @@ namespace TowerColor
         /// Use sphere cast or ray cast to find adjacent bricks.
         /// Sphere cast is faster but it may miss adjacent bricks that are not close enough
         /// Ray cast is dependant of rotation so it may miss some adjacent bricks sometimes
+        /// Trigger should be the preferred way
         /// </summary>
         [BoxGroup("Brick")]
         [Tooltip("Use sphere cast or ray cast to find adjacent bricks.\n" +
                  "Sphere cast is faster but it may miss adjacent bricks that are not close enough\n" +
-                 "Ray cast is dependant of rotation so it may miss some adjacent bricks sometimes")]
+                 "Ray cast is dependant of rotation so it may miss some adjacent bricks sometimes\n" +
+                 "Trigger should be the preferred way")]
         public AdjacentBrickFindMode brickUseSphereCastToFindAdjacentBricks = AdjacentBrickFindMode.Trigger;
         
         #region Tower
@@ -115,7 +120,11 @@ namespace TowerColor
 
         #region Ball
         
+        /// <summary>
+        /// Ball prefab
+        /// </summary>
         [BoxGroup("Ball")]
+        [Tooltip("Ball prefab")]
         public GameObject ballPrefab;
 
         /// <summary>
@@ -222,10 +231,18 @@ namespace TowerColor
         [Tooltip("Force that is applied to the bricks that fell into water")]
         public float waterGroundForce = 20f;
 
+        /// <summary>
+        /// Water ground max brick speed
+        /// </summary>
         [BoxGroup("Water Ground")]
+        [Tooltip("Water ground max brick speed")]
         public float waterGroundMaxBrickSpeed = 5f;
 
+        /// <summary>
+        /// Max distance the bricks are drifting away from the tower
+        /// </summary>
         [BoxGroup("Water Ground")]
+        [Tooltip("Max distance the bricks are drifting away from the tower")]
         public float waterGroundMaxBrickDistance = 25f;
         
         #region Difficulty Settings
@@ -369,13 +386,25 @@ namespace TowerColor
         [Tooltip("Ball bonuses spawn data")]
         public List<BallBonusSpawnData> ballBonusesSpawnData;
 
+        /// <summary>
+        /// Balls gained when a good message appears
+        /// </summary>
         [BoxGroup("Bonuses")]
+        [Tooltip("Balls gained when a good message appears")]
         public int ballsGainedAfterGoodMessage = 0;
         
+        /// <summary>
+        /// Balls gained when a great message appears
+        /// </summary>
         [BoxGroup("Bonuses")]
+        [Tooltip("Balls gained when a great message appears")]
         public int ballsGainedAfterGreatMessage = 1;
         
+        /// <summary>
+        /// Balls gained when an insane message appears
+        /// </summary>
         [BoxGroup("Bonuses")]
+        [Tooltip("Balls gained when an insane message appears")]
         public int ballsGainedAfterInsaneMessage = 2;
 
         #endregion
@@ -387,29 +416,61 @@ namespace TowerColor
         [Tooltip("Win particle effect")]
         public GameObject winEffect;
 
+        /// <summary>
+        /// Sequence of win particle effect scaling
+        /// </summary>
         [BoxGroup("Win")]
+        [Tooltip("Sequence of win particle effect scaling")]
         public List<float> winEffectScalingSequence;
 
+        /// <summary>
+        /// Time between each win effect
+        /// </summary>
         [BoxGroup("Win")]
+        [Tooltip("Time between each win effect")]
         public float winEffectTimeBetweenEach = 0.5f;
 
         
+        /// <summary>
+        /// Fever gauge max capacity
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever gauge max capacity")]
         public int feverGaugeMaxCapacity = 50;
 
+        /// <summary>
+        /// Fever gain by destroyed brick
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever gain by destroyed brick")]
         public int feverGainByBrick = 1;
         
+        /// <summary>
+        /// Fever points gained when a good message appears
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever points gained when a good message appears")]
         public int feverGaugeGainWithGood = 2;
         
+        /// <summary>
+        /// [Tooltip("Fever points gained when a great message appears")]
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever points gained when a great message appears")]
         public int feverGaugeGainWithGreat = 5;
         
+        /// <summary>
+        /// Fever points gained when an insane message appears
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever points gained when an insane message appears")]
         public int feverGaugeGainWithInsane = 10;
 
+        /// <summary>
+        /// Fever message prefab
+        /// </summary>
         [BoxGroup("Fever")]
+        [Tooltip("Fever message prefab")]
         public GameObject feverMessage;
 
         /// <summary>

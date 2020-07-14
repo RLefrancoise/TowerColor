@@ -17,15 +17,33 @@ namespace TowerColor
     {
         #region Fields
 
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Tower creator
+        /// </summary>
         private TowerCreator _towerCreator;
+        
+        /// <summary>
+        /// Ball bonus factory
+        /// </summary>
         private BallBonus.Factory _ballBonusFactory;
 
         #endregion
 
         #region Properties
 
+        /// <summary>
+        /// The tower
+        /// </summary>
         public Tower Tower { get; private set; }
+        
+        /// <summary>
+        /// Ball bonuses
+        /// </summary>
         public List<BallBonus> BallBonuses { get; private set; }
 
         #endregion

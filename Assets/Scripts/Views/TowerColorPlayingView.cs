@@ -17,40 +17,125 @@ using Random = UnityEngine.Random;
 
 namespace TowerColor.Views
 {
+    /// <summary>
+    /// Tower color playing view
+    /// </summary>
     [RequireComponent(typeof(TowerColorPlayingViewInstaller))]
     public class TowerColorPlayingView : DefaultPlayingView
     {
+        /// <summary>
+        /// Remaining balls
+        /// </summary>
         private int _remainingBalls;
 
+        /// <summary>
+        /// Touch surface
+        /// </summary>
         private ITouchSurface _touchSurface;
+        
+        /// <summary>
+        /// Ball spawner
+        /// </summary>
         private IBallSpawner _ballSpawner;
         
+        /// <summary>
+        /// Player camera
+        /// </summary>
         private Camera _playerCamera;
+        
+        /// <summary>
+        /// Player game camera
+        /// </summary>
         private CinemachineVirtualCamera _playerGameCamera;
+        
+        /// <summary>
+        /// Look around tower camera
+        /// </summary>
         private CinemachineVirtualCamera _lookAroundTowerCamera;
+        
+        /// <summary>
+        /// Player game camera move tween
+        /// </summary>
         private TweenerCore<Vector3, Vector3, VectorOptions> _movePlayerGameCameraTween;
         
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Haptic manager
+        /// </summary>
         private IHapticManager _hapticManager;
         
+        /// <summary>
+        /// Current ball
+        /// </summary>
         private Ball _ball;
         
+        /// <summary>
+        /// Player camera focus point
+        /// </summary>
         private GameObject _playerCameraFocusPoint;
 
+        /// <summary>
+        /// Popping message factory
+        /// </summary>
         private PoppingMessageFactory _poppingMessageFactory;
+        
+        /// <summary>
+        /// Ball gained message factory
+        /// </summary>
         private BallGainedMessage.Factory _ballGainedMessageFactory;
+        
+        /// <summary>
+        /// Fever message factory
+        /// </summary>
         private FeverMessage.Factory _feverMessageFactory;
         
+        /// <summary>
+        /// Color change message anchor
+        /// </summary>
         private Transform _colorChangeMessageAnchor;
+        
+        /// <summary>
+        /// Feedback message anchor
+        /// </summary>
         private Transform _feedbackMessageAnchor;
+        
+        /// <summary>
+        /// Ball gained message anchor
+        /// </summary>
         private Transform _ballGainedMessageAnchor;
+        
+        /// <summary>
+        /// Fever message anchor
+        /// </summary>
         private Transform _feverMessageAnchor;
 
+        /// <summary>
+        /// Fever gauge
+        /// </summary>
         private FeverGauge _feverGauge;
+        
+        /// <summary>
+        /// Is currently in fever ?
+        /// </summary>
         private bool _isInFever;
+        
+        /// <summary>
+        /// Number of rainbow balls fired
+        /// </summary>
         private int _rainbowBallsFired;
 
+        /// <summary>
+        /// Level progress gauge
+        /// </summary>
         private LevelProgressGauge _levelProgressGauge;
         
         /// <summary>
@@ -423,6 +508,9 @@ namespace TowerColor.Views
             }
         }
 
+        /// <summary>
+        /// Reset fever state
+        /// </summary>
         private void ResetFever()
         {
             _isInFever = false;
@@ -556,6 +644,9 @@ namespace TowerColor.Views
             Debug.LogFormat("Ball bonus : +{0}", value);
         }
 
+        /// <summary>
+        /// When fever gauge is filled
+        /// </summary>
         private void OnFeverGaugeFilled()
         {
             if(_isInFever) return;

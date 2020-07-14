@@ -4,11 +4,24 @@ using Zenject;
 
 namespace TowerColor.Views
 {
+    /// <summary>
+    /// Tower color game over view
+    /// </summary>
     public class TowerColorGameOverView : DefaultGameOverView
     {
+        /// <summary>
+        /// Sound player
+        /// </summary>
         private ISoundPlayer _soundPlayer;
         
+        /// <summary>
+        /// Level failed animation
+        /// </summary>
         [SerializeField] private Animator levelFailedAnimation;
+        
+        /// <summary>
+        /// Game over sound
+        /// </summary>
         [SerializeField] private AudioSource gameOverSound;
 
         [Inject]

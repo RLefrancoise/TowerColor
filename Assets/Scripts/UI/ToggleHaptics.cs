@@ -2,8 +2,14 @@ using Zenject;
 
 namespace TowerColor.UI
 {
+    /// <summary>
+    /// Toggle for haptics option
+    /// </summary>
     public class ToggleHaptics : OptionToggle
     {
+        /// <summary>
+        /// Haptic manager
+        /// </summary>
         private IHapticManager _hapticManager;
 
         [Inject]

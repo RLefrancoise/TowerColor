@@ -8,12 +8,34 @@ using Zenject;
 
 namespace TowerColor.Views
 {
+    /// <summary>
+    /// Tower color start view
+    /// </summary>
     public class TowerColorStartView : DefaultStartView
     {
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Look around tower camera
+        /// </summary>
         private CinemachineVirtualCamera _lookAroundTowerCamera;
+        
+        /// <summary>
+        /// Follow point
+        /// </summary>
         private GameObject _followPoint;
+        
+        /// <summary>
+        /// Focus point
+        /// </summary>
         private GameObject _focusPoint;
 
         [Inject]
@@ -74,6 +96,9 @@ namespace TowerColor.Views
             _focusPoint = null;
         }
 
+        /// <summary>
+        /// When focus point moves
+        /// </summary>
         private void OnFocusPointMove()
         {
             _followPoint.transform.position = new Vector3(
@@ -87,6 +112,9 @@ namespace TowerColor.Views
                 360f * Time.deltaTime / 3f);
         }
         
+        /// <summary>
+        /// When camera move complete
+        /// </summary>
         private void OnCameraMoveComplete()
         {
             _gameManager.ChangeState(GameState.Playing);

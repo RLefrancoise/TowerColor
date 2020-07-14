@@ -10,16 +10,44 @@ using Zenject;
 
 namespace TowerColor.Views
 {
+    /// <summary>
+    /// Tower color win view
+    /// </summary>
     public class TowerColorWinView : DefaultWinView
     {
+        /// <summary>
+        /// Player game camera
+        /// </summary>
         private CinemachineVirtualCamera _playerGameCamera;
+        
+        /// <summary>
+        /// Haptic manager
+        /// </summary>
         private IHapticManager _hapticManager;
+        
+        /// <summary>
+        /// Sound player
+        /// </summary>
         private ISoundPlayer _soundPlayer;
+        
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
 
+        /// <summary>
+        /// Camera tween
+        /// </summary>
         private TweenerCore<Vector3, Vector3, VectorOptions> _cameraTween;
         
+        /// <summary>
+        /// Win sound
+        /// </summary>
         [SerializeField] private AudioSource winSound;
         
         [Inject]

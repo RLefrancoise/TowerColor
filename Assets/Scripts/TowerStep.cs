@@ -10,23 +10,59 @@ using Zenject;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// A tower step
+    /// </summary>
     public class TowerStep : MonoBehaviour
     {
+        /// <summary>
+        /// State is initialized ?
+        /// </summary>
         [ShowNonSerializedField] private bool _hasStateInitialized;
+        
+        /// <summary>
+        /// Number of bricks at start
+        /// </summary>
         [ShowNonSerializedField] private int _bricksCountAtStart;
+        
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
         
+        /// <summary>
+        /// Bricks
+        /// </summary>
         [SerializeField] private List<Brick> bricks;
 
+        /// <summary>
+        /// Bricks
+        /// </summary>
         public ReadOnlyCollection<Brick> Bricks => bricks.AsReadOnly();
 
+        /// <summary>
+        /// Step height
+        /// </summary>
         public float Height => bricks[0].Height;
 
+        /// <summary>
+        /// Is step activated ?
+        /// </summary>
         [ShowNativeProperty] public bool IsActivated { get; private set; } = true;
 
+        /// <summary>
+        /// Is step fully destroyed ?
+        /// </summary>
         [ShowNativeProperty] public bool IsFullyDestroyed { get; private set; }
 
+        /// <summary>
+        /// Destroyed ratio
+        /// </summary>
         [ShowNativeProperty] public float DestroyedRatio
         {
             get
@@ -38,6 +74,9 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// When fully destroyed
+        /// </summary>
         public event Action FullyDestroyed;
 
         [Inject]
@@ -71,6 +110,9 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// Init state
+        /// </summary>
         public void InitializeState()
         {
             foreach (var brick in bricks)
@@ -81,6 +123,10 @@ namespace TowerColor
             _hasStateInitialized = true;
         }
         
+        /// <summary>
+        /// Enable physics
+        /// </summary>
+        /// <param name="enable">Enable or disable</param>
         public void EnablePhysics(bool enable)
         {
             foreach (var brick in bricks)
@@ -89,6 +135,11 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// Activate step
+        /// </summary>
+        /// <param name="activate">Activate</param>
+        /// <param name="force">Force activate</param>
         public void ActivateStep(bool activate, bool force = false)
         {
             IsActivated = activate;
@@ -97,6 +148,10 @@ namespace TowerColor
                 brick.SetActivated(activate, force);
         }
         
+        /// <summary>
+        /// When brick destroyed, remove it from list
+        /// </summary>
+        /// <param name="brick">Destroyed brick</param>
         private void OnBrickDestroyed(Brick brick)
         {
             bricks.Remove(brick);

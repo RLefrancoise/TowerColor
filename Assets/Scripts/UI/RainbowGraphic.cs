@@ -6,9 +6,15 @@ using UnityEngine.UI;
 
 namespace TowerColor.UI
 {
+    /// <summary>
+    /// Rainbow effect for Unity UI Graphic
+    /// </summary>
     [RequireComponent(typeof(Graphic))]
     public class RainbowGraphic : RainbowEffect
     {
+        /// <summary>
+        /// Graphic element
+        /// </summary>
         [SerializeField] private Graphic graphic;
         
         protected override void ApplyColor(Color c)

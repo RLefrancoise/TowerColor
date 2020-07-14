@@ -25,6 +25,10 @@ namespace TowerColor
         /// </summary>
         public int towerSteps = 20;
 
+        /// <summary>
+        /// Generate a tower from a profile
+        /// </summary>
+        /// <returns></returns>
         [Button("Generate tower")]
         public Tower GenerateTower()
         {

@@ -2,8 +2,14 @@ using Zenject;
 
 namespace TowerColor.UI
 {
+    /// <summary>
+    /// Toggle for sound option
+    /// </summary>
     public class ToggleSound : OptionToggle
     {
+        /// <summary>
+        /// Sound player
+        /// </summary>
         private ISoundPlayer _soundPlayer;
 
         [Inject]

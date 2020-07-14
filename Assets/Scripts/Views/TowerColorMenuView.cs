@@ -6,15 +6,35 @@ using Zenject;
 
 namespace TowerColor.Views
 {
+    /// <summary>
+    /// Tower color menu view
+    /// </summary>
     [RequireComponent(typeof(TowerColorMenuViewInstaller))]
     public class TowerColorMenuView : DefaultMenuView
     {
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
         
+        /// <summary>
+        /// Options manager
+        /// </summary>
         private IOptionsManager _optionsManager;
 
+        /// <summary>
+        /// Player camera
+        /// </summary>
         private Camera _playerCamera;
+        
+        /// <summary>
+        /// Player game camera
+        /// </summary>
         private CinemachineVirtualCamera _playerGameCamera;
 
         [Inject]

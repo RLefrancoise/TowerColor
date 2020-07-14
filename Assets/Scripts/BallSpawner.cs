@@ -4,19 +4,48 @@ using Zenject;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// Interface for ball spawner
+    /// </summary>
     public interface IBallSpawner
     {
+        /// <summary>
+        /// Spawn ball
+        /// </summary>
+        /// <returns></returns>
         Ball SpawnBall();
+        
+        /// <summary>
+        /// Set remaining ball count
+        /// </summary>
+        /// <param name="remainingBalls">Ball count</param>
         void SetRemainingBalls(int remainingBalls);
 
+        /// <summary>
+        /// Activate spawner or not
+        /// </summary>
+        /// <param name="activate">Activate</param>
         void Activate(bool activate);
     }
     
+    /// <summary>
+    /// Ball spawner
+    /// </summary>
     public class BallSpawner : MonoBehaviour, IBallSpawner
     {
+        /// <summary>
+        /// Balls left text
+        /// </summary>
         [SerializeField] private TMP_Text ballsLeft;
         
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Player camera
+        /// </summary>
         private Camera _playerCamera;
         
         #region MonoBehaviours

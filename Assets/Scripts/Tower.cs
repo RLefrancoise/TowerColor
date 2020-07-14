@@ -10,22 +10,45 @@ using Random = UnityEngine.Random;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// The tower color tower
+    /// </summary>
     public class Tower : MonoBehaviour
     {
         #region Fields
 
+        /// <summary>
+        /// Game manager
+        /// </summary>
         private GameManager _gameManager;
+        
+        /// <summary>
+        /// Game data
+        /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Tower steps
+        /// </summary>
         [SerializeField] private List<TowerStep> steps;
         
         #endregion
 
         #region Properties
         
+        /// <summary>
+        /// Current step
+        /// </summary>
         [ShowNativeProperty] public int CurrentStep { get; private set; }
 
+        /// <summary>
+        /// Tower steps
+        /// </summary>
         public ReadOnlyCollection<TowerStep> Steps => steps.AsReadOnly();
 
+        /// <summary>
+        /// Current sub tower focus point
+        /// </summary>
         public Transform CurrentSubTowerFocusPoint => GetStepFocusPoint(CurrentStep);
 
         /// <summary>
@@ -44,6 +67,9 @@ namespace TowerColor
 
         #region Events
         
+        /// <summary>
+        /// When current step is changed
+        /// </summary>
         public event Action<int> CurrentStepChanged;
         
         #endregion
@@ -69,6 +95,11 @@ namespace TowerColor
         
         #region Public Methods
 
+        /// <summary>
+        /// Get step focus point
+        /// </summary>
+        /// <param name="step"></param>
+        /// <returns></returns>
         public Transform GetStepFocusPoint(int step)
         {
             if (_gameData.cameraFocusCenteredOnSteps)
@@ -85,11 +116,18 @@ namespace TowerColor
             }
         }
         
+        /// <summary>
+        /// Add a step to the tower
+        /// </summary>
+        /// <param name="step"></param>
         public void AddStep(TowerStep step)
         {
             steps.Add(step);
         }
 
+        /// <summary>
+        /// Initialize tower state (current start position of bricks, ...)
+        /// </summary>
         public void InitializeState()
         {
             foreach (var step in steps)
@@ -98,6 +136,10 @@ namespace TowerColor
             }
         }
         
+        /// <summary>
+        /// Enable tower physics
+        /// </summary>
+        /// <param name="enable">Enable or disable</param>
         public void EnablePhysics(bool enable)
         {
             foreach (var step in steps)
@@ -107,6 +149,12 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// Set current step
+        /// </summary>
+        /// <param name="step">Current step</param>
+        /// <param name="waitBetweenSteps">Wait between each step</param>
+        /// <param name="force">Force step activation</param>
         public async UniTask SetCurrentStep(int step, bool waitBetweenSteps = true, bool force = false)
         {
             if(step < 0 || step >= steps.Count) throw new Exception($"Invalid step {step}");
@@ -201,6 +249,11 @@ namespace TowerColor
             if (lerp) await UniTask.Delay(TimeSpan.FromSeconds(_gameData.colorChangeDuration));
         }
 
+        /// <summary>
+        /// Is brick targetable ?
+        /// </summary>
+        /// <param name="brick">Brick</param>
+        /// <returns></returns>
         public bool IsBrickTargetable(Brick brick)
         {
             if (brick.IsInWater) return false;
@@ -211,6 +264,11 @@ namespace TowerColor
             return true;
         }
 
+        /// <summary>
+        /// Get bricks with the same color as the given brick
+        /// </summary>
+        /// <param name="brick">Brick</param>
+        /// <returns></returns>
         public List<Brick> GetBricksWithSameColor(Brick brick)
         {
             var bricks = new List<Brick> {brick};
@@ -249,7 +307,7 @@ namespace TowerColor
             {
                 if (steps[i].IsFullyDestroyed) continue;
                 
-                await SetCurrentStep(i, true, true);
+                await SetCurrentStep(i);
                 break;
             }
         }

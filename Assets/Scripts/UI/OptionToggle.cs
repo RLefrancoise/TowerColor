@@ -5,11 +5,20 @@ using Zenject;
 
 namespace TowerColor.UI
 {
+    /// <summary>
+    /// Base class for options toggle
+    /// </summary>
     [RequireComponent(typeof(Toggle))]
     public abstract class OptionToggle : MonoBehaviour
     {
+        /// <summary>
+        /// Toggle
+        /// </summary>
         [SerializeField] protected Toggle toggle;
         
+        /// <summary>
+        /// Options manager
+        /// </summary>
         protected IOptionsManager OptionsManager;
         
         [Inject]
@@ -35,11 +44,22 @@ namespace TowerColor.UI
             OptionsManager.Ready -= ListenReady;
             
         }
-
+        
+        /// <summary>
+        /// When options are loaded 
+        /// </summary>
         protected abstract void OnOptionsLoaded();
 
+        /// <summary>
+        /// Set option value according to toggle
+        /// </summary>
+        /// <param name="isOn"></param>
         protected abstract void SetValue(bool isOn);
 
+        /// <summary>
+        /// Listen toggle change
+        /// </summary>
+        /// <param name="isOn"></param>
         private void ListenToggle(bool isOn)
         {
             SetValue(isOn);
@@ -49,6 +69,9 @@ namespace TowerColor.UI
             }
         }
 
+        /// <summary>
+        /// Listen options manager ready
+        /// </summary>
         private void ListenReady()
         {
             //If no option yet, set default value according to toggle, and save

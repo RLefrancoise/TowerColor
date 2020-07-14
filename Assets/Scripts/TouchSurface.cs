@@ -5,20 +5,47 @@ using UnityEngine.UI;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// Interface for touch surface
+    /// </summary>
     public interface ITouchSurface
     {
+        /// <summary>
+        /// When touched
+        /// </summary>
         event Action<Vector2> Touched; 
+        
+        /// <summary>
+        /// When begin drag
+        /// </summary>
         event Action<Vector2> DragBegun;
+        
+        /// <summary>
+        /// When end drag
+        /// </summary>
         event Action<Vector2> Dragging; 
     }
     
+    /// <summary>
+    /// Touch surface
+    /// </summary>
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(EventTrigger))]
     public class TouchSurface : MonoBehaviour, ITouchSurface
     {
+        /// <summary>
+        /// Is dragging ?
+        /// </summary>
         private bool _isDragging;
+        
+        /// <summary>
+        /// Mouse drag position
+        /// </summary>
         private Vector2 _mouseBeginDragPosition;
         
+        /// <summary>
+        /// Event trigger
+        /// </summary>
         [SerializeField] private EventTrigger eventTrigger;
 
         public event Action<Vector2> Touched; 

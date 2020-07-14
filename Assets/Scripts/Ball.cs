@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 namespace TowerColor
 {
+    /// <summary>
+    /// The ball
+    /// </summary>
     public class Ball : MonoBehaviour
     {
         /// <summary>
@@ -14,8 +17,14 @@ namespace TowerColor
         /// </summary>
         private Color _color;
 
+        /// <summary>
+        /// Is rainbow ball ?
+        /// </summary>
         private bool _isRainbow;
 
+        /// <summary>
+        /// Fire sequence
+        /// </summary>
         private Sequence _fireSequence;
 
         /// <summary>
@@ -23,9 +32,24 @@ namespace TowerColor
         /// </summary>
         private GameData _gameData;
 
+        /// <summary>
+        /// Renderer
+        /// </summary>
         [SerializeField] private new Renderer renderer;
+        
+        /// <summary>
+        /// Rigidbody
+        /// </summary>
         [SerializeField] private Rigidbody rigidBody;
+        
+        /// <summary>
+        /// Collider
+        /// </summary>
         [SerializeField] private new Collider collider;
+        
+        /// <summary>
+        /// Rainbow effect
+        /// </summary>
         [SerializeField] private RendererRainbowEffect rainbowEffect;
         
         /// <summary>
@@ -41,6 +65,9 @@ namespace TowerColor
             }
         }
 
+        /// <summary>
+        /// Is rainbow ?
+        /// </summary>
         public bool IsRainbow
         {
             get => _isRainbow;
@@ -78,31 +105,12 @@ namespace TowerColor
             _fireSequence?.Kill();
         }
 
-        /*private void OnCollisionEnter(Collision other)
-        {
-            if(!IsFiring) return;
-            
-            if (other.collider.gameObject.CompareTag("Brick"))
-            {
-                var brick = other.collider.GetComponentInParent<Brick>();
-                if(!brick) return;
-                
-                if(HasHitBrick) return;
-
-                Debug.LogFormat("Ball hit brick {0}", brick.name);
-                
-                HasHitBrick = true;
-                TouchedBrick?.Invoke(brick);
-                
-                //If brick color is different from the ball, repulse the ball
-                if (brick.Color != _color)
-                {
-                    var repulse = transform.DOMove(transform.position + other.GetContact(0).normal * other.impulse.magnitude, 1f);
-                    repulse.onComplete += () => Destroy(gameObject);
-                }
-            }
-        }*/
-
+        /// <summary>
+        /// Fire ball
+        /// </summary>
+        /// <param name="brick">Brick to target</param>
+        /// <param name="hitPoint">Hit point</param>
+        /// <param name="hitNormal">Hit normal</param>
         public void FireTo(Brick brick, Vector3 hitPoint, Vector3 hitNormal)
         {
             IsFiring = true;
@@ -150,10 +158,6 @@ namespace TowerColor
                 rigidBody.isKinematic = false;
                 
                 Destroy(gameObject, _gameData.ballRepulseDuration);
-                
-                /*var repulse = transform.DOMove(transform.position + repulseVector * _gameData.ballRepulseDistance, _gameData.ballRepulseDuration)
-                    .SetEase(AnimationCurve.Linear(0,0,1,1));
-                repulse.onComplete += () => Destroy(gameObject);*/
             }
         }
     }
