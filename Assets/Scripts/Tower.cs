@@ -186,12 +186,12 @@ namespace TowerColor
         }
 
         public async UniTask ShuffleColors(GameData.AdjacentBrickFindMode mode, bool ignoreInactiveSteps = false, bool lerp = false,
-            bool resetBeforeShuffle = true)
+            bool randomBeforeShuffle = true)
         {
             Debug.Log("Shuffle colors");
             
             //Reset bricks color to first color
-            if (resetBeforeShuffle)
+            if (randomBeforeShuffle)
             {
                 foreach (var step in steps)
                 {
@@ -199,7 +199,7 @@ namespace TowerColor
                     if (ignoreInactiveSteps && !step.IsActivated) continue;
                     
                     foreach (var brick in step.Bricks)
-                        brick.Color = _gameData.brickColors[0].color;
+                        brick.Color = _gameData.brickColors[Random.Range(0, _gameData.brickColors.Count)].color;
                 }
             }
 
@@ -252,10 +252,10 @@ namespace TowerColor
         /// <summary>
         /// Shuffle the tower colors
         /// </summary>
-        public async UniTask ShuffleColors(bool ignoreInactiveSteps = false, bool lerp = false, bool resetBeforeShuffle = true)
+        public async UniTask ShuffleColors(bool ignoreInactiveSteps = false, bool lerp = false, bool randomBeforeShuffle = true)
         {
             await ShuffleColors(_gameData.brickUseSphereCastToFindAdjacentBricks, ignoreInactiveSteps, lerp,
-                resetBeforeShuffle);
+                randomBeforeShuffle);
             
             /*Debug.Log("Shuffle colors");
             
