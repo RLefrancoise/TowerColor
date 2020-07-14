@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ac8db31-0f38-4257-97f2-87b6bab334e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerColor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CylinderBrick.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CylinderBrick.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TowerSquareStep.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TowerSquareStep.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/TowerProfiles/CylinderTower1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/TowerProfiles/CylinderTower1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Brick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Brick.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IOptionsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IOptionsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/OptionsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/OptionsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable/GameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable/TowerProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable/TowerProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/TowerCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/TowerCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/OptionToggle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OptionToggle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/GameData.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -241,69 +227,69 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-97">
-              <caret line="288" column="31" lean-forward="true" selection-start-line="288" selection-start-column="31" selection-end-line="288" selection-end-column="31" />
+            <state relative-caret-position="-112">
+              <caret line="290" column="12" lean-forward="true" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
               <folding>
-                <marker date="1594720216600" expanded="true" signature="6:262" ph="..." />
-                <marker date="1594720216600" expanded="true" signature="284:11585" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="291:395" ph="/// A brick is an element of the tower. It has a color and a shape. ... " />
-                <marker date="1594720216600" expanded="true" signature="485:11583" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="551:1250" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="665:733" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="795:1240" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="1268:2943" ph="Fields" />
-                <marker date="1594720216600" expanded="true" signature="1300:1371" ph="/// The color of the brick ... " />
-                <marker date="1594720216600" expanded="true" signature="1485:1546" ph="/// Game manager ... " />
-                <marker date="1594720216600" expanded="true" signature="1606:1669" ph="/// Haptic manager ... " />
-                <marker date="1594720216600" expanded="true" signature="1726:1787" ph="/// Sound player ... " />
-                <marker date="1594720216600" expanded="true" signature="1840:1928" ph="/// Audio source for brick destroyed sound  ... " />
-                <marker date="1594720216600" expanded="true" signature="1997:2055" ph="/// Game data ... " />
-                <marker date="1594720216600" expanded="true" signature="2109:2181" ph="/// Surrounding bricks hits ... " />
-                <marker date="1594720216600" expanded="true" signature="2225:2354" ph="/// Start position of the brick. Used to check if the brick is still in place or not ... " />
-                <marker date="1594720216600" expanded="true" signature="2437:2539" ph="/// The brick renderer. Used to change the color material ... " />
-                <marker date="1594720216600" expanded="true" signature="2607:2705" ph="/// The brick collider. Used to get brick dimensions. ... " />
-                <marker date="1594720216600" expanded="true" signature="2773:2867" ph="/// Rigid body. Used to enable / disable physics  ... " />
-                <marker date="1594720216600" expanded="true" signature="2953:5099" ph="Properties" />
-                <marker date="1594720216600" expanded="true" signature="2989:3071" ph="/// Get or set the color of the brick ... " />
-                <marker date="1594720216600" expanded="true" signature="3098:3316" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="3151:3306" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="3326:3398" ph="/// The height of the brick ... " />
-                <marker date="1594720216600" expanded="true" signature="3463:3524" ph="/// Brick center ... " />
-                <marker date="1594720216600" expanded="true" signature="3591:3652" ph="/// Brick bounds ... " />
-                <marker date="1594720216600" expanded="true" signature="3711:3774" ph="/// Brick velocity ... " />
-                <marker date="1594720216600" expanded="true" signature="3839:3912" ph="/// Is the brick activated ? ... " />
-                <marker date="1594720216600" expanded="true" signature="4021:4095" ph="/// Enable of disable physics ... " />
-                <marker date="1594720216600" expanded="true" signature="4130:4394" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="4199:4384" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="4451:4658" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="4477:4648" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="4676:4790" ph="/// Has the brick fell in water ? Used to push it away from the tower ... " />
-                <marker date="1594720216600" expanded="true" signature="4881:4998" ph="/// Has brick fell on the platform ? Used to push it away from the tower ... " />
-                <marker date="1594720216600" expanded="true" signature="5164:5855" ph="MonoBehaviour" />
-                <marker date="1594720216600" expanded="true" signature="5215:5272" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="5314:5408" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="5464:5835" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="5612:5674" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="5755:5825" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="5873:10679" ph="Public Methods" />
-                <marker date="1594720216600" expanded="true" signature="6085:6321" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="6360:6429" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="6466:7112" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="7190:7912" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="7277:7404" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="7421:7861" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="7499:7685" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="7922:8038" ph="/// Get surrounding bricks of the brick ... " />
-                <marker date="1594720216600" expanded="true" signature="8113:10091" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="8955:9164" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="9190:10053" ph="/* var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive); ... */" />
-                <marker date="1594720216600" expanded="true" signature="10162:10258" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="10324:10651" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="10689:11577" ph="Private Methods" />
-                <marker date="1594720216600" expanded="true" signature="10825:11190" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="10941:11154" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="11277:11525" ph="{...}" />
-                <marker date="1594720216600" expanded="true" signature="11417:11515" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="6:262" ph="..." />
+                <marker date="1594720388295" expanded="true" signature="284:11571" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="291:395" ph="/// A brick is an element of the tower. It has a color and a shape. ... " />
+                <marker date="1594720388295" expanded="true" signature="485:11569" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="551:1250" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="665:733" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="795:1240" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="1268:2943" ph="Fields" />
+                <marker date="1594720388295" expanded="true" signature="1300:1371" ph="/// The color of the brick ... " />
+                <marker date="1594720388295" expanded="true" signature="1485:1546" ph="/// Game manager ... " />
+                <marker date="1594720388295" expanded="true" signature="1606:1669" ph="/// Haptic manager ... " />
+                <marker date="1594720388295" expanded="true" signature="1726:1787" ph="/// Sound player ... " />
+                <marker date="1594720388295" expanded="true" signature="1840:1928" ph="/// Audio source for brick destroyed sound  ... " />
+                <marker date="1594720388295" expanded="true" signature="1997:2055" ph="/// Game data ... " />
+                <marker date="1594720388295" expanded="true" signature="2109:2181" ph="/// Surrounding bricks hits ... " />
+                <marker date="1594720388295" expanded="true" signature="2225:2354" ph="/// Start position of the brick. Used to check if the brick is still in place or not ... " />
+                <marker date="1594720388295" expanded="true" signature="2437:2539" ph="/// The brick renderer. Used to change the color material ... " />
+                <marker date="1594720388295" expanded="true" signature="2607:2705" ph="/// The brick collider. Used to get brick dimensions. ... " />
+                <marker date="1594720388295" expanded="true" signature="2773:2867" ph="/// Rigid body. Used to enable / disable physics  ... " />
+                <marker date="1594720388295" expanded="true" signature="2953:5099" ph="Properties" />
+                <marker date="1594720388295" expanded="true" signature="2989:3071" ph="/// Get or set the color of the brick ... " />
+                <marker date="1594720388295" expanded="true" signature="3098:3316" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="3151:3306" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="3326:3398" ph="/// The height of the brick ... " />
+                <marker date="1594720388295" expanded="true" signature="3463:3524" ph="/// Brick center ... " />
+                <marker date="1594720388295" expanded="true" signature="3591:3652" ph="/// Brick bounds ... " />
+                <marker date="1594720388295" expanded="true" signature="3711:3774" ph="/// Brick velocity ... " />
+                <marker date="1594720388295" expanded="true" signature="3839:3912" ph="/// Is the brick activated ? ... " />
+                <marker date="1594720388295" expanded="true" signature="4021:4095" ph="/// Enable of disable physics ... " />
+                <marker date="1594720388295" expanded="true" signature="4130:4394" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="4199:4384" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="4451:4658" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="4477:4648" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="4676:4790" ph="/// Has the brick fell in water ? Used to push it away from the tower ... " />
+                <marker date="1594720388295" expanded="true" signature="4881:4998" ph="/// Has brick fell on the platform ? Used to push it away from the tower ... " />
+                <marker date="1594720388295" expanded="true" signature="5164:5855" ph="MonoBehaviour" />
+                <marker date="1594720388295" expanded="true" signature="5215:5272" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="5314:5408" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="5464:5835" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="5612:5674" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="5755:5825" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="5873:10665" ph="Public Methods" />
+                <marker date="1594720388295" expanded="true" signature="6085:6321" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="6360:6429" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="6466:7112" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="7190:7912" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="7277:7404" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="7421:7861" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="7499:7685" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="7922:8038" ph="/// Get surrounding bricks of the brick ... " />
+                <marker date="1594720388295" expanded="true" signature="8113:10077" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="8941:9150" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="9176:10039" ph="/* var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive); ... */" />
+                <marker date="1594720388295" expanded="true" signature="10148:10244" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="10310:10637" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="10675:11563" ph="Private Methods" />
+                <marker date="1594720388295" expanded="true" signature="10811:11176" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="10927:11140" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="11263:11511" ph="{...}" />
+                <marker date="1594720388295" expanded="true" signature="11403:11501" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -708,12 +694,12 @@
       <workItem from="1594222161749" duration="39583000" />
       <workItem from="1594376132593" duration="32056000" />
       <workItem from="1594461598428" duration="28698000" />
-      <workItem from="1594544503094" duration="60444000" />
+      <workItem from="1594544503094" duration="61130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160781000" />
+    <option name="totallyTimeSpent" value="161467000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1716,69 +1702,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-97">
-          <caret line="288" column="31" lean-forward="true" selection-start-line="288" selection-start-column="31" selection-end-line="288" selection-end-column="31" />
+        <state relative-caret-position="-112">
+          <caret line="290" column="12" lean-forward="true" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
           <folding>
-            <marker date="1594720216600" expanded="true" signature="6:262" ph="..." />
-            <marker date="1594720216600" expanded="true" signature="284:11585" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="291:395" ph="/// A brick is an element of the tower. It has a color and a shape. ... " />
-            <marker date="1594720216600" expanded="true" signature="485:11583" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="551:1250" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="665:733" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="795:1240" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="1268:2943" ph="Fields" />
-            <marker date="1594720216600" expanded="true" signature="1300:1371" ph="/// The color of the brick ... " />
-            <marker date="1594720216600" expanded="true" signature="1485:1546" ph="/// Game manager ... " />
-            <marker date="1594720216600" expanded="true" signature="1606:1669" ph="/// Haptic manager ... " />
-            <marker date="1594720216600" expanded="true" signature="1726:1787" ph="/// Sound player ... " />
-            <marker date="1594720216600" expanded="true" signature="1840:1928" ph="/// Audio source for brick destroyed sound  ... " />
-            <marker date="1594720216600" expanded="true" signature="1997:2055" ph="/// Game data ... " />
-            <marker date="1594720216600" expanded="true" signature="2109:2181" ph="/// Surrounding bricks hits ... " />
-            <marker date="1594720216600" expanded="true" signature="2225:2354" ph="/// Start position of the brick. Used to check if the brick is still in place or not ... " />
-            <marker date="1594720216600" expanded="true" signature="2437:2539" ph="/// The brick renderer. Used to change the color material ... " />
-            <marker date="1594720216600" expanded="true" signature="2607:2705" ph="/// The brick collider. Used to get brick dimensions. ... " />
-            <marker date="1594720216600" expanded="true" signature="2773:2867" ph="/// Rigid body. Used to enable / disable physics  ... " />
-            <marker date="1594720216600" expanded="true" signature="2953:5099" ph="Properties" />
-            <marker date="1594720216600" expanded="true" signature="2989:3071" ph="/// Get or set the color of the brick ... " />
-            <marker date="1594720216600" expanded="true" signature="3098:3316" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="3151:3306" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="3326:3398" ph="/// The height of the brick ... " />
-            <marker date="1594720216600" expanded="true" signature="3463:3524" ph="/// Brick center ... " />
-            <marker date="1594720216600" expanded="true" signature="3591:3652" ph="/// Brick bounds ... " />
-            <marker date="1594720216600" expanded="true" signature="3711:3774" ph="/// Brick velocity ... " />
-            <marker date="1594720216600" expanded="true" signature="3839:3912" ph="/// Is the brick activated ? ... " />
-            <marker date="1594720216600" expanded="true" signature="4021:4095" ph="/// Enable of disable physics ... " />
-            <marker date="1594720216600" expanded="true" signature="4130:4394" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="4199:4384" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="4451:4658" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="4477:4648" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="4676:4790" ph="/// Has the brick fell in water ? Used to push it away from the tower ... " />
-            <marker date="1594720216600" expanded="true" signature="4881:4998" ph="/// Has brick fell on the platform ? Used to push it away from the tower ... " />
-            <marker date="1594720216600" expanded="true" signature="5164:5855" ph="MonoBehaviour" />
-            <marker date="1594720216600" expanded="true" signature="5215:5272" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="5314:5408" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="5464:5835" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="5612:5674" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="5755:5825" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="5873:10679" ph="Public Methods" />
-            <marker date="1594720216600" expanded="true" signature="6085:6321" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="6360:6429" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="6466:7112" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="7190:7912" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="7277:7404" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="7421:7861" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="7499:7685" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="7922:8038" ph="/// Get surrounding bricks of the brick ... " />
-            <marker date="1594720216600" expanded="true" signature="8113:10091" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="8955:9164" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="9190:10053" ph="/* var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive); ... */" />
-            <marker date="1594720216600" expanded="true" signature="10162:10258" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="10324:10651" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="10689:11577" ph="Private Methods" />
-            <marker date="1594720216600" expanded="true" signature="10825:11190" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="10941:11154" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="11277:11525" ph="{...}" />
-            <marker date="1594720216600" expanded="true" signature="11417:11515" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="6:262" ph="..." />
+            <marker date="1594720388295" expanded="true" signature="284:11571" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="291:395" ph="/// A brick is an element of the tower. It has a color and a shape. ... " />
+            <marker date="1594720388295" expanded="true" signature="485:11569" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="551:1250" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="665:733" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="795:1240" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="1268:2943" ph="Fields" />
+            <marker date="1594720388295" expanded="true" signature="1300:1371" ph="/// The color of the brick ... " />
+            <marker date="1594720388295" expanded="true" signature="1485:1546" ph="/// Game manager ... " />
+            <marker date="1594720388295" expanded="true" signature="1606:1669" ph="/// Haptic manager ... " />
+            <marker date="1594720388295" expanded="true" signature="1726:1787" ph="/// Sound player ... " />
+            <marker date="1594720388295" expanded="true" signature="1840:1928" ph="/// Audio source for brick destroyed sound  ... " />
+            <marker date="1594720388295" expanded="true" signature="1997:2055" ph="/// Game data ... " />
+            <marker date="1594720388295" expanded="true" signature="2109:2181" ph="/// Surrounding bricks hits ... " />
+            <marker date="1594720388295" expanded="true" signature="2225:2354" ph="/// Start position of the brick. Used to check if the brick is still in place or not ... " />
+            <marker date="1594720388295" expanded="true" signature="2437:2539" ph="/// The brick renderer. Used to change the color material ... " />
+            <marker date="1594720388295" expanded="true" signature="2607:2705" ph="/// The brick collider. Used to get brick dimensions. ... " />
+            <marker date="1594720388295" expanded="true" signature="2773:2867" ph="/// Rigid body. Used to enable / disable physics  ... " />
+            <marker date="1594720388295" expanded="true" signature="2953:5099" ph="Properties" />
+            <marker date="1594720388295" expanded="true" signature="2989:3071" ph="/// Get or set the color of the brick ... " />
+            <marker date="1594720388295" expanded="true" signature="3098:3316" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="3151:3306" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="3326:3398" ph="/// The height of the brick ... " />
+            <marker date="1594720388295" expanded="true" signature="3463:3524" ph="/// Brick center ... " />
+            <marker date="1594720388295" expanded="true" signature="3591:3652" ph="/// Brick bounds ... " />
+            <marker date="1594720388295" expanded="true" signature="3711:3774" ph="/// Brick velocity ... " />
+            <marker date="1594720388295" expanded="true" signature="3839:3912" ph="/// Is the brick activated ? ... " />
+            <marker date="1594720388295" expanded="true" signature="4021:4095" ph="/// Enable of disable physics ... " />
+            <marker date="1594720388295" expanded="true" signature="4130:4394" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="4199:4384" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="4451:4658" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="4477:4648" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="4676:4790" ph="/// Has the brick fell in water ? Used to push it away from the tower ... " />
+            <marker date="1594720388295" expanded="true" signature="4881:4998" ph="/// Has brick fell on the platform ? Used to push it away from the tower ... " />
+            <marker date="1594720388295" expanded="true" signature="5164:5855" ph="MonoBehaviour" />
+            <marker date="1594720388295" expanded="true" signature="5215:5272" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="5314:5408" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="5464:5835" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="5612:5674" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="5755:5825" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="5873:10665" ph="Public Methods" />
+            <marker date="1594720388295" expanded="true" signature="6085:6321" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="6360:6429" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="6466:7112" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="7190:7912" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="7277:7404" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="7421:7861" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="7499:7685" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="7922:8038" ph="/// Get surrounding bricks of the brick ... " />
+            <marker date="1594720388295" expanded="true" signature="8113:10077" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="8941:9150" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="9176:10039" ph="/* var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive); ... */" />
+            <marker date="1594720388295" expanded="true" signature="10148:10244" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="10310:10637" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="10675:11563" ph="Private Methods" />
+            <marker date="1594720388295" expanded="true" signature="10811:11176" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="10927:11140" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="11263:11511" ph="{...}" />
+            <marker date="1594720388295" expanded="true" signature="11403:11501" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -28,8 +28,9 @@ MonoBehaviour:
   towers:
   - {fileID: 2339908828377423781, guid: ac5eac9ca34af314a91c73d716a20d8b, type: 3}
   towerProfiles:
+  - {fileID: 11400000, guid: 5033634662d217c40b85ecc94111d847, type: 2}
   - {fileID: 11400000, guid: 62a2c66ed80570c4395c3643f4276cb1, type: 2}
-  - {fileID: 11400000, guid: 62a2c66ed80570c4395c3643f4276cb1, type: 2}
+  - {fileID: 11400000, guid: 207795aa9db286445a394c083c621edd, type: 2}
   maxActiveSteps: 8
   towerRotateSpeed: 150
   towerStepDestroyedMinimumRatio: 1
