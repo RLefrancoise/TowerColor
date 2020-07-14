@@ -18,6 +18,10 @@ namespace TowerColor.UI
             OptionsManager = optionsManager;
             
             OptionsManager.OptionsLoaded += OnOptionsLoaded;
+            
+            //If no option yet, set default value according to toggle, and save
+            OptionsManager.Ready += ListenReady;
+            
         }
 
         protected virtual void Start()
@@ -28,6 +32,8 @@ namespace TowerColor.UI
         protected void OnDestroy()
         {
             OptionsManager.OptionsLoaded -= OnOptionsLoaded;
+            OptionsManager.Ready -= ListenReady;
+            
         }
 
         protected abstract void OnOptionsLoaded();
@@ -40,6 +46,15 @@ namespace TowerColor.UI
             if (!OptionsManager.SaveOptions())
             {
                 Debug.LogError("Failed to save options");
+            }
+        }
+
+        private void ListenReady()
+        {
+            //If no option yet, set default value according to toggle, and save
+            if (!OptionsManager.HasSavedOptions)
+            {
+                ListenToggle(toggle.isOn);
             }
         }
     }

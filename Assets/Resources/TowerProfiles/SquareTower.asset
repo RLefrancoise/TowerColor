@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b19fd25099140119dc270d0c2048a55, type: 3}
-  m_Name: CylinderTower1
+  m_Name: SquareTower
   m_EditorClassIdentifier: 
   stepPrefab: {fileID: 5181586141108392720, guid: 99b6229f0845ba44a9a22c3d75257b33,
     type: 3}
-  stepCount: 20
   rotationAmountPerStep: 2.5

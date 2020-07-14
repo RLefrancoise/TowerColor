@@ -51,6 +51,8 @@ namespace TowerColor
             DOTween.SetTweensCapacity(500,50);
             
             //Create tower
+            _towerCreator.profile = _gameData.towerProfiles[Random.Range(0, _gameData.towerProfiles.Count)];
+            _towerCreator.towerSteps = (int) LevelManager.GetCurveValue(_gameData.towerStepsByLevel);
             Tower = _towerCreator.GenerateTower();
             //Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
             await UniTask.Yield();

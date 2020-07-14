@@ -32,5 +32,10 @@ namespace TowerColor
         /// When options are loaded
         /// </summary>
         event Action OptionsLoaded;
+        
+        /// <summary>
+        /// When ready
+        /// </summary>
+        event Action Ready;
     }
 }

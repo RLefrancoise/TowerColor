@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3344844571806822864}
   - component: {fileID: 4729366764860770961}
   - component: {fileID: 341388392146326873}
-  - component: {fileID: 6885956297377952548}
+  - component: {fileID: 6795504073802361930}
   m_Layer: 8
   m_Name: Shape
   m_TagString: Brick
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6885956297377952548
-BoxCollider:
+--- !u!64 &6795504073802361930
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,9 +90,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4976190553413093412
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 341388392146326873}
-  collider: {fileID: 6885956297377952548}
+  collider: {fileID: 6795504073802361930}
   rigidBody: {fileID: 875679658269326802}
 --- !u!114 &9081592946858998739
 MonoBehaviour:

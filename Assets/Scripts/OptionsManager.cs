@@ -20,11 +20,13 @@ namespace TowerColor
         public bool HasSavedOptions => File.Exists(_optionsPath);
 
         public event Action OptionsLoaded;
+        public event Action Ready;
         
         private void Awake()
         {
             _optionsPath = Path.Combine(Application.persistentDataPath, "options.json");
             Options = new OptionsData();
+            Ready?.Invoke();
         }
         
         public bool SaveOptions()

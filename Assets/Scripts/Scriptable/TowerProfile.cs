@@ -14,11 +14,6 @@ namespace TowerColor
         public GameObject stepPrefab;
 
         /// <summary>
-        /// The number of steps
-        /// </summary>
-        public int stepCount = 10;
-
-        /// <summary>
         /// Rotation amount of a tower step according to the previous one
         /// </summary>
         public float rotationAmountPerStep = 5f;

@@ -277,6 +277,8 @@ namespace TowerColor.Views
                 
                 //Destroy brick
                 var bricksToDestroy = _gameManager.Tower.GetBricksWithSameColor(brick);
+                bricksToDestroy.Sort(new Brick.BrickSortByDistance(brick));
+                
                 foreach (var b in bricksToDestroy)
                 {
                     b.Break();

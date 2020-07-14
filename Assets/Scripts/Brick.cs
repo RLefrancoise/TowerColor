@@ -8,6 +8,7 @@ using Framework.Game;
 using NaughtyAttributes;
 using UniRx.Async;
 using UnityEngine;
+using UnityQuery;
 using Zenject;
 
 namespace TowerColor
@@ -18,7 +19,7 @@ namespace TowerColor
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Brick : MonoBehaviour
     {
-        private class BrickSortByDistance : IComparer<Brick>
+        public class BrickSortByDistance : IComparer<Brick>
         {
             private readonly Brick _reference;
 
@@ -71,6 +72,11 @@ namespace TowerColor
         /// Game data
         /// </summary>
         private GameData _gameData;
+        
+        /// <summary>
+        /// Surrounding bricks hits
+        /// </summary>
+        private Collider[] _hits;
 
         /// <summary>
         /// Start position of the brick. Used to check if the brick is still in place or not
@@ -175,6 +181,11 @@ namespace TowerColor
         
         #region MonoBehaviour
 
+        private void Awake()
+        {
+            _hits = new Collider[8];
+        }
+        
         private void OnDestroy()
         {
             _lerpColorTween?.Kill();
@@ -267,22 +278,43 @@ namespace TowerColor
         public List<Brick> GetSurroundingBricks(bool takeNonActive = true)
         {
             var bricks = new List<Brick>();
-
-            var upBrick = GetAdjacentBrick(transform.up, takeNonActive);
-            var downBrick = GetAdjacentBrick(-transform.up, takeNonActive);
-            var leftBrick = GetAdjacentBrick(-transform.right, takeNonActive);
-            var rightBrick = GetAdjacentBrick(transform.right, takeNonActive);
-            var forwardBrick = GetAdjacentBrick(transform.forward, takeNonActive);
-            var backBrick = GetAdjacentBrick(-transform.forward, takeNonActive);
+            
+            var size = Physics.OverlapSphereNonAlloc(
+                Center, 
+                Mathf.Max(Bounds.extents.x, Bounds.extents.y, Bounds.extents.z), 
+                _hits, 
+                LayerMask.GetMask("Brick"));
+            if (size == 0) return bricks;
+            
+            //Not taking itself
+            var subHits  = _hits.Take(size).Where(x => x != collider);
+            
+            //Taking only adjacent and not diagonals
+            subHits = subHits.Where(x => 
+                new Bounds(Bounds.center, Bounds.size.WithY(0) * 1.5f).Intersects(collider.bounds) ||
+                new Bounds(Bounds.center, Bounds.size.WithX(0).WithZ(0) * 1.5f).Intersects(collider.bounds));
+            
+            foreach(var hit in subHits)
+            {
+                var brick = hit.GetComponentInParent<Brick>();
+                if(brick.IsActivated || (!brick.IsActivated && takeNonActive))
+                    bricks.Add(brick);
+            }
+            
+            /*var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive);
+            var downBrick = GetAdjacentBrick(-transform.up, Bounds.size.y, takeNonActive);
+            var leftBrick = GetAdjacentBrick(-transform.right, Bounds.size.x, takeNonActive);
+            var rightBrick = GetAdjacentBrick(transform.right, Bounds.size.x, takeNonActive);
+            var forwardBrick = GetAdjacentBrick(transform.forward, Bounds.size.z, takeNonActive);
+            var backBrick = GetAdjacentBrick(-transform.forward, Bounds.size.z, takeNonActive);
             
             if(upBrick) bricks.Add(upBrick);
             if(downBrick) bricks.Add(downBrick);
             if(leftBrick) bricks.Add(leftBrick);
             if(rightBrick) bricks.Add(rightBrick);
             if(forwardBrick) bricks.Add(forwardBrick);
-            if(backBrick) bricks.Add(backBrick);
+            if(backBrick) bricks.Add(backBrick);*/
 
-            bricks.Sort(new BrickSortByDistance(this));
             return bricks;
         }
 
@@ -309,9 +341,9 @@ namespace TowerColor
 
         #region Private Methods
         
-        private Brick GetAdjacentBrick(Vector3 rayDirection, bool takeNonActive = true)
+        private Brick GetAdjacentBrick(Vector3 rayDirection, float distance, bool takeNonActive = true)
         {
-            if (Physics.Raycast(Center, rayDirection, out var hit, Bounds.size.magnitude, LayerMask.GetMask("Brick")))
+            if (Physics.Raycast(Center, rayDirection, out var hit, distance, LayerMask.GetMask("Brick")))
             {
                 var brick = hit.collider.GetComponentInParent<Brick>();
                 if(brick.IsActivated || (!brick.IsActivated && takeNonActive))

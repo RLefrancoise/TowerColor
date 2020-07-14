@@ -19,13 +19,18 @@ namespace TowerColor
         /// </summary>
         public TowerProfile profile;
 
+        /// <summary>
+        /// Tower steps
+        /// </summary>
+        public int towerSteps = 20;
+
         [Button("Generate tower")]
         public Tower GenerateTower()
         {
             var tower = Instantiate(gameData.towerPrefab).GetComponent<Tower>();
             
             //For each step
-            for (var s = 0; s < profile.stepCount; ++s)
+            for (var s = 0; s < towerSteps; ++s)
             {
                 var stepPosition = s == 0
                     ? tower.transform.position

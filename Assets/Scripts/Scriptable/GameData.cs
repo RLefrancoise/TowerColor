@@ -59,6 +59,13 @@ namespace TowerColor
         public List<GameObject> towers;
 
         /// <summary>
+        /// Tower profiles
+        /// </summary>
+        [BoxGroup("Tower")]
+        [Tooltip("Tower profiles")]
+        public List<TowerProfile> towerProfiles;
+
+        /// <summary>
         /// Max number of active steps in the tower
         /// </summary>
         [BoxGroup("Tower")]
@@ -225,6 +232,13 @@ namespace TowerColor
         [BoxGroup("Difficulty Settings")]
         [Tooltip("The number of balls to fire to trigger color change")]
         public AnimationCurve ballsToFireToTriggerColorChange;
+
+        /// <summary>
+        /// Number of tower steps for the current level
+        /// </summary>
+        [BoxGroup("Difficulty Settings")]
+        [Tooltip("Number of tower steps for the current level")]
+        public AnimationCurve towerStepsByLevel;
 
         /// <summary>
         /// The minimum step the tower must be currently to win
