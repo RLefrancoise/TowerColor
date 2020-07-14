@@ -23,6 +23,7 @@ MonoBehaviour:
   brickDestroyEffect: {fileID: 5993850295756445722, guid: 144ce2477f295d24695fb94d9a464c8f,
     type: 3}
   brickDestroySound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  brickUseSphereCastToFindAdjacentBricks: 2
   towerPrefab: {fileID: 8510273500793931410, guid: 828567c9596f1194a9334889418d65f5,
     type: 3}
   towers:

@@ -522,6 +522,8 @@ namespace TowerColor.Views
         /// <param name="step">Tower step</param>
         private void OnTowerCurrentStepChanged(int step)
         {
+            Debug.LogFormat("Tower current step: {0}", step);
+            
             //Create new focus point
             if(_playerCameraFocusPoint) Destroy(_playerCameraFocusPoint);
             

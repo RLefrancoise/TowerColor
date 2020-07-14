@@ -54,7 +54,8 @@ namespace TowerColor
             _towerCreator.profile = _gameData.towerProfiles[Random.Range(0, _gameData.towerProfiles.Count)];
             _towerCreator.towerSteps = (int) LevelManager.GetCurveValue(_gameData.towerStepsByLevel);
             Tower = _towerCreator.GenerateTower();
-            
+
+            await UniTask.Yield();
             Tower.EnablePhysics(false);
             await Tower.ShuffleColors();
 

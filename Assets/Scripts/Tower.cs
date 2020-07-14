@@ -35,7 +35,7 @@ namespace TowerColor
         {
             get
             {
-                var bricks = Steps.SelectMany(s => s.Bricks).Where(b => b.IsStillInPlace);
+                var bricks = Steps.SelectMany(s => s.Bricks).Where(b => b.IsActivated && b.IsStillInPlace);
                 return bricks.Select(b => b.Color);
             }
         }
@@ -163,12 +163,16 @@ namespace TowerColor
                 var step = steps[i];
                 
                 //If step is inactive, ignore it
+                //if (ignoreInactiveSteps && !step.IsActivated) break;
                 if (ignoreInactiveSteps && i < (CurrentStep - _gameData.maxActiveSteps)) break; // Steps below should not be activated anyway
                 
                 foreach (var brick in step.Bricks)
                 {
                     foreach (var b in brick.GetSurroundingBricks(!ignoreInactiveSteps))
                     {
+                        //Don't take non activated bricks, otherwise, it ends with invalid state between color and activation status...
+                        if (!b.IsActivated) continue;
+                        
                         //Dont shuffle twice the same brick
                         if (bricksAlreadyChanged.Contains(b)) continue;
                         
@@ -245,7 +249,7 @@ namespace TowerColor
             {
                 if (steps[i].IsFullyDestroyed) continue;
                 
-                await SetCurrentStep(i);
+                await SetCurrentStep(i, true, true);
                 break;
             }
         }

@@ -94,7 +94,7 @@ namespace TowerColor
             IsActivated = activate;
             
             foreach(var brick in bricks)
-                brick.SetActivated(activate);
+                brick.SetActivated(activate, force);
         }
         
         private void OnBrickDestroyed(Brick brick)

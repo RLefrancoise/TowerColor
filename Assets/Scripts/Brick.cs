@@ -79,6 +79,11 @@ namespace TowerColor
         private Collider[] _hits;
 
         /// <summary>
+        /// Adjacent bricks
+        /// </summary>
+        [SerializeField] private List<Brick> adjacentBricks;
+
+        /// <summary>
         /// Start position of the brick. Used to check if the brick is still in place or not
         /// </summary>
         [ShowNonSerializedField] private Vector3 _startPosition;
@@ -112,7 +117,6 @@ namespace TowerColor
             {
                 _color = value;
                 renderer.sharedMaterial = _gameData.brickColors.First(x => x.color == value);
-
             }
         }
 
@@ -160,7 +164,7 @@ namespace TowerColor
         {
             get
             {
-                return !IsActivated || collider.bounds.Contains(_startPosition) 
+                return !IsActivated || collider.bounds.Contains(_startPosition)
                        /*&& Vector3.Dot(transform.up, Vector3.up) >= 0.95f*/;
             }
         }
@@ -184,6 +188,7 @@ namespace TowerColor
         private void Awake()
         {
             _hits = new Collider[8];
+            adjacentBricks = new List<Brick>();
         }
         
         private void OnDestroy()
@@ -203,6 +208,36 @@ namespace TowerColor
             else if (other.gameObject.CompareTag("Platform") && !IsStillInPlace)
             {
                 HasFellOnPlatform = true;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_gameData.brickUseSphereCastToFindAdjacentBricks != GameData.AdjacentBrickFindMode.Trigger) return;
+            
+            if (other.gameObject.CompareTag("Brick"))
+            {
+                var brick = other.GetComponentInParent<Brick>();
+                if (!adjacentBricks.Contains(brick))
+                {
+                    adjacentBricks.Add(brick);
+                    brick.Destroyed += ListenAdjacentBrickDestroyed;
+                }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (_gameData.brickUseSphereCastToFindAdjacentBricks != GameData.AdjacentBrickFindMode.Trigger) return;
+            
+            if (other.gameObject.CompareTag("Brick"))
+            {
+                var brick = other.GetComponentInParent<Brick>();
+                if (adjacentBricks.Contains(brick))
+                {
+                    brick.Destroyed -= ListenAdjacentBrickDestroyed;
+                    adjacentBricks.Remove(brick);
+                }
             }
         }
 
@@ -278,43 +313,49 @@ namespace TowerColor
         public List<Brick> GetSurroundingBricks(bool takeNonActive = true)
         {
             var bricks = new List<Brick>();
-            
-            var size = Physics.OverlapSphereNonAlloc(
-                Center, 
-                Mathf.Max(Bounds.extents.x, Bounds.extents.y, Bounds.extents.z), 
-                _hits, 
-                LayerMask.GetMask("Brick"));
-            if (size == 0) return bricks;
-            
-            //Not taking itself
-            var subHits  = _hits.Take(size).Where(x => x != collider);
-            
-            //Taking only adjacent and not diagonals
-            subHits = subHits.Where(x => 
-                new Bounds(Bounds.center, Bounds.size.WithY(0) * 1.5f).Intersects(collider.bounds) ||
-                new Bounds(Bounds.center, Bounds.size.WithX(0).WithZ(0) * 1.5f).Intersects(collider.bounds));
-            
-            foreach(var hit in subHits)
-            {
-                var brick = hit.GetComponentInParent<Brick>();
-                if(brick.IsActivated || (!brick.IsActivated && takeNonActive))
-                    bricks.Add(brick);
-            }
-            
-            /*var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive);
-            var downBrick = GetAdjacentBrick(-transform.up, Bounds.size.y, takeNonActive);
-            var leftBrick = GetAdjacentBrick(-transform.right, Bounds.size.x, takeNonActive);
-            var rightBrick = GetAdjacentBrick(transform.right, Bounds.size.x, takeNonActive);
-            var forwardBrick = GetAdjacentBrick(transform.forward, Bounds.size.z, takeNonActive);
-            var backBrick = GetAdjacentBrick(-transform.forward, Bounds.size.z, takeNonActive);
-            
-            if(upBrick) bricks.Add(upBrick);
-            if(downBrick) bricks.Add(downBrick);
-            if(leftBrick) bricks.Add(leftBrick);
-            if(rightBrick) bricks.Add(rightBrick);
-            if(forwardBrick) bricks.Add(forwardBrick);
-            if(backBrick) bricks.Add(backBrick);*/
 
+            if (_gameData.brickUseSphereCastToFindAdjacentBricks == GameData.AdjacentBrickFindMode.SphereCast)
+            {
+                var size = Physics.OverlapSphereNonAlloc(
+                    Center, 
+                    Mathf.Max(Bounds.extents.x, Bounds.extents.y, Bounds.extents.z), 
+                    _hits, 
+                    LayerMask.GetMask("Brick"));
+                if (size == 0) return bricks;
+                
+                //Not taking itself
+                var subHits  = _hits.Take(size).Where(x => x != collider);
+                
+                //Taking only adjacent and not diagonals
+                subHits = subHits.Where(x => 
+                    new Bounds(Bounds.center, Bounds.size.WithY(0) * 1.5f).Intersects(collider.bounds) ||
+                    new Bounds(Bounds.center, Bounds.size.WithX(0).WithZ(0) * 1.5f).Intersects(collider.bounds));
+                
+                foreach(var hit in subHits)
+                {
+                    var brick = hit.GetComponentInParent<Brick>();
+                    if(brick.IsActivated || (!brick.IsActivated && takeNonActive))
+                        bricks.Add(brick);
+                }
+            }
+            else if (_gameData.brickUseSphereCastToFindAdjacentBricks == GameData.AdjacentBrickFindMode.RayCast)
+            {
+                var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive);
+                var downBrick = GetAdjacentBrick(-transform.up, Bounds.size.y, takeNonActive);
+                var leftBrick = GetAdjacentBrick(-transform.right, Bounds.size.x, takeNonActive);
+                var rightBrick = GetAdjacentBrick(transform.right, Bounds.size.x, takeNonActive);
+                var forwardBrick = GetAdjacentBrick(transform.forward, Bounds.size.z, takeNonActive);
+                var backBrick = GetAdjacentBrick(-transform.forward, Bounds.size.z, takeNonActive);
+
+                if (upBrick) bricks.Add(upBrick);
+                if (downBrick) bricks.Add(downBrick);
+                if (leftBrick) bricks.Add(leftBrick);
+                if (rightBrick) bricks.Add(rightBrick);
+                if (forwardBrick) bricks.Add(forwardBrick);
+                if (backBrick) bricks.Add(backBrick);
+            }
+            else return adjacentBricks;
+            
             return bricks;
         }
 
@@ -353,10 +394,21 @@ namespace TowerColor
             return null;
         }
         
+        private void ListenAdjacentBrickDestroyed(Brick brick)
+        {
+            if (adjacentBricks.Contains(brick))
+            {
+                brick.Destroyed -= ListenAdjacentBrickDestroyed;
+                adjacentBricks.Remove(brick);
+            }
+        }
+        
         #if UNITY_EDITOR
         
         private void OnDrawGizmosSelected()
         {
+            if(!Application.isPlaying) return;
+            
             Gizmos.color = Color.red;
 
             var bricks = GetSurroundingBricks();

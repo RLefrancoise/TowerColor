@@ -107,6 +107,9 @@ GameObject:
   - component: {fileID: 9081592946858998739}
   - component: {fileID: 1957504904116406714}
   - component: {fileID: 875679658269326802}
+  - component: {fileID: 6694015155512152560}
+  - component: {fileID: 8516143923978944118}
+  - component: {fileID: 2349204691556917878}
   m_Layer: 8
   m_Name: CylinderBrick
   m_TagString: Brick
@@ -141,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c52d2f10d448ca48e202380985faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adjacentBricks: []
   renderer: {fileID: 341388392146326873}
   collider: {fileID: 6795504073802361930}
   rigidBody: {fileID: 875679658269326802}
@@ -190,3 +194,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6694015155512152560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976190553413093412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40725362, y: 0.3942268, z: 1.3647666}
+  m_Center: {x: -0.009770513, y: 0.6090306, z: 0.00000011920929}
+--- !u!65 &8516143923978944118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976190553413093412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24441144, y: 1.5145819, z: 0.25092435}
+  m_Center: {x: -0.0065136403, y: 0.6220573, z: 0.0032571554}
+--- !u!65 &2349204691556917878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976190553413093412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3825074, y: 0.38771248, z: 0.335603}
+  m_Center: {x: -0.008200586, y: 0.6057737, z: 0.006513715}

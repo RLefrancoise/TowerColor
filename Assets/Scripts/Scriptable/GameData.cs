@@ -42,6 +42,24 @@ namespace TowerColor
         [BoxGroup("Brick")]
         [Tooltip("Brick destroy sound")]
         public AudioClip brickDestroySound;
+
+        public enum AdjacentBrickFindMode
+        {
+            RayCast,
+            SphereCast,
+            Trigger
+        }
+        
+        /// <summary>
+        /// Use sphere cast or ray cast to find adjacent bricks.
+        /// Sphere cast is faster but it may miss adjacent bricks that are not close enough
+        /// Ray cast is dependant of rotation so it may miss some adjacent bricks sometimes
+        /// </summary>
+        [BoxGroup("Brick")]
+        [Tooltip("Use sphere cast or ray cast to find adjacent bricks.\n" +
+                 "Sphere cast is faster but it may miss adjacent bricks that are not close enough\n" +
+                 "Ray cast is dependant of rotation so it may miss some adjacent bricks sometimes")]
+        public AdjacentBrickFindMode brickUseSphereCastToFindAdjacentBricks = AdjacentBrickFindMode.Trigger;
         
         #region Tower
         
