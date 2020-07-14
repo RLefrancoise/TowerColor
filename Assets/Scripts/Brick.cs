@@ -160,7 +160,7 @@ namespace TowerColor
         {
             get
             {
-                return collider.bounds.Contains(_startPosition) 
+                return !IsActivated || collider.bounds.Contains(_startPosition) 
                        /*&& Vector3.Dot(transform.up, Vector3.up) >= 0.95f*/;
             }
         }

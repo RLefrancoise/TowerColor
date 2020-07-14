@@ -60,6 +60,9 @@ namespace TowerColor.Views.Installers
             
             //Fever gauge
             Container.Bind<FeverGauge>().FromComponentInChildren().AsSingle();
+            
+            //Level progress gauge
+            Container.Bind<LevelProgressGauge>().FromComponentInChildren().AsSingle();
         }
     }
 }

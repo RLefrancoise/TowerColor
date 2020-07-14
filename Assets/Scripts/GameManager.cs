@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -5,6 +6,7 @@ using Framework.Game;
 using UniRx.Async;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TowerColor
 {
@@ -17,7 +19,6 @@ namespace TowerColor
 
         private GameData _gameData;
         private TowerCreator _towerCreator;
-        private TowerSpawner _towerSpawner;
         private BallBonus.Factory _ballBonusFactory;
 
         #endregion
@@ -32,11 +33,10 @@ namespace TowerColor
         #region Public Methods
         
         [Inject]
-        public void Construct(GameData gameData, TowerCreator towerCreator, TowerSpawner towerSpawner, BallBonus.Factory ballBonusFactory)
+        public void Construct(GameData gameData, TowerCreator towerCreator, BallBonus.Factory ballBonusFactory)
         {
             _gameData = gameData;
             _towerCreator = towerCreator;
-            _towerSpawner = towerSpawner;
             _ballBonusFactory = ballBonusFactory;
             
             BallBonuses = new List<BallBonus>();
@@ -54,9 +54,7 @@ namespace TowerColor
             _towerCreator.profile = _gameData.towerProfiles[Random.Range(0, _gameData.towerProfiles.Count)];
             _towerCreator.towerSteps = (int) LevelManager.GetCurveValue(_gameData.towerStepsByLevel);
             Tower = _towerCreator.GenerateTower();
-            //Tower = _towerSpawner.SpawnRandomTower(LevelManager.CurrentLevel);
-            await UniTask.Yield();
-            Tower.InitializeState();
+            
             Tower.EnablePhysics(false);
             await Tower.ShuffleColors();
 

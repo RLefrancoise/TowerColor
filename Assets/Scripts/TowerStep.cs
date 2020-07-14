@@ -12,7 +12,8 @@ namespace TowerColor
 {
     public class TowerStep : MonoBehaviour
     {
-        private int _bricksCountAtStart;
+        [ShowNonSerializedField] private bool _hasStateInitialized;
+        [ShowNonSerializedField] private int _bricksCountAtStart;
         private GameManager _gameManager;
         private GameData _gameData;
         
@@ -59,6 +60,7 @@ namespace TowerColor
         private void Update()
         {
             if(_gameManager.CurrentState != GameState.Playing) return;
+            if(!_hasStateInitialized) return;
             if(IsFullyDestroyed) return;
 
             if (DestroyedRatio >= _gameData.towerStepDestroyedMinimumRatio)
@@ -75,6 +77,8 @@ namespace TowerColor
             {
                 brick.InitializeState();
             }
+
+            _hasStateInitialized = true;
         }
         
         public void EnablePhysics(bool enable)

@@ -1100,6 +1100,7 @@
           </e>
           <e p="IOptionsManager.cs" t="Include" />
           <e p="ISoundPlayer.cs" t="Include" />
+          <e p="LevelProgressGauge.cs" t="Include" />
           <e p="OptionsData.cs" t="Include" />
           <e p="OptionsManager.cs" t="Include" />
           <e p="RainbowEffect.cs" t="Include" />

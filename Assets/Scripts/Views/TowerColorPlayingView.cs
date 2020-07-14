@@ -50,6 +50,8 @@ namespace TowerColor.Views
         private FeverGauge _feverGauge;
         private bool _isInFever;
         private int _rainbowBallsFired;
+
+        private LevelProgressGauge _levelProgressGauge;
         
         /// <summary>
         /// Remaining balls to fire before game over
@@ -75,10 +77,42 @@ namespace TowerColor.Views
         /// </summary>
         private int BallsFiredSinceLastColorChange { get; set; }
 
-#if UNITY_EDITOR
+        /// <summary>
+        /// Level progress value
+        /// </summary>
+        public float LevelProgress
+        {
+            get
+            {
+                //Percentage of steps destruction
+                var per = _gameManager.Tower.Steps.Aggregate(
+                              0f, 
+                              (current, step) =>
+                              {
+                                  //Bottom one is handled differently
+                                  if (step == _gameManager.Tower.Steps.First())
+                                  {
+                                      return current + Mathf.Clamp01(
+                                                 step.DestroyedRatio / _gameData.destroyRatioOfBottomTowerToWin);
+                                  }
+
+                                  return current + Mathf.Clamp01(
+                                             step.DestroyedRatio / _gameData.towerStepDestroyedMinimumRatio);
+                              }) 
+                          / _gameManager.Tower.Steps.Count;
+
+                return per;
+            }
+        }
 
         private void Update()
         {
+            //Update level progress gauge
+            var levelProgress = LevelProgress;
+            if (_levelProgressGauge.Percentage < levelProgress)
+                _levelProgressGauge.Percentage = levelProgress;
+            
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _gameManager.ChangeState(GameState.Win);
@@ -91,8 +125,8 @@ namespace TowerColor.Views
             {
                 _feverGauge.Fill();
             }
-        }
 #endif
+        }
         
         [Inject]
         public void Construct(
@@ -111,7 +145,8 @@ namespace TowerColor.Views
             [Inject(Id = "FeedbackMessageAnchor")] Transform feedbackMessageAnchor,
             [Inject(Id = "BallGainedMessageAnchor")] Transform ballGainedMessageAnchor,
             [Inject(Id = "FeverMessageAnchor")] Transform feverMessageAnchor,
-            FeverGauge feverGauge)
+            FeverGauge feverGauge,
+            LevelProgressGauge levelProgressGauge)
         {
             _touchSurface = touchSurface;
             _ballSpawner = ballSpawner;
@@ -134,6 +169,7 @@ namespace TowerColor.Views
             _feverMessageAnchor = feverMessageAnchor;
 
             _feverGauge = feverGauge;
+            _levelProgressGauge = levelProgressGauge;
         }
 
         protected override async void OnShow()
@@ -161,6 +197,8 @@ namespace TowerColor.Views
             
             //Set tower current step to the top one
             await _gameManager.Tower.SetCurrentStep(_gameManager.Tower.Steps.Count - 1, false, true);
+            await UniTask.Yield();
+            _gameManager.Tower.InitializeState();
             
             //Get number of balls for this level
             RemainingBalls = (int) _gameManager.LevelManager.GetCurveValue(_gameData.numberOfBallsByLevel);
@@ -173,6 +211,9 @@ namespace TowerColor.Views
             _feverGauge.CurrentCounter = 0;
             _feverGauge.SetRainbow(false);
             _feverGauge.GaugeFilled += OnFeverGaugeFilled;
+            
+            //Empty level progress gauge
+            _levelProgressGauge.Percentage = 0f;
             
             //Start game
             StartGame();
@@ -203,6 +244,9 @@ namespace TowerColor.Views
             
             //Stop Listen fever gauge
             _feverGauge.GaugeFilled -= OnFeverGaugeFilled;
+
+            //Empty level progress gauge
+            _levelProgressGauge.Percentage = 0f;
         }
 
         /// <summary>
@@ -282,8 +326,10 @@ namespace TowerColor.Views
                 foreach (var b in bricksToDestroy)
                 {
                     b.Break();
+                    
                     //Update fever gauge
                     _feverGauge.Increment(_gameData.feverGainByBrick);
+
                     await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
 
@@ -393,6 +439,7 @@ namespace TowerColor.Views
             //There is no more bricks
             if (!_gameManager.Tower.Steps.SelectMany(s => s.Bricks).Any())
             {
+                _levelProgressGauge.Percentage = 1f;
                 _gameManager.ChangeState(GameState.Win);
                 return true;
             }
@@ -401,6 +448,7 @@ namespace TowerColor.Views
                 var lastStepDestroyRatio = _gameManager.Tower.Steps[0].DestroyedRatio;
                 if (lastStepDestroyRatio >= _gameData.destroyRatioOfBottomTowerToWin) //And bottom tower step destroy ratio is above required one
                 {
+                    _levelProgressGauge.Percentage = 1f;
                     _gameManager.ChangeState(GameState.Win);
                     return true;
                 }
