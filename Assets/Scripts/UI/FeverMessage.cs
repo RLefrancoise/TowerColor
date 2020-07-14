@@ -16,7 +16,7 @@ namespace TowerColor.UI
             set
             {
                 _rainbowBallsCount = value;
-                text.text = $"{value} Rainbow Balls!";
+                text.text = value > 1 ? $"{value} Rainbow Balls!" : $"{value} Rainbow Ball!";
             }
         }
         

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ac8db31-0f38-4257-97f2-87b6bab334e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/GameData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -224,11 +224,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-112">
-              <caret line="290" column="12" lean-forward="true" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
+            <state relative-caret-position="23">
+              <caret line="162" column="64" lean-forward="true" selection-start-line="162" selection-start-column="64" selection-end-line="162" selection-end-column="64" />
               <folding>
                 <marker date="1594720388295" expanded="true" signature="6:262" ph="..." />
                 <marker date="1594720388295" expanded="true" signature="284:11571" ph="{...}" />
@@ -290,6 +290,23 @@
                 <marker date="1594720388295" expanded="true" signature="10927:11140" ph="{...}" />
                 <marker date="1594720388295" expanded="true" signature="11263:11511" ph="{...}" />
                 <marker date="1594720388295" expanded="true" signature="11403:11501" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+              <folding>
+                <marker date="1594721401358" expanded="true" signature="6:51" ph="..." />
+                <marker date="1594721401358" expanded="true" signature="76:622" ph="{...}" />
+                <marker date="1594721401358" expanded="true" signature="137:620" ph="{...}" />
+                <marker date="1594721401358" expanded="true" signature="286:527" ph="{...}" />
+                <marker date="1594721401358" expanded="true" signature="351:517" ph="{...}" />
+                <marker date="1594721401358" expanded="true" signature="603:614" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -376,31 +393,6 @@
                 <marker date="1594715758843" expanded="true" signature="265:576" ph="{...}" />
                 <marker date="1594715758843" expanded="true" signature="280:363" ph="/// Brick to use to generate the tower ... " />
                 <marker date="1594715758843" expanded="true" signature="411:521" ph="/// Rotation amount of a tower step according to the previous one ... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/OptionsManager.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-              <folding>
-                <marker date="1594714722635" expanded="true" signature="6:68" ph="..." />
-                <marker date="1594714722635" expanded="true" signature="90:2335" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="97:153" ph="/// Options manager ... " />
-                <marker date="1594714722635" expanded="true" signature="218:2333" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="233:304" ph="/// Options data file path ... " />
-                <marker date="1594714722635" expanded="true" signature="591:770" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="813:1499" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="856:999" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="1028:1283" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="1317:1463" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="1534:2327" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="1609:2086" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="1753:1953" ph="{...}" />
-                <marker date="1594714722635" expanded="true" signature="2120:2268" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -545,7 +537,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorMenuView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/RainbowGraphic.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/Installers/TowerColorPlayingViewInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Installers/GameInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TowerStep.cs" />
@@ -561,6 +552,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Scriptable/TowerProfile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Views/TowerColorPlayingView.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Brick.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs" />
       </list>
     </option>
   </component>
@@ -694,12 +686,12 @@
       <workItem from="1594222161749" duration="39583000" />
       <workItem from="1594376132593" duration="32056000" />
       <workItem from="1594461598428" duration="28698000" />
-      <workItem from="1594544503094" duration="61130000" />
+      <workItem from="1594544503094" duration="61435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161467000" />
+    <option name="totallyTimeSpent" value="161772000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1252,21 +1244,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <marker date="1594675435505" expanded="true" signature="6:51" ph="..." />
-            <marker date="1594675435505" expanded="true" signature="76:583" ph="{...}" />
-            <marker date="1594675435505" expanded="true" signature="137:581" ph="{...}" />
-            <marker date="1594675435505" expanded="true" signature="286:488" ph="{...}" />
-            <marker date="1594675435505" expanded="true" signature="351:478" ph="{...}" />
-            <marker date="1594675435505" expanded="true" signature="564:575" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/BallGainedMessage.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -1702,8 +1679,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Brick.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="290" column="12" lean-forward="true" selection-start-line="290" selection-start-column="12" selection-end-line="290" selection-end-column="12" />
+        <state relative-caret-position="23">
+          <caret line="162" column="64" lean-forward="true" selection-start-line="162" selection-start-column="64" selection-end-line="162" selection-end-column="64" />
           <folding>
             <marker date="1594720388295" expanded="true" signature="6:262" ph="..." />
             <marker date="1594720388295" expanded="true" signature="284:11571" ph="{...}" />
@@ -1765,6 +1742,21 @@
             <marker date="1594720388295" expanded="true" signature="10927:11140" ph="{...}" />
             <marker date="1594720388295" expanded="true" signature="11263:11511" ph="{...}" />
             <marker date="1594720388295" expanded="true" signature="11403:11501" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/FeverMessage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding>
+            <marker date="1594721401358" expanded="true" signature="6:51" ph="..." />
+            <marker date="1594721401358" expanded="true" signature="76:622" ph="{...}" />
+            <marker date="1594721401358" expanded="true" signature="137:620" ph="{...}" />
+            <marker date="1594721401358" expanded="true" signature="286:527" ph="{...}" />
+            <marker date="1594721401358" expanded="true" signature="351:517" ph="{...}" />
+            <marker date="1594721401358" expanded="true" signature="603:614" ph="{...}" />
           </folding>
         </state>
       </provider>
