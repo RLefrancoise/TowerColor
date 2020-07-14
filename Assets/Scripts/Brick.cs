@@ -325,16 +325,18 @@ namespace TowerColor
 
             PhysicsEnabled = activated;
         }
-
+        
         /// <summary>
-        /// Get surrounding bricks of the brick
+        /// Get surrounding bricks
         /// </summary>
+        /// <param name="mode">Mode</param>
+        /// <param name="takeNonActive">take non active</param>
         /// <returns></returns>
-        public List<Brick> GetSurroundingBricks(bool takeNonActive = true)
+        public List<Brick> GetSurroundingBricks(GameData.AdjacentBrickFindMode mode, bool takeNonActive = true)
         {
             var bricks = new List<Brick>();
 
-            if (_gameData.brickUseSphereCastToFindAdjacentBricks == GameData.AdjacentBrickFindMode.SphereCast)
+            if (mode == GameData.AdjacentBrickFindMode.SphereCast)
             {
                 var size = Physics.OverlapSphereNonAlloc(
                     Center, 
@@ -358,7 +360,7 @@ namespace TowerColor
                         bricks.Add(brick);
                 }
             }
-            else if (_gameData.brickUseSphereCastToFindAdjacentBricks == GameData.AdjacentBrickFindMode.RayCast)
+            else if (mode == GameData.AdjacentBrickFindMode.RayCast)
             {
                 var upBrick = GetAdjacentBrick(transform.up, Bounds.size.y, takeNonActive);
                 var downBrick = GetAdjacentBrick(-transform.up, Bounds.size.y, takeNonActive);
@@ -377,6 +379,15 @@ namespace TowerColor
             else return adjacentBricks;
             
             return bricks;
+        }
+        
+        /// <summary>
+        /// Get surrounding bricks of the brick
+        /// </summary>
+        /// <returns>Surrounding bricks</returns>
+        public List<Brick> GetSurroundingBricks(bool takeNonActive = true)
+        {
+            return GetSurroundingBricks(_gameData.brickUseSphereCastToFindAdjacentBricks, takeNonActive);
         }
 
         /// <summary>

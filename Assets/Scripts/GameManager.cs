@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Framework.Game;
+using UniRx;
 using UniRx.Async;
 using UnityEngine;
 using Zenject;
@@ -73,9 +74,8 @@ namespace TowerColor
             _towerCreator.towerSteps = (int) LevelManager.GetCurveValue(_gameData.towerStepsByLevel);
             Tower = _towerCreator.GenerateTower();
 
-            await UniTask.Yield();
+            await Tower.ShuffleColors(GameData.AdjacentBrickFindMode.SphereCast);
             Tower.EnablePhysics(false);
-            await Tower.ShuffleColors();
 
             //Place bonuses
             if (_gameData.useBallBonus)
@@ -105,7 +105,7 @@ namespace TowerColor
             
             base.Start();
         }
-        
+
         #endregion
     }
 }

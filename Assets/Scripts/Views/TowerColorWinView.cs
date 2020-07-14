@@ -44,6 +44,11 @@ namespace TowerColor.Views
         /// Camera tween
         /// </summary>
         private TweenerCore<Vector3, Vector3, VectorOptions> _cameraTween;
+
+        /// <summary>
+        /// Should stop win effect (when player clicks on continue before end of animation)
+        /// </summary>
+        private bool _stopWinEffect;
         
         /// <summary>
         /// Win sound
@@ -84,6 +89,8 @@ namespace TowerColor.Views
             {
                 //Wait
                 await UniTask.Delay(TimeSpan.FromSeconds(_gameData.winEffectTimeBetweenEach));
+
+                if (_stopWinEffect) break;
                 
                 var effect = Instantiate(_gameData.winEffect);
                 effect.transform.position = _gameManager.Tower.transform.position;
@@ -103,6 +110,7 @@ namespace TowerColor.Views
         protected override void ClickOnContinue()
         {
             _cameraTween?.Kill();
+            _stopWinEffect = true;
             base.ClickOnContinue();
         }
     }

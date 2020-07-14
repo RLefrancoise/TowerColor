@@ -185,11 +185,80 @@ namespace TowerColor
             CurrentStepChanged?.Invoke(step);
         }
 
+        public async UniTask ShuffleColors(GameData.AdjacentBrickFindMode mode, bool ignoreInactiveSteps = false, bool lerp = false,
+            bool resetBeforeShuffle = true)
+        {
+            Debug.Log("Shuffle colors");
+            
+            //Reset bricks color to first color
+            if (resetBeforeShuffle)
+            {
+                foreach (var step in steps)
+                {
+                    //If step is inactive, ignore it
+                    if (ignoreInactiveSteps && !step.IsActivated) continue;
+                    
+                    foreach (var brick in step.Bricks)
+                        brick.Color = _gameData.brickColors[0].color;
+                }
+            }
+
+            var bricksAlreadyChanged = new List<Brick>();
+            
+            //Color each brick according to its surrounding
+            for(var i = steps.Count - 1 ; i >= 0 ; i--)
+            {
+                var step = steps[i];
+                
+                //If step is inactive, ignore it
+                //if (ignoreInactiveSteps && !step.IsActivated) break;
+                if (ignoreInactiveSteps && i < (CurrentStep - _gameData.maxActiveSteps)) break; // Steps below should not be activated anyway
+                
+                foreach (var brick in step.Bricks)
+                {
+                    foreach (var b in brick.GetSurroundingBricks(mode, !ignoreInactiveSteps))
+                    {
+                        //Don't take non activated bricks, otherwise, it ends with invalid state between color and activation status...
+                        if (!b.IsActivated) continue;
+                        
+                        //Dont shuffle twice the same brick
+                        if (bricksAlreadyChanged.Contains(b)) continue;
+                        
+                        //According to the level, we have a specific change that surrounding bricks have same color
+                        var randomChance = Random.Range(0f, 1f);
+                        if (randomChance <= _gameManager.LevelManager.GetCurveValue(_gameData.sameColorForAdjacentBrickProbabilityByLevel))
+                        {
+                            if(lerp) b.LerpColor(brick.Color, _gameData.colorChangeDuration);
+                            else b.Color = brick.Color;
+                        }
+                        else
+                        {
+                            //We take a random color from the color list, except the same color as the brick
+                            var c = _gameData.brickColors.Select(x => x.color).Where(x => x != brick.Color)
+                                .ElementAt(Random.Range(0, _gameData.brickColors.Count - 1));
+                            
+                            if(lerp) b.LerpColor(c, _gameData.colorChangeDuration);
+                            b.Color = c;
+                        }
+                        
+                        bricksAlreadyChanged.Add(b);
+                    }
+                }
+            }
+
+            if (lerp) await UniTask.Delay(TimeSpan.FromSeconds(_gameData.colorChangeDuration));
+        }
+        
         /// <summary>
         /// Shuffle the tower colors
         /// </summary>
         public async UniTask ShuffleColors(bool ignoreInactiveSteps = false, bool lerp = false, bool resetBeforeShuffle = true)
         {
+            await ShuffleColors(_gameData.brickUseSphereCastToFindAdjacentBricks, ignoreInactiveSteps, lerp,
+                resetBeforeShuffle);
+            
+            /*Debug.Log("Shuffle colors");
+            
             //Reset bricks color to first color
             if (resetBeforeShuffle)
             {
@@ -246,7 +315,7 @@ namespace TowerColor
                 }
             }
 
-            if (lerp) await UniTask.Delay(TimeSpan.FromSeconds(_gameData.colorChangeDuration));
+            if (lerp) await UniTask.Delay(TimeSpan.FromSeconds(_gameData.colorChangeDuration));*/
         }
 
         /// <summary>
